@@ -1,0 +1,79 @@
+@extends('admin.layout.master')
+@section('meta')
+
+
+<link rel="canonical" href="{{ route('admin.index') }}" />
+
+
+
+@endsection
+@section('style')
+
+
+
+
+@endsection
+@section('main')
+
+<div class="preload preload-container">
+    <div class="preload-logo">
+      <div class="spinner"></div>
+    </div>
+  </div>
+
+ <div class="header">
+        <div class="tf-container" style="        position: fixed;        width: 100%;    ">
+            <div class="tf-statusbar d-flex justify-content-center align-items-center" style="    background: #ff3130">
+                <a href="{{ back() }}" class="text-white back-btn"> <i class="icon-left"></i> </a>
+            <h3 class="white_color">ঋণ নিন</h3>
+            </div>
+        </div>
+</div>
+
+
+
+
+<div class=" topup-content" style="
+    margin-top: 60px;
+    text-align: center;
+        margin-bottom: 50px;
+">
+   
+    <span style=" background: #ff3130;padding: 10px 25px; border-radius: 10px; font-size: 18px; font-weight: normal;  display: block;  margin: 10px;" class="white_color text-center">দুঃখিত আপনি এই সেবাটির জন্য এখন উপযুক্ত না।</span>
+ <div style="padding:20px">
+    <p style="color:red;">আমাদের ঋণ সেবা টি গ্রহণ করতে সর্বনিম্ন ৫০০০০/= টাকা প্রবাসী পে অ্যাপে লেনদেন করতে হবে। তারপর থেকে এই সুবিধাটি আপনার জন্য উপলব্ধ হবে। ধন্যবাদ
+    </p>
+
+<p style=" color:red; text-align: center;
+    margin: 20px 5px;
+    font-size: 14px;">আর তথ্য জানতে নিচের হেল্পলাইন বাটনে ক্লিক করে হেল্প সেন্টারে যোগাযোগ করুন
+<br>
+    <a href="https://wa.me/8801942823152" style="
+    background: #1a3637;
+    padding: 10px 20px;
+    margin-top:20px;
+    margin-bottom:20px;
+    color: white;
+    font-size: 15px;
+    line-height: 5;
+    border-radius: 5px;">হেল্পলাইন</a> <br>
+</p>
+</div>
+
+
+
+
+
+</div>
+       
+@endsection
+
+
+@section('script')
+
+
+
+
+
+
+@endsection
