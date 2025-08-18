@@ -4,6 +4,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Mobile Specific Metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, viewport-fit=cover">
+<title>{{ siteInfo()->company_name }}জ</title>
 <!-- Favicon and Touch Icons  -->
 <link rel="shortcut icon" href="{{ asset('images/logo.png') }}" />
 <link rel="apple-touch-icon-precomposed" href="{{ asset('images/logo.png') }}" />
@@ -58,6 +59,7 @@
 
 
                     <div class="content">
+                        <h4 class="white_color">{{ siteInfo()->company_name }}</h4>
                         <p class="white_color fw_4">প্রবাসীদের সেবায় নিয়োজিত।</p>
 
                     </div>
