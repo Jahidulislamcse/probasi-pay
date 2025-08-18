@@ -10,7 +10,7 @@ if (! function_exists('imageUpload')) {
 
     function imageUpload($imagefile)
     {
-    
+
         $image = time() . rand(1, 100) . '.' . $imagefile->getClientOriginalExtension();
         $destinationPath = public_path('fileManager');
         $imagefile->move($destinationPath, $image);
@@ -63,13 +63,13 @@ if (!function_exists('section')) {
     function section($key){
 
             $section = Section::where('key',$key)->first();
-        
+
             if($section ){
                 return $section->value ;
             }else{
                 return '' ;
             }
-      
+
     }
 
 
@@ -80,7 +80,7 @@ if (!function_exists('site_phone')) {
     function site_phone(){
       $site_phones =  json_decode(siteInfo()->phone) ;
       $phones = '' ;
-     
+
       foreach( $site_phones as $phone){
         $phones .= $phone->value.' , ' ;
       }
@@ -92,10 +92,10 @@ if (! function_exists('siteInfo')) {
 
     function siteInfo()
     {
-    
+
         $data = GeneralSetting::first();
         return $data ;
-        
+
     }
 
 }
@@ -109,19 +109,19 @@ if (! function_exists('currency')) {
             if($c == 'bdt'){
                 $symbol = '৳' ;
             }
-    
+
             if($c == 'usd'){
                 $symbol = '$' ;
             }
         }else{
-            
+
                 $symbol = '৳' ;
-            
+
         }
-        
-        
+
+
         return  $symbol.number_format($value,2) ;
-        
+
     }
 
 }
@@ -130,16 +130,16 @@ if (! function_exists('currency_code')) {
 
     function currency_code($value = '')
     {
-       
+
         $code = '' ;
         if(Session::get('currency_code')){
             $code = Session::get('currency_code') ;
         }else{
             $code = 'usd' ;
         }
-        
+
         return   $code ;
-        
+
     }
 
 }
@@ -149,10 +149,10 @@ if (! function_exists('country')) {
 
     function country()
     {
-        
-      
+
+
         return   Country::find(auth()->user()->location)  ;
-        
+
     }
 
 }
