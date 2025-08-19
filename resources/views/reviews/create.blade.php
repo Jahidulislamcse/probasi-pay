@@ -94,6 +94,7 @@
     }
     .toggle-review-btn:hover {
         background-color: #b71c1c;
+        color: #fff;
     }
 </style>
 @endsection
