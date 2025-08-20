@@ -34,7 +34,7 @@
                         </li>
                         <li><a href="{{ route('user.list') }}">Customers</a> </li>
                         <li><a href="{{ route('notifications.index') }}">Notification</a> </li>
-   
+
                         <li><a href="#">Chat</a>
                             <ul class="dropdown">
 
@@ -72,6 +72,7 @@
 
                             </ul>
                         </li>
+                        <li><a href="{{ route('review.upload') }}">Reviews</a></li>
                     @endif
 
 

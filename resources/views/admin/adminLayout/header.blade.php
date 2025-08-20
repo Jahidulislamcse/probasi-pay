@@ -18,4 +18,6 @@
 <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/36.0.0/classic/ckeditor.css">
 <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/36.0.0/balloon/ckeditor.css">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
+
 @livewireStyles

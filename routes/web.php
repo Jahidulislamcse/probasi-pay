@@ -53,8 +53,11 @@ Route::match(['get', 'post'],'get-image', [HomeController::class, 'getImage'])->
 Route::match(['get', 'post'],'get-final', [HomeController::class, 'getFinal'])->name('register.final');
 Route::match(['get', 'post'],'user-agree', [HomeController::class, 'agree'])->name('register.agree');
 
-Route::get('review/upload', [ReviewController::class, 'create'])->name('reviews.create');
+Route::get('review/upload', [ReviewController::class, 'create'])->name('review.upload');
+Route::get('reviews/view', [ReviewController::class, 'index'])->name('reviews.view');
 Route::post('review/store', [ReviewController::class, 'store'])->name('reviews.store');
+Route::put('/reviews/{review}', [ReviewController::class, 'update'])->name('reviews.update');
+Route::delete('/reviews/{review}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 
 
 

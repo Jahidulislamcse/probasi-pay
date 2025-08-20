@@ -44,7 +44,7 @@
         @if ($errors->any())
         @foreach ($errors->all() as $error)
    toastr.error('{{ $error }}')
-                         
+
    @endforeach
 
    @endif
@@ -63,7 +63,7 @@
                     if (result.isConfirmed) {
 
                         window.location.href = link;
-                       
+
                     }
                 })
            })
@@ -74,8 +74,8 @@
                     for (var i = 0; i < allEditors.length; ++i) {
                         var isload = $('.ckeditor').eq(i).attr('data');
                         if (isload != 1) {
-                  
-                            
+
+
                           ClassicEditor.create(allEditors[i],{
                               toolbar: {
                 items: [
@@ -96,10 +96,10 @@
                         .catch( error => {
                             console.error( error );
                         } );
-                        
+
                           $('.ckeditor').eq(i).attr('data',1);
                         }
-                     
+
                       }
                 }
 </script>

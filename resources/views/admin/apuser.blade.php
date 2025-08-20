@@ -197,7 +197,7 @@ body{
              <div class="wallet-footer">
                 <ul class="d-flex justify-content-between align-items-center">
                     <li class="wallet-card-item">
-                        <a href="{{ route('reviews.create') }}" class="fw_6 text-center" id="btn-popup-down">
+                        <a href="{{ route('reviews.view') }}" class="fw_6 text-center" id="btn-popup-down">
                             <ul class="icon icon-group-transfers">
                                 <img src="/images/banner/review.png">
                             </ul>

@@ -184,20 +184,10 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
 @endsection
+
 @section('script')
 <script type="text/javascript">
     let table = new DataTable('#table');
 </script>
-
-
-
-
 @endsection

@@ -16,6 +16,11 @@ class HomeController extends Controller
         return view('frontend.home');
     }
 
+    public function test(){
+
+        return view('frontend.home');
+    }
+
     public function sendotp(){
 
         $username = auth()->user()->name;
@@ -35,9 +40,9 @@ class HomeController extends Controller
             }else{
                 return back()->with(['response' => false, 'msg' => 'OTP sent failed']);
             }
-            
+
         }
-       
+
     }
 
     public function forget_password( Request $request){
@@ -65,13 +70,13 @@ class HomeController extends Controller
             }else{
                 return back()->with(['response' => false, 'msg' => 'OTP sent failed']);
             }
-            
+
         }
 
 
     }
 
-    
+
     public function reset_password(Request $request,$opt=null,$phone=null){
 
         if($request->post()){
@@ -99,7 +104,7 @@ class HomeController extends Controller
             }
         }
 
-      
+
     }
     public function otp($phone=null){
 
@@ -114,7 +119,7 @@ class HomeController extends Controller
             if($request->phone){
                 $user = User::where('phone',$request->phone)->first();
                 if($user->otp == $request->otp){
-                 
+
                     return redirect()->route('reset.password',[$request->otp,$request->phone]);
                 }else{
                     return back()->with(['response' => false, 'msg' => 'Invalid OTP']);
@@ -127,13 +132,13 @@ class HomeController extends Controller
                     return back()->with(['response' => false, 'msg' => 'Invalid OTP']);
                 }
             }
-        
+
 
     }
 
 
     public function getData(Request $request){
-        
+
         $request->validate([
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required','unique:users,phone'],
@@ -146,10 +151,10 @@ class HomeController extends Controller
         ]);
         Session::put('register-info',$request->post());
         return redirect()->route('register.image');
-        
+
     }
 
-    
+
     public function getImage(Request $request){
         if($request->post()){
               $request->validate([
@@ -160,28 +165,28 @@ class HomeController extends Controller
             return redirect()->route('register.final');
 
         }
-       
+
         return view('auth.photo');
-        
+
     }
 
     public function getFinal(Request $request){
 
         return view('auth.final');
-        
+
     }
 
     public function agree(Request $request){
         $data = auth()->user();
         $data->agree = 1;
         $data->save();
-       
-        return back();
-        
-    }
-    
 
-    
+        return back();
+
+    }
+
+
+
 
     public function contact(){
 
@@ -193,7 +198,7 @@ class HomeController extends Controller
         return view('admin.history');
     }
 
-    
+
 
 
 }
