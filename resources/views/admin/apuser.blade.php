@@ -43,13 +43,22 @@ body{
                     </div>
                 </div>
             </div>
-@php
-   $country = App\Models\Country::find(auth()->user()->location)
 
-@endphp
-           <br> <marquee behavior="" direction="left" style="color:#ff3631;
-            font-size: 19px;
-        "> আজকের রেট: {{ @$country->name }} ১ {{ @$country->currency }} = {{ @$country->rate }} টাকা </marquee>
+            @if($country)
+                <marquee behavior="scroll" direction="left" style="color:#ff3631;font-size: 19px;">
+                    @if($rate)
+                        Today's rate: {{ $country->name }} 1 {{ $country->currency }} = {{ number_format($rate, 2) }} BDT
+                    @else
+                        Rate not found
+                    @endif
+                </marquee>
+
+                <script>
+                    console.log('Currency rate:', {{ $rate ?? 'null' }});
+                </script>
+            @endif
+
+
 
             <div class="wallet-footer">
                 <ul class="d-flex justify-content-between align-items-center">

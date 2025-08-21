@@ -10,39 +10,59 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Http;
 
 
 class AdminController extends Controller
 {
-    //
     public function index()
     {
         $title = 'Welcome to Dashboard';
+        $user = auth()->user();
+        $rate = null;
+        $country = null;
 
-        if (auth()->user()->role == 'super admin') {
-            return view('admin.adminDashboard', compact(['title']));
-        } else {
-            return view('admin.dashboard', compact(['title']));
+        if ($user->location) {
+            $country = \App\Models\Country::find($user->location);
+
+            if ($country && $country->currency_code) {
+                try {
+                    // Use your API key
+                    $apiKey = '59ba09ebee6097d71246aa9f';
+                    $response = Http::get("https://v6.exchangerate-api.com/v6/{$apiKey}/latest/{$country->currency_code}");
+
+                    if ($response->successful() && isset($response['conversion_rates']['BDT'])) {
+                        $rate = $response['conversion_rates']['BDT'];
+                    } else {
+                        \Log::error('Rate API failed: ', $response->json());
+                    }
+                } catch (\Exception $e) {
+                    \Log::error('Rate fetch exception: ' . $e->getMessage());
+                }
+            }
         }
+
+        return view('admin.dashboard', compact('title', 'country', 'rate'));
     }
-    
+
+
     public function addbalance(Request $request,$id){
-         
+
          if($request->post()){
 
                 $user = User::find($id);
-                
+
                 $user->balance = $user->balance + $request->amount;
-      
+
                 if ($user->save()) {
                 return redirect()->back()->with(['response' => true, 'msg' => 'User Balance Add Successful']);
             } else {
                 return redirect()->back()->with(['response' => false, 'msg' => 'User Balance Add Fail!']);
             }
          }
-         
-         
-         
+
+
+
          $title = "Add balance";
          $user = User::find($id);
         return view('admin.user.add_balance', compact(['title','user']));
@@ -101,7 +121,7 @@ class AdminController extends Controller
    public function pendingChat()
     {
         $title = 'Pending Chat';
-      
+
         return view('admin.pending-chat', compact(['title']));
     }
 
@@ -164,7 +184,7 @@ class AdminController extends Controller
         $title = 'Group Chat';
         return view('admin.chat', compact(['title']));
     }
-    
+
     public function userstatus($id)
     {
         $user = User::find($id);
@@ -185,7 +205,7 @@ class AdminController extends Controller
         } else {
             return redirect()->back()->with(['response' => false, 'msg' => 'User delete Fail!']);
         }
-        
+
     }
 
 
