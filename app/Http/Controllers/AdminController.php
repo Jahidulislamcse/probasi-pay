@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Http;
 
 class AdminController extends Controller
 {
-    public function index()
-    {
+public function index()
+{
         $title = 'Welcome to Dashboard';
         $user = auth()->user();
         $rate = null;
@@ -42,9 +42,12 @@ class AdminController extends Controller
             }
         }
 
+    if ($user->role == 'super admin') {
+        return view('admin.adminDashboard', compact('title', 'country', 'rate'));
+    } else {
         return view('admin.dashboard', compact('title', 'country', 'rate'));
     }
-
+}
 
     public function addbalance(Request $request,$id){
 
