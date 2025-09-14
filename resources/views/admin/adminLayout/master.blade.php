@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    
+
 
     @yield('meta')
     @include('admin.adminLayout.header')

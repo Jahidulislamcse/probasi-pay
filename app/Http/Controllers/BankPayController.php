@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\BankPay;
+use App\Models\PayableAccount;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 
 class BankPayController extends Controller
@@ -47,6 +50,7 @@ class BankPayController extends Controller
     public function bankpay(Request $request){
 
         if ($request->post()) {
+            // dd($request->all());
 
             $request->validate([
                 'operator' => 'required',
@@ -55,24 +59,25 @@ class BankPayController extends Controller
                 'branch' => 'required',
                 'achold' => 'required'
             ]);
-            
+
              if( $request->pin != auth()->user()->pin){
                 return redirect()->back()->with(['response' => false, 'msg' => 'Invalid Pin code!']);
             }
-        
+
             if( $request->amount > auth()->user()->balance){
                 return redirect()->back()->with(['response' => false, 'msg' => 'Please Topup First!']);
             }
-            
-           
+
+            $transaction_id =  strtoupper(Str::random(7));
             $data = new BankPay() ;
+            $data->transaction_id = $transaction_id ;
             $data->operator = $request->operator ;
-            
+
             $data->amount = $request->amount ;
             $data->mobile = $request->mobile ;
             $data->branch = $request->branch ;
             $data->achold = $request->achold ;
- 
+
             $data->user_id = auth()->user()->id;
             $data->status = 0 ;
 
@@ -80,13 +85,38 @@ class BankPayController extends Controller
                 $user = auth()->user();
                 $user->balance = $user->balance - $request->amount ;
                 $user->save();
-                  
+
                     return redirect(route('success',[$data->id,'bankpay']));
              }
 
         }
 
-        return view('admin.bank_pay') ;
+        $user = auth()->user();
+        $rate = null;
+        $country = null;
+        $payable_accounts = PayableAccount::where('type', 'bank_account')->get();
+
+        if ($user->location) {
+        $country = \App\Models\Country::find($user->location);
+
+        if ($country && $country->currency_code) {
+            try {
+                // Use your API key
+                $apiKey = '59ba09ebee6097d71246aa9f';
+                $response = Http::get("https://v6.exchangerate-api.com/v6/{$apiKey}/latest/{$country->currency_code}");
+
+                if ($response->successful() && isset($response['conversion_rates']['BDT'])) {
+                    $rate = $response['conversion_rates']['BDT'];
+                } else {
+                    \Log::error('Rate API failed: ', $response->json());
+                }
+            } catch (\Exception $e) {
+                \Log::error('Rate fetch exception: ' . $e->getMessage());
+            }
+        }
+        }
+
+        return view('admin.bank_pay', compact('country', 'rate', 'payable_accounts')); ;
 
     }
 }

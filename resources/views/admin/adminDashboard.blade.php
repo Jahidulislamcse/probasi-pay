@@ -142,11 +142,9 @@
 
                                             <th>Date</th>
                                             <th>User</th>
-                                            <th>Type</th>
-                                            <th>Phone</th>
-                                            <th>Amount</th>
+                                            <th>৳</th>
                                             <th>Account</th>
-                                            <th>Screenshot</th>
+                                            <th>Receipt</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -156,12 +154,15 @@
                                         <tr>
 
                                             <td>{!! Illuminate\Support\Carbon::parse(@$list->created_at)->format('d-m-Y') !!}</td>
-                                            <td>{{ @$list->user->name }}</td>
-                                            <td>{{ @$list->type }} </td>
-                                            <td>{{ @$list->phone }} </td>
+                                            <td>{{ @$list->user->name }} <br>
+                                                {{ @$list->user->phone }}
+                                            </td>
                                             <td>{{ @$list->amount }} </td>
-                                            <td>{{ @$list->account }} </td>
-                                            <td> @if(@$list->file) <a href="{{ asset(@$list->file) }}" target="_blank">view screenshot</a> @endif   </td>
+                                            <td>
+                                                {{ optional($list->gateway)->name ?? 'N/A' }} <br>
+                                                {!!optional($list->gateway)->details ?? 'N/A' !!}
+                                            </td>
+                                            <td> @if(@$list->file) <a href="{{ asset(@$list->file) }}" target="_blank">view</a> @endif   </td>
                                             <td>{!! @$list->status() !!}</td>
                                             <td class="text-center">
                                                 @if(@$list->status == 0)

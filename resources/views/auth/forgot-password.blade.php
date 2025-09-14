@@ -36,9 +36,9 @@
 
                         <div class="log-header-area card p-4 mb-4 text-center">
                             @if (session('status'))
-                                <div class="mb-4 font-medium text-sm text-green-600">
-                                    {{ session('status') }}
-                                </div>
+                            <div class="mb-4 font-medium text-sm text-green-600">
+                                {{ session('status') }}
+                            </div>
                             @endif
                             <h5 class="mb-0">Forgot Password?</h5>
                         </div>
@@ -88,21 +88,22 @@
     <script src="{{ asset('admin') }}/js/default-assets/active.js"></script>
 
     <script>
-        @if(session()->get('response') === false)
-            toastr.error('{{ session()->get('msg') }}')
-            @endif
-            @if(session()->get('response') === true)
-            toastr.success('{{ session()->get('msg') }}')
-            @endif
-    
-            @if ($errors->any())
-            @foreach ($errors->all() as $error)
-       toastr.error('{{ $error }}')
-                             
-       @endforeach
-    
-       @endif
-   
+        @if(session() - > get('response') === false)
+        toastr.error('{{ session()->get('
+            msg ') }}')
+        @endif
+        @if(session() - > get('response') === true)
+        toastr.success('{{ session()->get('
+            msg ') }}')
+        @endif
+
+        @if($errors - > any())
+        @foreach($errors - > all() as $error)
+        toastr.error('{{ $error }}')
+
+        @endforeach
+
+        @endif
     </script>
 
 </body>

@@ -36,9 +36,9 @@
 
                         <div class="log-header-area card p-4 mb-4 text-center">
                             @if (session('status'))
-                                <div class="mb-4 font-medium text-sm text-green-600">
-                                    {{ session('status') }}
-                                </div>
+                            <div class="mb-4 font-medium text-sm text-green-600">
+                                {{ session('status') }}
+                            </div>
                             @endif
                             <h5 class="mb-0">Forgot Password?</h5>
                         </div>
@@ -47,20 +47,20 @@
                             <div class="card-body p-4">
                                 <form action="{{ route('reset.password.update') }}" method="POST">
                                     @csrf
-                                    <input type="hidden" name="token" value="{{ request()->route('token') }}" >
+                                    <input type="hidden" name="token" value="{{ request()->route('token') }}">
                                     <div class="form-group mb-3">
                                         <label class="text-muted" for="phone"> phone </label>
-                                        <input class="form-control" type="number" name="phone"  value="{{ $phone }}" readonly required
+                                        <input class="form-control" type="number" name="phone" value="{{ $phone }}" readonly required
                                             placeholder="Enter phone">
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="text-muted" for="Password"> Password </label>
-                                        <input class="form-control" type="password" name="password"  required
+                                        <input class="form-control" type="password" name="password" required
                                             placeholder="Enter password">
                                     </div>
                                     <div class="form-group mb-3">
                                         <label class="text-muted" for="emailaddress">Confirm Password</label>
-                                        <input class="form-control" type="password" name="password_confirmation"  required
+                                        <input class="form-control" type="password" name="password_confirmation" required
                                             placeholder="Confirm Password">
                                     </div>
                                     <div class="form-group mb-3">
@@ -99,21 +99,22 @@
     <script src="{{ asset('admin') }}/js/default-assets/active.js"></script>
 
     <script>
-        @if(session()->get('response') === false)
-            toastr.error('{{ session()->get('msg') }}')
-            @endif
-            @if(session()->get('response') === true)
-            toastr.success('{{ session()->get('msg') }}')
-            @endif
-    
-            @if ($errors->any())
-            @foreach ($errors->all() as $error)
-       toastr.error('{{ $error }}')
-                             
-       @endforeach
-    
-       @endif
-   
+        @if(session() - > get('response') === false)
+        toastr.error('{{ session()->get('
+            msg ') }}')
+        @endif
+        @if(session() - > get('response') === true)
+        toastr.success('{{ session()->get('
+            msg ') }}')
+        @endif
+
+        @if($errors - > any())
+        @foreach($errors - > all() as $error)
+        toastr.error('{{ $error }}')
+
+        @endforeach
+
+        @endif
     </script>
 
 </body>

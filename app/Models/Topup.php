@@ -15,6 +15,11 @@ class Topup extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function gateway()  
+    {
+        return $this->belongsTo(Account::class, 'gateway_id', 'id');
+    }
+
     public function status(){
 
         if($this->status == 0){
@@ -28,5 +33,6 @@ class Topup extends Model
         }
 
     }
+
 
 }

@@ -14,13 +14,15 @@ return new class extends Migration
         Schema::create('bank_pays', function (Blueprint $table) {
             $table->id();
             $table->string('operator')->nullable();
+            $table->string('transaction_id')->nullable();
             $table->string('type')->nullable();
             $table->double('amount')->nullable();
-            $table->double('mobile')->nullable();
-            $table->double('number')->nullable();
-            $table->double('branch')->nullable();
-            $table->double('achold')->nullable();
+            $table->string('mobile')->nullable();
+            $table->string('number')->nullable();
+            $table->string('branch')->nullable();
+            $table->string('achold')->nullable();
             $table->integer('user_id')->nullable();
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

@@ -74,7 +74,7 @@
         }
 
         .radio-button-group label {
-          color: #ff3100;
+            color: #ff3100;
             background-color: #ffffff;
             border: 2px solid #ffc3c3;
             border-radius: 8px;
@@ -113,10 +113,13 @@
     </div>
     <div class="mt-3 register-section">
         <div class="tf-container">
-            <img src="{{ asset(siteInfo()->logo) }}" style="margin-left:25%;width:50%;height:50%;margin-top: 20px;margin-bottom: 20px;">
-            <form class="tf-form " action="{{ route('register.data') }}" method="post">
+            @if(siteInfo() && siteInfo()->logo)
+                <img src="{{ asset(siteInfo()->logo) }}"
+                    style="margin-left:25%;width:50%;height:50%;margin-top:20px;margin-bottom:20px;">
+            @endif
+                <form class="tf-form " action="{{ route('register.data') }}" method="post">
                 @csrf
-                
+
                 <div class="group-input">
                     <label>নাম</label>
                     <input name="name" type="text" placeholder="Your Full Name" required>
@@ -132,12 +135,12 @@
 
                             <ul class="country-list" id="countryDropdown">
                                 @foreach (App\Models\Country::all() as $data)
-                                    <li
-                                        onclick="selectCountry('{{ $data->id }}', '{{ asset($data->image) }}', '{{ @$data->name }}')">
-                                        <img src="{{ asset(@$data->image) }}" alt="{{ @$data->name }}"
-                                            style=" height: 25px;width: 40px;">
-                                        {{ @$data->name }}
-                                    </li>
+                                <li
+                                    onclick="selectCountry('{{ $data->id }}', '{{ asset($data->image) }}', '{{ @$data->name }}')">
+                                    <img src="{{ asset(@$data->image) }}" alt="{{ @$data->name }}"
+                                        style=" height: 25px;width: 40px;">
+                                    {{ @$data->name }}
+                                </li>
                                 @endforeach
                             </ul>
 
@@ -149,56 +152,56 @@
                                 <select name="location" class="box-sl-profile form-select">
                                     @foreach (App\Models\Country::all() as $data)
                                         <option value="{{ @$data->id }}">
-                                            {{ @$data->name }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div> --}}
+                        {{ @$data->name }}
+                        </option>
+                        @endforeach
+                        </select>
                     </div>
-                    <div class="col-7">
-                        <div class="group-input">
-                            <label>মোবাইল নম্বর</label>
-                            <input name="email" type="number" minlength="11" maxlength="11"
-                                placeholder="01700000000" required>
-                        </div>
-                    </div>
-                </div>
+                </div> --}}
+        </div>
+        <div class="col-7">
+            <div class="group-input">
+                <label>মোবাইল নম্বর</label>
+                <input name="email" type="number" minlength="11" maxlength="11"
+                    placeholder="01700000000" required>
+            </div>
+        </div>
+    </div>
 
 
-                <div class="group-input">
-                    <label>পাসওয়ার্ড</label>
-                    <input type="password" name="password" placeholder="6-20 characters" required>
-                </div>
-                <div class="group-input" style=" margin-bottom: 5px; ">
-                    <label>পাসওয়ার্ড নিশ্চিত করুন</label>
-                    <input type="password" name="password_confirmation" placeholder="6-20 characters" required>
-                </div>
-                <h2 class="text-center" style=" margin-bottom: 15px; ">একাউন্টের ধরণ সিলেক্ট করুন</h2>
-                <div class="row ">
-                   
-                    <div class="col-6 d-flex justify-content-center">
-                            <div class="radio-button-group">
-                                <input type="radio" id="option1" class="radio-option" name="type"
-                                    value="personal" checked>
-                                <label for="option1">পার্সোনাল</label>
-                            </div>
-                    </div>
-                    <div class="col-6 d-flex justify-content-center">
-                            <div class="radio-button-group">
-                                <input type="radio" id="option2" class="radio-option" name="type"
-                                    value="bussiness">
-                                <label for="option2">বিজনেস</label>
-                            </div>
-                    </div>
-                </div>
+    <div class="group-input">
+        <label>পাসওয়ার্ড</label>
+        <input type="password" name="password" placeholder="6-20 characters" required>
+    </div>
+    <div class="group-input" style=" margin-bottom: 5px; ">
+        <label>পাসওয়ার্ড নিশ্চিত করুন</label>
+        <input type="password" name="password_confirmation" placeholder="6-20 characters" required>
+    </div>
+    <h2 class="text-center" style=" margin-bottom: 15px; ">একাউন্টের ধরণ সিলেক্ট করুন</h2>
+    <div class="row ">
 
-                <div style="display:none;" class="group-input">
-                    <label>Role</label>
-                    <input type="text" name="role" value="digital-marketing">
-                </div>
+        <div class="col-6 d-flex justify-content-center">
+            <div class="radio-button-group">
+                <input type="radio" id="option1" class="radio-option" name="type"
+                    value="personal" checked>
+                <label for="option1">পার্সোনাল</label>
+            </div>
+        </div>
+        <div class="col-6 d-flex justify-content-center">
+            <div class="radio-button-group">
+                <input type="radio" id="option2" class="radio-option" name="type"
+                    value="bussiness">
+                <label for="option2">বিজনেস</label>
+            </div>
+        </div>
+    </div>
 
-                {{-- <div class="group-cb mt-5">
+    <div style="display:none;" class="group-input">
+        <label>Role</label>
+        <input type="text" name="role" value="digital-marketing">
+    </div>
+
+    {{-- <div class="group-cb mt-5">
 
                     <input type="checkbox" name="chk" value="Agree" checked class="tf-checkbox">
 
@@ -206,32 +209,32 @@
                             data-bs-toggle="modal" data-bs-target="#exampleModalCenter">শর্তাবলীতে</button>
                 </div> --}}
 
-                <button type="submit" name="submit" class="tf-btn accent large" style="
+    <button type="submit" name="submit" class="tf-btn accent large" style="
           margin-top: 10px;
           background: #ff3100;
           border: 1px solid #ff3100;
           ">এগিয়ে যান</button>
 
-            </form>
+    </form>
 
-            <div class=" mt-5">
-                <div class="row">
-                        <div class="col-7">
-                            <h2 style="
+    <div class=" mt-5">
+        <div class="row">
+            <div class="col-7">
+                <h2 style="
                margin: 10px;
            "> ইতিমধ্যেই নিবন্ধিত? </h2>
-                        </div>
-                        <div class="col-5">
-                            <a href="{{ route('login') }}" style="
+            </div>
+            <div class="col-5">
+                <a href="{{ route('login') }}" style="
 padding: 5px;width: 100%;background: #ff3100;
 "
-                        class="tf-btn accent small">লগইন করুন</a>
-                        </div>
-                </div>
-               
+                    class="tf-btn accent small">লগইন করুন</a>
             </div>
-
         </div>
+
+    </div>
+
+    </div>
     </div>
 
 
@@ -246,7 +249,7 @@ padding: 5px;width: 100%;background: #ff3100;
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>{{ @App\Models\Section::where('key', 'terms')->first()->value }}</p>
+                    <!-- <p>{{ @App\Models\Section::where('key', 'terms')->first()->value }}</p> -->
                 </div>
 
             </div>
@@ -265,20 +268,22 @@ padding: 5px;width: 100%;background: #ff3100;
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
-    <script>
-        @if (session()->get('response') === false)
-            toastr.error('{{ session()->get('msg') }}')
-        @endif
-        @if (session()->get('response') === true)
-            toastr.success('{{ session()->get('msg') }}')
-        @endif
+<script>
+    @if(session()->get('response') === false)
+        toastr.error('{{ session()->get('msg') }}');
+    @endif
 
-        @if ($errors->any())
-            @foreach ($errors->all() as $error)
-                toastr.error('{{ $error }}')
-            @endforeach
-        @endif
-    </script>
+    @if(session()->get('response') === true)
+        toastr.success('{{ session()->get('msg') }}');
+    @endif
+
+    @if($errors->any())
+        @foreach($errors->all() as $error)
+            toastr.error('{{ $error }}');
+        @endforeach
+    @endif
+</script>
+
     <script>
         function toggleCountryDropdown() {
             document.getElementById('countryDropdown').classList.toggle('show');

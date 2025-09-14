@@ -3,6 +3,7 @@
 <script type="text/javascript" src="{{ asset('javascript/swiper-bundle.min.js')}}"></script>
 <script type="text/javascript" src="{{ asset('javascript/swiper.js')}}"></script>
 <script type="text/javascript" src="{{ asset('javascript/main.js')}}"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"
     integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
 use App\Models\MobileBanking;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class MobileBankingController extends Controller
 {
@@ -22,7 +25,7 @@ class MobileBankingController extends Controller
         return view('admin.mobile_banking_list', compact('lists'));
     }
 
-   
+
 
     public function upay_list()
     {
@@ -30,7 +33,7 @@ class MobileBankingController extends Controller
         return view('admin.mobile_banking_list', compact('lists'));
     }
 
- 
+
 
     public function rocket_list()
     {
@@ -57,7 +60,7 @@ class MobileBankingController extends Controller
         return redirect()->back()->with(['response' => true, 'msg' => 'Transaction Rejected!']);
     }
 
-    
+
     public function delete($id)
     {
         $transaction = MobileBanking::findOrFail($id);
@@ -70,7 +73,7 @@ class MobileBankingController extends Controller
     public function bkash(Request $request){
 
         if ($request->post()) {
-  
+
             $request->validate([
                 'type' => 'required',
                 'amount' => 'required|numeric|min:1',
@@ -79,12 +82,14 @@ class MobileBankingController extends Controller
              if( $request->pin != auth()->user()->pin){
                 return redirect()->back()->with(['response' => false, 'msg' => 'Invalid Pin code!']);
             }
-        
+
             if( $request->amount > auth()->user()->balance){
                 return redirect()->back()->with(['response' => false, 'msg' => 'Please Topup First!']);
             }
-        
+
+            $transaction_id =  strtoupper(Str::random(7));
             $data = new MobileBanking() ;
+            $data->transaction_id = $transaction_id;
             $data->operator = 'Bkash' ;
             $data->type = $request->type ;
             $data->amount = $request->amount ;
@@ -100,8 +105,32 @@ class MobileBankingController extends Controller
              }
 
         }
+        $user = auth()->user();
+        $rate = null;
+        $country = null;
 
-        return view('admin.bkash') ;
+        if ($user->location) {
+        $country = Country::find($user->location);
+
+            if ($country && $country->currency_code) {
+                try {
+                    // Use your API key
+                    $apiKey = '59ba09ebee6097d71246aa9f';
+                    $response = Http::get("https://v6.exchangerate-api.com/v6/{$apiKey}/latest/{$country->currency_code}");
+
+                    if ($response->successful() && isset($response['conversion_rates']['BDT'])) {
+                        $rate = $response['conversion_rates']['BDT'];
+                    } else {
+                        \Log::error('Rate API failed: ', $response->json());
+                    }
+                } catch (\Exception $e) {
+                    \Log::error('Rate fetch exception: ' . $e->getMessage());
+                }
+            }
+        }
+
+        return view('admin.bkash', compact('country', 'rate')) ;
+
 
     }
 
@@ -118,12 +147,14 @@ class MobileBankingController extends Controller
              if( $request->pin != auth()->user()->pin){
                 return redirect()->back()->with(['response' => false, 'msg' => 'Invalid Pin code!']);
             }
-        
+
             if( $request->amount > auth()->user()->balance){
                 return redirect()->back()->with(['response' => false, 'msg' => 'Please Topup First!']);
             }
-        
+
+            $transaction_id =  strtoupper(Str::random(7));
             $data = new MobileBanking() ;
+            $data->transaction_id = $transaction_id;
             $data->operator = 'Nagad' ;
             $data->type = $request->type ;
             $data->amount = $request->amount ;
@@ -140,7 +171,31 @@ class MobileBankingController extends Controller
 
         }
 
-        return view('admin.nagad') ;
+        $user = auth()->user();
+        $rate = null;
+        $country = null;
+
+        if ($user->location) {
+        $country = Country::find($user->location);
+
+            if ($country && $country->currency_code) {
+                try {
+                    // Use your API key
+                    $apiKey = '59ba09ebee6097d71246aa9f';
+                    $response = Http::get("https://v6.exchangerate-api.com/v6/{$apiKey}/latest/{$country->currency_code}");
+
+                    if ($response->successful() && isset($response['conversion_rates']['BDT'])) {
+                        $rate = $response['conversion_rates']['BDT'];
+                    } else {
+                        \Log::error('Rate API failed: ', $response->json());
+                    }
+                } catch (\Exception $e) {
+                    \Log::error('Rate fetch exception: ' . $e->getMessage());
+                }
+            }
+        }
+
+        return view('admin.nagad', compact('country', 'rate')) ;
 
     }
 
@@ -156,12 +211,14 @@ class MobileBankingController extends Controller
              if( $request->pin != auth()->user()->pin){
                 return redirect()->back()->with(['response' => false, 'msg' => 'Invalid Pin code!']);
             }
-        
+
             if( $request->amount > auth()->user()->balance){
                 return redirect()->back()->with(['response' => false, 'msg' => 'Please Topup First!']);
             }
-        
+
+            $transaction_id =  strtoupper(Str::random(7));
             $data = new MobileBanking() ;
+            $data->transaction_id = $transaction_id;
             $data->operator = 'Upay' ;
             $data->type = $request->type ;
             $data->amount = $request->amount ;
@@ -178,7 +235,31 @@ class MobileBankingController extends Controller
 
         }
 
-        return view('admin.upay') ;
+        $user = auth()->user();
+        $rate = null;
+        $country = null;
+
+        if ($user->location) {
+        $country = Country::find($user->location);
+
+            if ($country && $country->currency_code) {
+                try {
+                    // Use your API key
+                    $apiKey = '59ba09ebee6097d71246aa9f';
+                    $response = Http::get("https://v6.exchangerate-api.com/v6/{$apiKey}/latest/{$country->currency_code}");
+
+                    if ($response->successful() && isset($response['conversion_rates']['BDT'])) {
+                        $rate = $response['conversion_rates']['BDT'];
+                    } else {
+                        \Log::error('Rate API failed: ', $response->json());
+                    }
+                } catch (\Exception $e) {
+                    \Log::error('Rate fetch exception: ' . $e->getMessage());
+                }
+            }
+        }
+
+        return view('admin.upay', compact('country', 'rate')) ;
 
     }
 
@@ -194,12 +275,14 @@ class MobileBankingController extends Controller
              if( $request->pin != auth()->user()->pin){
                 return redirect()->back()->with(['response' => false, 'msg' => 'Invalid Pin code!']);
             }
-        
+
             if( $request->amount > auth()->user()->balance){
                 return redirect()->back()->with(['response' => false, 'msg' => 'Please Topup First!']);
             }
-        
+
+            $transaction_id =  strtoupper(Str::random(7));
             $data = new MobileBanking() ;
+            $data->transaction_id = $transaction_id;
             $data->operator = 'Rocket' ;
             $data->type = $request->type ;
             $data->amount = $request->amount ;
@@ -216,7 +299,31 @@ class MobileBankingController extends Controller
 
         }
 
-        return view('admin.rocket') ;
+        $user = auth()->user();
+        $rate = null;
+        $country = null;
+
+        if ($user->location) {
+        $country = Country::find($user->location);
+
+            if ($country && $country->currency_code) {
+                try {
+                    // Use your API key
+                    $apiKey = '59ba09ebee6097d71246aa9f';
+                    $response = Http::get("https://v6.exchangerate-api.com/v6/{$apiKey}/latest/{$country->currency_code}");
+
+                    if ($response->successful() && isset($response['conversion_rates']['BDT'])) {
+                        $rate = $response['conversion_rates']['BDT'];
+                    } else {
+                        \Log::error('Rate API failed: ', $response->json());
+                    }
+                } catch (\Exception $e) {
+                    \Log::error('Rate fetch exception: ' . $e->getMessage());
+                }
+            }
+        }
+
+        return view('admin.rocket', compact('country', 'rate')) ;
 
     }
 

@@ -1,0 +1,7 @@
+[13-Sep-2025 19:25:41 UTC] PHP Fatal error:  Uncaught RuntimeException: Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.2.0". You are running 8.1.33. in /home/probasip/public_html/vendor/composer/platform_check.php:26
+Stack trace:
+#0 /home/probasip/public_html/vendor/composer/autoload_real.php(25): require()
+#1 /home/probasip/public_html/vendor/autoload.php(22): ComposerAutoloaderInitc66e90e5866ef2518c868ef7aca61c12::getLoader()
+#2 /home/probasip/public_html/artisan(9): require('/home/probasip/...')
+#3 {main}
+  thrown in /home/probasip/public_html/vendor/composer/platform_check.php on line 26

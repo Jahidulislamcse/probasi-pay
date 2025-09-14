@@ -1,169 +1,430 @@
- @extends('admin.layout.master')
- @section('meta')
- @endsection
- @section('style')
- 
- 
-<style>
-        .history-card{
-            background: #ffd3ad;
-            border-radius: 10px;
-            margin: 10px;
-            padding: 20px;
-            position: relative;
-        }
-        .type{
-            font-size: 20px;color: #ff3130;
-        }
-         .amount{
-            font-size: 18px;color: #ff3130;
-        }
-    .receipt{
-        
-        background: #ff3130;
-        padding: 10px 25px;
-        position: absolute;
-        top: 19px;
-        right: 16px;
-        border-radius: 5px;
-        color: #fff;
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+@extends('admin.layout.master')
 
+@section('meta')
+<title>Transaction History - {{ env('APP_NAME') }}</title>
+@endsection
+
+@section('style')
+<style>
+    body,
+    .small-font,
+    .small-font * {
+        font-size: 12px !important;
     }
-    
-    .status{
-            background: #ff3130;
-    padding: 10px 30px;
-    line-height: 5;
-    border-radius: 5px;
+
+    .nav-tabs .nav-item .btn-toggle {
+        font-size: 0.875rem;
+        padding: 10px 20px;
+        height: 50px;
+        border-radius: 25px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-    .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-    color: #ffffff;
-    background-color: #ff3432;
-    border-color: #ff3432;
-}
-    .nav-link{
-        color:#5b4a3b;
+
+    @media (max-width: 767px) {
+        .nav-tabs .nav-item .btn-toggle {
+            font-size: 0.5rem;
+            padding: 8px 15px;
+            height: 50px;
+            border-radius: 20px;
+        }
+
+        .mbl {
+            font-size: 0.5rem;
+        }
     }
-    p{
-            color: #5b4a3b;
+
+    .nav-tabs .nav-item .btn-toggle[data-bs-target="#depositsTab"] {
+        background-color: #3498db;
+        color: #fff;
+    }
+
+    .nav-tabs .nav-item .btn-toggle[data-bs-target="#mobileWithdrawTab"] {
+        background-color: #2ecc71;
+        color: #fff;
+    }
+
+    .nav-tabs .nav-item .btn-toggle[data-bs-target="#bankWithdrawTab"] {
+        background-color: #e67e22;
+        color: #fff;
+    }
+
+    .nav-tabs .nav-item .btn-toggle[data-bs-target="#remittanceTab"] {
+        background-color: #f39c12;
+        color: #fff;
+    }
+
+    .nav-tabs .nav-item .btn-toggle[data-bs-target="#rechargeTab"] {
+        background-color: #9b59b6;
+        color: #fff;
+    }
+
+    .nav-tabs .nav-item .btn-toggle.active {
+        color: #fff;
+        border-color: #16a085;
+    }
+
+    .nav-tabs .nav-item .btn-toggle:hover {
+        opacity: 0.8;
     }
 </style>
- 
- 
- @endsection
- @section('main')
-     <!-- preloade -->
-     <div class="preload preload-container">
-         <div class="preload-logo">
-             <div class="spinner"></div>
-         </div>
-     </div>
-     <!-- /preload -->
-     <div class="header">
-         <div  style="background:#ff3432; color:white;" class="tf-container">
-             <div class="tf-statusbar d-flex justify-content-center align-items-center">
-                <a href="{{ route('admin.index') }}" class="back-btn"> <i class="icon-left"></i> </a>
-                 <h3 style="color:white;">কাস্টমার লেনদেন বিবরণ</h3>
-             </div>
-         </div>
-     </div>
-     <div class="mt-1 box-settings-profile style1">
-         <div>
+@endsection
 
+@section('main')
+<div class="app-header st1">
+    <div class="tf-container">
+        <div class="tf-topbar d-flex justify-content-center align-items-center">
+            <a href="{{ route('admin.index') }}" class="back-btn"><i class="icon-left white_color"></i></a>
+            <h3 class="white_color">আপনার লেনদেন সমূহ</h3>
+        </div>
+    </div>
+</div>
 
+<div class="card layout-top-spacing mt-2 small-font">
+    <div class="card-body">
+        {{-- Header --}}
+        <div class="d-flex align-items-center mb-4">
+            <img src="{{ auth()->user()->image ? asset(auth()->user()->image) : asset('images/avatar.png') }}" class="rounded me-3" style="width:80px;height:80px;object-fit:cover;">
+            <div>
+                <h4 class="mb-1">{{ auth()->user()->name }}</h4>
+                <div class="text-muted small">
+                    <span class="me-3">Balance: {{ currency(auth()->user()->balance ?? 0) }}</span>
+                </div>
+            </div>
+            <div class="ms-auto">
+                {!! auth()->user()->status() !!}
+            </div>
+        </div>
 
-             <div class="panel-heading">
-                 <div class="panel-body">
+        <ul class="nav nav-tabs mb-4" id="userTabs" role="tablist">
+            <li class="nav-item mx-1" role="presentation">
+                <button class="btn btn-toggle {{ $tab === 'deposits' ? 'active' : '' }}" data-bs-toggle="collapse" data-bs-target="#depositsTab">জমা</button>
+            </li>
+            <li class="nav-item mx-1" role="presentation">
+                <button class="btn btn-toggle {{ $tab === 'mobile_withdraw' ? 'active' : '' }}" data-bs-toggle="collapse" data-bs-target="#mobileWithdrawTab">উত্তোলন/মোবাইল</button>
+            </li>
+            <li class="nav-item mx-1" role="presentation">
+                <button class="btn btn-toggle {{ $tab === 'bank_withdraw' ? 'active' : '' }}" data-bs-toggle="collapse" data-bs-target="#bankWithdrawTab">উত্তোলন/ব্যাংক</button>
+            </li>
+            <li class="nav-item mx-1" role="presentation">
+                <button class="btn btn-toggle {{ $tab === 'remittance' ? 'active' : '' }}" data-bs-toggle="collapse" data-bs-target="#remittanceTab">রেমিটেন্স</button>
+            </li>
+            <li class="nav-item mx-1" role="presentation">
+                <button class="btn btn-toggle {{ $tab === 'recharge' ? 'active' : '' }}" data-bs-toggle="collapse" data-bs-target="#rechargeTab">মোবাইল রিচার্জ</button>
+            </li>
+        </ul>
 
+        @php
+        $tab = $tab ?? 'deposits';
+        @endphp
 
-                     <div class="box-body">
-                         
-                         <nav>
-                      <div class="nav nav-tabs" id="nav-tab" role="tablist" style="
-    background: #ffd3ad;
-    padding: 10px;
-        border-radius: 7px;
-">
-                        <button style="width:50%;" class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">লেনদেন</button>
-                        <button style="width:50%; color:#591616;" class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">ডিপোজিট </button>
-                      </div>
-                    </nav>
-                    <div class="tab-content" id="nav-tabContent">
-                      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                          
-                          
-                                        @foreach(App\Models\MobileRecharge::where('user_id',auth()->user()->id)->get() as $list)
-                                        <div class="history-card">
-                                            <p class="type">মোবাইল রিচার্জ</p>
-                                            <p class="amount">{{ currency(@$list->amount) }} টাকা</p>
-                                               <p>{{ @$list->created_at }} </p>
-                                               <p>{{ hiddnum(@$list->mobile) }} </p>
-                                            <span style="color:white;" class="status">{{ $list->status != 0 ?  $list->status == 1 ? 'সফল'  : 'বাতিল': 'অপেক্ষমান' }}</span>
-                                            <a @if($list->status == 1) href="{{ route('success',[$list->id,'recharge']) }}" @else href="#" @endif class="receipt">রিসিট</a>
-                                        </div>
-                                        @endforeach
-                                        
-                                          @foreach(App\Models\MobileBanking::where('user_id',auth()->user()->id)->get() as $list)
-                                        <div class="history-card">
-                                            <p class="type">মোবাইল ব্যাংকিং</p>
-                                            <p class="amount">{{ currency(@$list->amount) }} টাকা</p>
-                                              <p>{{ @$list->created_at }} </p>
-                                              <p>{{ hiddnum(@$list->mobile) }} </p>
-                                            <span class="status">{{ $list->status != 0 ?  $list->status == 1 ? 'সফল'  : 'বাতিল': 'অপেক্ষমান' }}</span>
-                                            <a @if($list->status == 1) href="{{ route('success',[$list->id,'mobilebanking']) }}" @else href="#" @endif class="receipt">রিসিট</a>
-                                        </div>
-                                        @endforeach
-                                        
-                                             @foreach(App\Models\BillPay::where('user_id',auth()->user()->id)->get() as $list)
-                                        <div class="history-card">
-                                            <p class="type">বিল পে</p>
-                                            <p class="amount">{{ currency(@$list->amount) }} টাকা</p>
-                                               <p>{{ @$list->created_at }} </p>
-                                               <p>{{ hiddnum(@$list->mobile) }} </p>
-                                            <span class="status">{{ $list->status != 0 ?  $list->status == 1 ? 'সফল'  : 'বাতিল': 'অপেক্ষমান' }}</span>
-                                            <a @if($list->status == 1) href="{{ route('success',[$list->id,'billpay']) }}" @else href="#" @endif class="receipt">রিসিট</a>
-                                        </div>
-                                        @endforeach
-                                          @foreach(App\Models\BankPay::where('user_id',auth()->user()->id)->get() as $list)
-                                        <div class="history-card">
-                                            <p class="type">ব্যাংক পে</p>
-                                            <p class="amount">{{ currency(@$list->amount) }} টাকা</p>
-                                              <p>{{ @$list->created_at }} </p>
-                                              <p>{{ hiddnum(@$list->mobile) }} </p>
-                                            <span class="status">{{ $list->status != 0 ?  $list->status == 1 ? 'সফল'  : 'বাতিল': 'অপেক্ষমান' }}</span>
-                                            
-                                            <a @if($list->status == 1) href="{{ route('success',[$list->id,'bankpay']) }}" @else href="#" @endif class="receipt">রিসিট</a>
-                                        </div>
-                                        @endforeach
-                          
-                          
-                      </div>
-                      <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                          
-                           @foreach(App\Models\Topup::where('user_id',auth()->user()->id)->get() as $list)
-                                        <div class="history-card">
-                                            <p class="type">{{ @$list->type === "Mobile pay" ? 'মোবাইল ব্যাংকিং' : 'ব্যাংক জমা'  }}</p>
-                                            <p class="amount">{{ currency(@$list->amount) }} টাকা</p>
-                                            <p>{{ @$list->created_at }} </p>
-                                            <span class="status">{{ $list->status != 0 ?  $list->status == 1 ? 'সফল'  : 'বাতিল': 'অপেক্ষমান' }}</span>
-                                        </div>
-                                        @endforeach
-                          
-                          
-                      </div>
-                 
-                    </div>
+        <div class="mbl collapse {{ $tab === 'deposits' || $tab === null ? 'show' : '' }}" id="depositsTab">
+            <form method="GET" action="{{ route('history') }}" class="row g-2 align-items-center mb-3">
+                <input type="hidden" name="tab" value="deposits">
+                <div class="col">
+                    <input type="search" class="form-control" name="topup_q" value="{{ $qTopup }}" placeholder="Search (gateway/transaction/amount/type/mobile/account)">
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary">Search</button>
+                </div>
+            </form>
 
+            <div class="table-responsive">
+                <table class="table table-striped align-middle">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Gateway</th>
+                            <th>Type</th>
+                            <th>Transaction</th>
+                            <th>Account</th>
+                            <th class="text-end">Amount</th>
+                            <th class="text-end">Commission</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($topups as $t)
+                        <tr>
+                            <td>{{ $topups->firstItem() + $loop->index }}</td>
+                            <td>{{ $t->created_at?->format('d M Y, h:i A') }}</td>
+                            <td>{{ optional($t->gateway)->name ?? 'N/A' }}</td>
+                            <td>{{ $t->type ?? 'N/A' }}</td>
+                            <td>{{ $t->transaction_id ?? '—' }}</td>
+                            <td>{{ $t->mobile ?: $t->account ?: 'N/A' }}</td>
+                            <td class="text-end">{{ number_format((float)($t->amount ?? 0), 2) }}</td>
+                            <td class="text-end">{{ number_format((float)($t->commision ?? 0), 2) }}</td>
+                            <td>{!! $t->status() !!}</td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="9" class="text-center text-muted py-4">No deposits found.</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
 
-                       </div>
-                 </div>
-             </div>
+            <div class="d-flex justify-content-end mt-3">
+                {{ $topups->onEachSide(1)->appends(['tab'=>'deposits','topup_q'=>$qTopup])->links('pagination::bootstrap-5') }}
+            </div>
+        </div>
 
+        {{-- Mobile Withdraw Section --}}
+        <div class="mbl collapse {{ $tab === 'mobile_withdraw' ? 'show' : '' }}" id="mobileWithdrawTab">
+            <form method="GET" action="{{ route('history') }}" class="row g-2 align-items-center mb-3">
+                <input type="hidden" name="tab" value="mobile_withdraw">
+                <div class="col">
+                    <input type="search" class="form-control" name="mb_q" value="{{ $qMb }}" placeholder="Search (operator/mobile/type/transaction/amount)">
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary">Search</button>
+                </div>
+            </form>
 
-         </div>
-     </div>
- @endsection
+            <div class="table-responsive">
+                <table class="table table-striped align-middle">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Operator</th>
+                            <th>Type</th>
+                            <th>Transaction</th>
+                            <th>Mobile</th>
+                            <th class="text-end">Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($mobileWithdraws as $mw)
+                        <tr>
+                            <td>{{ $mobileWithdraws->firstItem() + $loop->index }}</td>
+                            <td>{{ $mw->created_at?->format('d M Y, h:i A') }}</td>
+                            <td>{{ $mw->operator ?? 'N/A' }}</td>
+                            <td>{{ $mw->type ?? 'N/A' }}</td>
+                            <td>{{ $mw->transaction_id ?? '—' }}</td>
+                            <td>{{ $mw->mobile ?? 'N/A' }}</td>
+                            <td class="text-end">{{ number_format((float)($mw->amount ?? 0), 2) }}</td>
+                            <td>{!! $mw->status() !!}</td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="8" class="text-center text-muted py-4">No mobile withdrawals found.</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
 
+            <div class="d-flex justify-content-end mt-3">
+                {{ $mobileWithdraws->onEachSide(1)->appends(['tab'=>'mobile_withdraw','mb_q'=>$qMb])->links('pagination::bootstrap-5') }}
+            </div>
+        </div>
 
- @section('script')
- @endsection
+        {{-- Bank Withdraw Section --}}
+        <div class="mbl collapse {{ $tab === 'bank_withdraw' ? 'show' : '' }}" id="bankWithdrawTab">
+            <form method="GET" action="{{ route('history') }}" class="row g-2 align-items-center mb-3">
+                <input type="hidden" name="tab" value="bank_withdraw">
+                <div class="col">
+                    <input type="search" class="form-control" name="bank_q" value="{{ $qBank }}" placeholder="Search (bank/operator/transaction/number/branch/holder/mobile/amount)">
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary">Search</button>
+                </div>
+            </form>
+
+            <div class="table-responsive">
+                <table class="table table-striped align-middle">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Bank/Operator</th>
+                            <th>Transaction</th>
+                            <th>Account/Number</th>
+                            <th>Branch</th>
+                            <th>Account Holder</th>
+                            <th class="text-end">Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($bankPays as $bp)
+                        <tr>
+                            <td>{{ $bankPays->firstItem() + $loop->index }}</td>
+                            <td>{{ $bp->created_at?->format('d M Y, h:i A') }}</td>
+                            <td>{{ $bp->operator ?? 'N/A' }}</td>
+                            <td>{{ $bp->transaction_id ?? '—' }}</td>
+                            <td>{{ $bp->number ?? $bp->mobile ?? 'N/A' }}</td>
+                            <td>{{ $bp->branch ?? 'N/A' }}</td>
+                            <td>{{ $bp->achold ?? 'N/A' }}</td>
+                            <td class="text-end">{{ number_format((float)($bp->amount ?? 0), 2) }}</td>
+                            <td>{!! $bp->status() !!}</td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="9" class="text-center text-muted py-4">No bank withdrawals found.</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="d-flex justify-content-end mt-3">
+                {{ $bankPays->onEachSide(1)->appends(['tab'=>'bank_withdraw','bank_q'=>$qBank])->links('pagination::bootstrap-5') }}
+            </div>
+        </div>
+
+        {{-- Remittance Section --}}
+        <div class="mbl collapse {{ $tab === 'remittance' ? 'show' : '' }}" id="remittanceTab">
+            <form method="GET" action="{{ route('history') }}" class="row g-2 align-items-center mb-3">
+                <input type="hidden" name="tab" value="remittance">
+                <div class="col">
+                    <input type="search" class="form-control" name="remit_q" value="{{ $qRemit }}" placeholder="Search (transaction/operator/account/branch/holder/amount)">
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary">Search</button>
+                </div>
+            </form>
+
+            <div class="table-responsive">
+                <table class="table table-striped align-middle">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Operator</th>
+                            <th>Transaction</th>
+                            <th>Account</th>
+                            <th>Branch</th>
+                            <th>Account Holder</th>
+                            <th class="text-end">Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($remittances as $r)
+                        <tr>
+                            <td>{{ $remittances->firstItem() + $loop->index }}</td>
+                            <td>{{ $r->created_at?->format('d M Y, h:i A') }}</td>
+                            <td>{{ $r->operator ?? 'N/A' }}</td>
+                            <td>{{ $r->transaction_id ?? '—' }}</td>
+                            <td>{{ $r->account ?? 'N/A' }}</td>
+                            <td>{{ $r->branch ?? 'N/A' }}</td>
+                            <td>{{ $r->achold ?? 'N/A' }}</td>
+                            <td class="text-end">{{ number_format((float)($r->amount ?? 0), 2) }}</td>
+                            <td>{!! $r->status() !!}</td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="10" class="text-center text-muted py-4">No remittance records found.</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="d-flex justify-content-end mt-3">
+                {{ $remittances->onEachSide(1)->appends(['tab'=>'remittance','remit_q'=>$qRemit])->links('pagination::bootstrap-5') }}
+            </div>
+        </div>
+
+        {{-- Mobile Recharges Section --}}
+        <div class="mbl collapse {{ $tab === 'recharge' ? 'show' : '' }}" id="rechargeTab">
+            <form method="GET" action="{{ route('history') }}" class="row g-2 align-items-center mb-3">
+                <input type="hidden" name="tab" value="recharge">
+                <div class="col">
+                    <input type="search" class="form-control" name="rc_q" value="{{ $qRc }}" placeholder="Search (operator/type/mobile/amount)">
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-primary">Search</button>
+                </div>
+            </form>
+
+            <div class="table-responsive">
+                <table class="table table-striped align-middle">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Operator</th>
+                            <th>Type</th>
+                            <th>Mobile</th>
+                            <th class="text-end">Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($mobileRecharges as $mr)
+                        <tr>
+                            <td>{{ $mobileRecharges->firstItem() + $loop->index }}</td>
+                            <td>{{ $mr->created_at?->format('d M Y, h:i A') }}</td>
+                            <td>{{ $mr->operator ?? 'N/A' }}</td>
+                            <td>{{ $mr->type ?? 'N/A' }}</td>
+                            <td>{{ $mr->mobile ?? 'N/A' }}</td>
+                            <td class="text-end">{{ number_format((float)($mr->amount ?? 0), 2) }}</td>
+                            <td>{!! $mr->status() !!}</td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="7" class="text-center text-muted py-4">No mobile recharges found.</td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="d-flex justify-content-end mt-3">
+                {{ $mobileRecharges->onEachSide(1)->appends(['tab'=>'recharge','rc_q'=>$qRc])->links('pagination::bootstrap-5') }}
+            </div>
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Ensure the Deposits section is open on load
+                const depositTabButton = document.querySelector('.nav-tabs .btn-toggle[data-bs-target="#depositsTab"]');
+                if (!document.querySelector('.collapse.show')) {
+                    const depositTab = document.querySelector('#depositsTab');
+                    const collapseInstance = new bootstrap.Collapse(depositTab, {
+                        toggle: true
+                    });
+                    depositTabButton.classList.add('active'); // Make sure the button is marked as active
+                }
+            });
+
+            document.querySelectorAll('.nav-tabs .btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-bs-target');
+                    const target = document.querySelector(targetId);
+
+                    // Remove active class from all buttons
+                    document.querySelectorAll('.nav-tabs .btn').forEach(btn => btn.classList.remove('active'));
+
+                    // Add active class to the clicked button
+                    this.classList.add('active');
+
+                    document.querySelectorAll('.collapse').forEach(collapse => {
+                        if (collapse !== target) {
+                            const collapseInstance = new bootstrap.Collapse(collapse, {
+                                toggle: false
+                            });
+                            collapseInstance.hide();
+                        }
+                    });
+
+                    const collapseInstance = new bootstrap.Collapse(target);
+                    collapseInstance.toggle();
+                });
+            });
+        </script>
+    </div>
+</div>
+@endsection
+
+@section('script')
+@endsection

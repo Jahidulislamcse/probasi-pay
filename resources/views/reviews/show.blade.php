@@ -6,6 +6,11 @@
         background-color: #f8f9fa;
     }
 
+    .container-custom  {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
     .card-review {
         background: #fff;
         border-radius: 12px;

@@ -27,12 +27,8 @@
                 <ul class="right-side-content d-flex align-items-center">
                     <li class="nav-item dropdown">
                         <a href="{{ route('admin.index') }}" class="btn"><i class='bx bx-world'></i></a>
-                       
+
                     </li>
-
-                  
-
-                   
 
                     <li class="nav-item dropdown">
                         <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
@@ -49,7 +45,7 @@
                                 <button type="submit" href="#" class="dropdown-item"><i class="bx bx-power-off font-15"
                                     aria-hidden="true"></i> Sign-out</button>
                              </form>
-                              
+
                             </div>
                         </div>
                     </li>
@@ -63,3 +59,7 @@
        @include('admin.adminLayout.menu')
     </header>
 </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>

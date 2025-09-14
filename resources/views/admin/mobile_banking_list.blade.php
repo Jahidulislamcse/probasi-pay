@@ -17,7 +17,7 @@
 
 
 <div class="row" style="overflow: scroll;">
-   
+
     <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
 
         <div class="statbox widget box box-shadow">
@@ -26,8 +26,9 @@
                 <table id="table" class="table dt-table-hover" style="width:100%">
                     <thead>
                         <tr>
-                          
+
                             <th>Date</th>
+                            <th>Transaction ID</th>
                             <th>User</th>
                             <th>Phone</th>
                             <th>Amount</th>
@@ -40,20 +41,29 @@
                     <tbody>
                         @foreach($lists as $list)
                         <tr>
-        
+
                             <td>{!! Illuminate\Support\Carbon::parse(@$list->created_at)->format('d-m-Y') !!}</td>
-                            <td>{{ @$list->user->name }}</td>
+                            <td>{{ @$list->transaction_id }} </td>
+                            <td>{{ @$list->user->name }} <br>
+                                {{ @$list->user->phone }}
+                            </td>
                             <td>{{ @$list->mobile }} </td>
                             <td>{{ @$list->amount }} </td>
                             <td>{{ @$list->operator }} </td>
-                            <td>{{ @$list->type }} </td>     
+                            <td>{{ @$list->type }} </td>
                             <td>{!! @$list->status() !!}</td>
                             <td class="text-center">
                                 @if(@$list->status == 0)
-                                    <a class="btn btn-small btn-success btn-circle  mb-2" href="{{ route('mobilebankinglist.approve',$list->id) }}"> <i class="fa fa-check"></i> </a>
-                                    <a class="btn btn-small btn-danger btn-circle  mb-2" href="{{ route('mobilebankinglist.reject',$list->id) }}"><i class="fa fa-times"></i></a>
+                                    <a class="btn btn-small btn-success btn-circle mb-2" href="{{ route('mobilebankinglist.approve', $list->id) }}" onclick="return confirmAction('approve')">
+                                        <i class="fa fa-check"></i>
+                                    </a>
+                                    <a class="btn btn-small btn-danger btn-circle mb-2" href="{{ route('mobilebankinglist.reject', $list->id) }}" onclick="return confirmAction('reject')">
+                                        <i class="fa fa-times"></i>
+                                    </a>
                                 @endif
-                                <a class="btn btn-small btn-danger btn-circle  mb-2" href="{{ route('mobilebankinglist.delete',$list->id) }}"><i class="bx bx-trash"></i></a>
+                                <!-- <a class="btn btn-small btn-danger btn-circle mb-2" href="{{ route('mobilebankinglist.delete', $list->id) }}" onclick="return confirmAction('delete')">
+                                    <i class="bx bx-trash"></i>
+                                </a> -->
                             </td>
                         </tr>
                         @endforeach
@@ -76,10 +86,26 @@
     let table = new DataTable('#table',{
         order:false,
     });
- 
+
 </script>
 
-
+<script>
+    function confirmAction(action) {
+        let message = '';
+        switch(action) {
+            case 'approve':
+                message = 'Are you sure you want to approve this?';
+                break;
+            case 'reject':
+                message = 'Are you sure you want to reject this?';
+                break;
+            case 'delete':
+                message = 'Are you sure you want to delete this?';
+                break;
+        }
+        return confirm(message);
+    }
+</script>
 
 
 @endsection

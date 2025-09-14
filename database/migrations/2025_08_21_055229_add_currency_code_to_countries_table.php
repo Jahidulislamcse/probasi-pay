@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('countries', function (Blueprint $table) {
-            $table->string('currency_code', 10)->nullable()->after('currency');
+            $table->string('currency_code', 10)->nullable();
         });
     }
 

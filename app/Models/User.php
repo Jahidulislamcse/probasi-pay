@@ -80,6 +80,11 @@ class User extends Authenticatable
         return $this->belongsTo(Country::class, 'location', 'id');
     }
 
+     public function cashInCashOut()
+    {
+        return $this->hasMany(CashInCashOut::class);
+    }
+
     public function notifications()
 {
     return $this->belongsToMany(Notification::class, 'user_notifications')
@@ -87,5 +92,5 @@ class User extends Authenticatable
                 ->withTimestamps();
 }
 
-    
+
 }

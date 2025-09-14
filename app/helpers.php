@@ -100,6 +100,13 @@ if (! function_exists('siteInfo')) {
 
 }
 
+function custom_function($string, $times) {
+    // Ensure $times is at least 0
+    $times = max(0, $times);  // If $times is negative, set it to 0
+
+    return str_repeat($string, $times); // Use str_repeat safely
+}
+
 if (! function_exists('currency')) {
 
     function currency($value = '',$c='')
@@ -156,4 +163,13 @@ if (! function_exists('country')) {
     }
 
 }
+
+if (!function_exists('enToBnNumber')) {
+    function enToBnNumber($number) {
+        $en = ['0','1','2','3','4','5','6','7','8','9','.'];
+        $bn = ['০','১','২','৩','৪','৫','৬','৭','৮','৯','.'];
+        return str_replace($en, $bn, $number);
+    }
+}
+
 

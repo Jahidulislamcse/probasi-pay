@@ -56,13 +56,13 @@
     }
 
     .desc-wrapper {
-        max-height: 1.5em; /* default: ~1 line */
+        max-height: 1.5em;
         overflow: hidden;
         transition: max-height 0.4s ease;
     }
 
     .desc-wrapper.expanded {
-        max-height: 1000px; /* enough to show full text */
+        max-height: 1000px;
     }
 
     .see-more {
