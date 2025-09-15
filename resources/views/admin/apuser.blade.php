@@ -374,7 +374,7 @@
 <style>
     .swiper-container.banner-slider {
         width: 100%;
-        height: 120px;
+        height: 100px;
         margin-top: 10px;
         padding-left: 5px;
         padding-right: 5px;
