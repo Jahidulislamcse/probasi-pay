@@ -1433,15 +1433,15 @@ textarea.form-textarea[rows] {
 
 
 .toggle-btn {
-    background-color: #ffffff;
-    color: #FF3432;
+    background-color: #FF3432;
+    color: #ffffff;
     padding: 5px;
     width: 100px;
     height: 30px;
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    font-size: 9px;
+    font-size: 12px;
     text-align: center;
     display: inline-flex;
     justify-content: center;
@@ -1450,9 +1450,10 @@ textarea.form-textarea[rows] {
 }
 
 .toggle-btn:hover {
-  background-color: #FF3432;
+  background-color: #FF3432; 
   color: #ffffff;
-  border: none;
+  border: none; 
+  transform: scale(1.1); 
 }
 
 .toggle-btn:focus {

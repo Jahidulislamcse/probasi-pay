@@ -129,7 +129,7 @@
                 </ul>
             </div>
 
-            <div class="wallet-footer ">
+            <div class="wallet-footer">
                 <ul class="d-flex justify-content-between align-items-center">
                     <li class="wallet-card-item target-footer">
                         <a class="fw_6" href="{{ route('bkash') }}">
