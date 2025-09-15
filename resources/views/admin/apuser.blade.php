@@ -1,148 +1,41 @@
-<style>
-    body {
-        background: #ffffec;
-    }
-</style>
-<style>
-    @font-face {
-        font-family: 'SolaimanLipi';
-        src: url('{{ asset('fonts/solaimanlipi.ttf') }}') format('truetype');
-        font-weight: 300;
-        font-style: normal;
-    }
-
-    body,
-    input,
-    button,
-    select,
-    textarea {
-        font-family: 'SolaimanLipi', 'Noto Sans Bengali', sans-serif !important;
-        font-weight: 300;
-        line-height: 1.6;
-        letter-spacing: 0.2px;
-        color: #222;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-family: 'SolaimanLipi', 'Noto Sans Bengali', sans-serif !important;
-        font-weight: 400;
-    }
-
-    label,
-    button,
-    .btn,
-    .fw_4,
-    .fw_6,
-    .nav-link {
-        font-weight: 400 !important;
-    }
-
-    input::placeholder {
-        color: #818181;
-        opacity: 1;
-    }
-
-    input::-ms-input-placeholder {
-        color: #818181;
-    }
-
-    .up-content-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        padding: 0 20px;
-    }
-
-    .up-content {
-        margin-bottom: 5px;
-    }
-
-    .left-content {
-        flex: 1;
-        padding-left: 45px;
-    }
-
-    .right-content {
-        flex: 1;
-        text-align: right;
-    }
-
-    .white_color {
-        color: white;
-    }
-</style>
-
-
-<div class="app-header" style="margin-bottom: 30px;">
+<div class="app-header">
     <div class="tf-container">
-        <div class="up-content-container">
-            <div class="left-content">
-                <h4 class="white_color">{{ siteInfo()->company_name }}</h4>
-            </div>
-
-            <div class="right-content">
-                <p class="white_color">প্রবাসীদের সেবায় নিয়োজিত</p>
-            </div>
-        </div>
-
         <div class="tf-topbar d-flex justify-content-between align-items-center">
+            <!-- Left Side: User Image, Name, and Balance Button -->
+            <div class="d-flex">
+                <div class="left-column">
+                    @php
+                    if (preg_match('/^data:image\/(\w+);base64,/', auth()->user()->image)) {
+                    $user_image = auth()->user()->image;
+                    } else {
+                    $user_image = asset(auth()->user()->image);
+                    }
+                    @endphp
+                    <img src="{{ $user_image ? $user_image : asset('images/avatar.png') }}" alt="image" class="user-image">
+                </div>
+                <div class="right-column">
+                    <span class="white_color fw_4 user-name">{{ auth()->user()->name }}</span>
+                    <button id="balance" onclick="toggleBalance()" class="balance-btn">
+                        ব্যালেন্স দেখুন
+                    </button>
+                </div>
+            </div>
 
-            <a class="user-info d-flex justify-content-between align-items-center" href="{{ route('profile') }}">
-
-                @php
-                if (preg_match('/^data:image\/(\w+);base64,/', auth()->user()->image)) {
-                $user_image = auth()->user()->image;
-                } else {
-                $user_image = asset(auth()->user()->image);
-                }
-                @endphp
-
-                <img src="{{ $user_image ? $user_image : asset('images/avatar.png') }} " alt="image">
-                <span class="white_color fw_4">{{ auth()->user()->name }}</span>
-            </a>
-            <div class="d-flex align-items-center gap-4">
-                <p class="white_color fw_4" id="location-info">
-                    {{ auth()->user()->country ? auth()->user()->country->name : 'লোকেশন পাওয়া যায়নি' }}
-                </p>
+            <!-- Right Side: Logo -->
+            <div class="logo-container">
+                @if($generalSettings && $generalSettings->logo)
+                <img src="{{ asset($generalSettings->logo) }}" alt="Company Logo" class="logo">
+                @else
+                <span>No Logo Available</span>
+                @endif
             </div>
         </div>
     </div>
 </div>
+
 <div class="card-secton">
     <div class="tf-container">
-        <div class="tf-balance-box" style="background:#ffe8d6;">
-            <div class="balance">
-                <div class="row">
-                    <div class="col-6 br-right">
-                        <div class="inner-left">
-                            <h3 id="balance" onclick="toggleBalance()" style="cursor: pointer;background: #ff3130;color:white; padding: 2px;border-radius: 5px;text-align: center;">ব্যালেন্স দেখুন </h3>
-                        </div>
-                        <script>
-                            function toggleBalance() {
-                                const balanceElement = document.getElementById('balance');
-                                const realBalance = "{{ number_format(auth()->user()->balance, 2) }} ৳";
-
-                                if (balanceElement.innerText === 'ব্যালেন্স দেখুন') {
-                                    balanceElement.innerText = realBalance;
-                                    hideTimeout = setTimeout(() => {
-                                        balanceElement.innerText = 'ব্যালেন্স দেখুন';
-                                    }, 5000);
-                                } else {
-                                    balanceElement.innerText = 'ব্যালেন্স দেখুন';
-                                }
-                            }
-                        </script>
-
-                    </div>
-                </div>
-            </div>
-
+        <div class="tf-balance-box" style="background:#ffffed;">
             @if($country)
             <marquee behavior="scroll" direction="left" style="color:#ff3631;font-size: 19px;">
                 @if($rate)
@@ -314,11 +207,9 @@
                 </ul>
             </div>
 
-
             <div class="text-center ">
                 <button id="hideMoreBtn" class="toggle-btn" style="display:none;">বন্ধ করুন</button>
             </div>
-
 
             @if($banners->count() > 0)
             <div style="text-align: center;" class=" mb-4">
@@ -416,9 +307,10 @@
     </div>
 </div>
 
-<!-- <div class="notify" style=" margin: 10px;background: #cd1307;    border-radius: 15px; color: white; padding: 10px;font-size: 20px;line-height: 1.3;margin-bottom: 79px;">
 
-</div> -->
+<div class="notify" style=" margin: 10px;background: #cd1307;    border-radius: 15px; color: white; padding: 10px;font-size: 20px;line-height: 1.3;margin-bottom: 79px;">
+
+</div>
 
 
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
@@ -461,6 +353,22 @@
             item.style.opacity = '0.3';
         });
     });
+</script>
+
+<script>
+    function toggleBalance() {
+        const balanceElement = document.getElementById('balance');
+        const realBalance = "{{ number_format(auth()->user()->balance, 2) }} ৳";
+
+        if (balanceElement.innerText === 'ব্যালেন্স দেখুন') {
+            balanceElement.innerText = realBalance;
+            hideTimeout = setTimeout(() => {
+                balanceElement.innerText = 'ব্যালেন্স দেখুন';
+            }, 5000);
+        } else {
+            balanceElement.innerText = 'ব্যালেন্স দেখুন';
+        }
+    }
 </script>
 
 <style>
@@ -507,4 +415,138 @@
     .swiper-button-next,
     .swiper-button-prev {
         display: none;
+    }
+
+    body {
+        background: #ffffec;
+    }
+
+    @font-face {
+        font-family: 'SolaimanLipi';
+        src: url('{{ asset(' fonts/solaimanlipi.ttf') }}') format('truetype');
+        font-weight: 300;
+        font-style: normal;
+    }
+
+    body,
+    input,
+    button,
+    select,
+    textarea {
+        font-family: 'SolaimanLipi', 'Noto Sans Bengali', sans-serif !important;
+        font-weight: 300;
+        line-height: 1.6;
+        letter-spacing: 0.2px;
+        color: #222;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'SolaimanLipi', 'Noto Sans Bengali', sans-serif !important;
+        font-weight: 400;
+    }
+
+    label,
+    button,
+    .btn,
+    .fw_4,
+    .fw_6,
+    .nav-link {
+        font-weight: 400 !important;
+    }
+
+    input::placeholder {
+        color: #818181;
+        opacity: 1;
+    }
+
+    input::-ms-input-placeholder {
+        color: #818181;
+    }
+
+    .up-content-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .up-content {
+        margin-bottom: 5px;
+    }
+
+    .left-content {
+        flex: 1;
+        padding-left: 45px;
+    }
+
+    .right-content {
+        flex: 1;
+        text-align: right;
+    }
+
+    .white_color {
+        color: white;
+    }
+
+    .tf-topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .left-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .user-image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    .right-column {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 10px;
+    }
+
+    .user-name {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+
+    .balance-btn {
+        cursor: pointer;
+        background-color: #ffffffff;
+        color: #ff3130;
+        padding: 2px 10px;
+        border-radius: 5px;
+        text-align: center;
+        border: none;
+    }
+
+    .balance-btn:hover {
+        color: black;
+    }
+
+    .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logo {
+        width: 80px;
+        height: auto;
+    }
 </style>

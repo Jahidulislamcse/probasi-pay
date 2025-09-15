@@ -7,10 +7,9 @@
 
  </style>
 
-
-
  @endsection
  @section('main')
+
  <div class="app-header st1">
      <div class="tf-container">
          <div class="tf-topbar d-flex justify-content-center align-items-center">

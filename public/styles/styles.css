@@ -372,31 +372,25 @@ input[type=reset],
 input[type=submit] {
   line-height: 1;
   cursor: pointer;
-  /* Improves usability and consistency of cursor style between image-type 'input' and others */
   -webkit-appearance: button;
-  /* Corrects inability to style clickable 'input' types in iOS */
   border: none;
 }
 
 input[type=checkbox],
 input[type=radio] {
   padding: 0;
-  /* Addresses excess padding in IE8/9 */
 }
 
 input[type=search] {
   -webkit-appearance: textfield;
-  /* Addresses appearance set to searchfield in S5, Chrome */
 }
 
 input[type=search]::-webkit-search-decoration {
-  /* Corrects inner padding displayed oddly in S5, Chrome on OSX */
   -webkit-appearance: none;
 }
 
 button::-moz-focus-inner,
 input::-moz-focus-inner {
-  /* Corrects inner padding and border displayed oddly in FF3/4 www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/ */
   border: 0;
   padding: 0;
 }
@@ -1263,8 +1257,6 @@ textarea.form-textarea[rows] {
 .tf-container,
 .fixed-container {
   max-width: 1320px;
-  padding-left: 16px;
-  padding-right: 16px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -1326,16 +1318,10 @@ textarea.form-textarea[rows] {
 
 .tf-balance-box {
   padding: 12px 0px;
-  background-color: #ffffec;
-  border-radius: 15px;
-  box-shadow: 0px 8px 15px 0px rgba(24, 25, 27, 0.05);
 }
 .tf-balance-box .balance {
-  padding: 0px 16px 8px;
-  border-bottom: 1px solid #ededed;
 }
 .tf-balance-box .balance .br-right {
-  border-right: 1px solid #ededed;
 }
 .tf-balance-box .balance .inner-right {
   text-align: end;
@@ -1362,6 +1348,7 @@ textarea.form-textarea[rows] {
 
 .tf-balance-box .wallet-footer{
     position: relative;
+    margin-bottom: 20px;
 }
 
 .target-footer {
@@ -2673,14 +2660,25 @@ textarea.form-textarea[rows] {
 
 .app-header {
   background: url(../images/banner/banner-home.png);
-  padding: 16px 0px 50px;
-  margin: 0px -16px;
+  padding: 16px 10px 30px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   position: relative;
-  border-bottom-right-radius: 80px;
-  border-bottom-left-radius: 80px;
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+@media (max-width: 768px) {
+    .app-header {
+        padding: 15px 10px 15px; 
+    }
+}
+
+@media (max-width: 768px) {
+    .app-header {
+        padding: 15px 10px 15px; 
+    }
 }
 .app-header .tf-topbar {
   padding: 0px 16px;
@@ -2716,7 +2714,6 @@ textarea.form-textarea[rows] {
 
 .card-secton {
   position: relative;
-  margin-top: -63px;
 }
 
 .bottom-navigation-bar {

@@ -107,7 +107,7 @@
 
                 <div class="section-title">অ্যাকাউন্ট নির্বাচন করুন</div>
 
-                <div class="btn-group mb-3" role="group" style="width:100%;">
+                <div class="gap-4 btn-group mb-3" role="group" style="width:100%;">
                     <button type="button" id="toggleMobile" class="toggle-btn active" style="width:50%;">মোবাইল ব্যাংকিং</button>
                     <button type="button" id="toggleBank" class="toggle-btn" style="width:50%;">ব্যাংক অ্যাকাউন্ট</button>
                 </div>

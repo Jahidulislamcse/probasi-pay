@@ -8,6 +8,7 @@ use App\Models\BankPay;
 use App\Models\Banner;
 use App\Models\BlockedUser;
 use App\Models\Country;
+use App\Models\GeneralSetting;
 use App\Models\MasjidAccount;
 use App\Models\MobileBanking;
 use App\Models\MobileRecharge;
@@ -30,6 +31,7 @@ class AdminController extends Controller
         $rate = null;
         $country = null;
         $banners = Banner::all();
+        $generalSettings = GeneralSetting::first();
 
         if ($user->is_blocked == 1) {
             return redirect()->route('blocked');
@@ -56,9 +58,9 @@ class AdminController extends Controller
         }
 
         if ($user->role == 'super admin') {
-            return view('admin.adminDashboard', compact('title', 'country', 'rate'));
+            return view('admin.adminDashboard', compact('title', 'country', 'rate', 'generalSettings'));
         } else {
-            return view('admin.dashboard', compact('title', 'country', 'rate', 'banners'));
+            return view('admin.dashboard', compact('title', 'country', 'rate', 'banners', 'generalSettings'));
         }
     }
 

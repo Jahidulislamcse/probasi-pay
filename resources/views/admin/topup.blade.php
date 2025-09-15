@@ -12,6 +12,7 @@
         background-color: #fff;
         color: #ff3130;
     }
+
     h1,
     h2,
     h3,
@@ -81,14 +82,14 @@ $country = country();
 <!-- preloade -->
 
 
- <div class="app-header st1">
-     <div class="tf-container">
-         <div class="tf-topbar d-flex justify-content-center align-items-center">
-             <a href="{{ route('admin.index') }}" class="back-btn"><i class="icon-left white_color"></i></a>
-             <h3 class="white_color">মোবাইল অ্যাড ফান্ড</h3>
-         </div>
-     </div>
- </div>
+<div class="app-header st1">
+    <div class="tf-container">
+        <div class="tf-topbar d-flex justify-content-center align-items-center">
+            <a href="{{ route('admin.index') }}" class="back-btn"><i class="icon-left white_color"></i></a>
+            <h3 class="white_color">মোবাইল অ্যাড ফান্ড</h3>
+        </div>
+    </div>
+</div>
 
 <div class="topup-content" style="
     margin-top: 10px;
@@ -113,16 +114,42 @@ $country = country();
         @endif
     </span>
     @endif
-
-    <span
-        style=" background: red; padding: 10px 20px; color: white; font-size: 15px; border-radius: 5px; cursor:pointer;"
-        role="button"
-        tabindex="0"
-        data-bs-toggle="modal"
-        data-bs-target="#depositRulesModal">
-        বিকাশ নগদের মাধ্যমে ডিপোজিটের নিয়ম
-    </span>
 </div>
+
+<div class="text-center" style="margin: 30px;">
+    <div style="display: inline-block; margin-right: 10px;">
+        <span style="
+            background: #16a085;
+            padding: 10px 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            " data-bs-toggle="modal" data-bs-target="#depositRulesModal">
+            এডমিনের মাধ্যমে এড ব্যালেন্স
+
+        </span>
+    </div>
+
+    <div style="display: inline-block;">
+        <span style="
+            background: #16a085;
+            padding: 10px 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            " data-bs-toggle="modal" data-bs-target="#topupsModal">
+            পূর্বের ব্যালেন্স রিকোয়েস্ট
+        </span>
+    </div>
+</div>
+
+
 
 
 @php $content = App\Models\Section::where('key','topup')->first(); @endphp
@@ -172,82 +199,6 @@ $country = country();
             </div>
         </div>
     </div>
-</div>
-
-
-<div class="text-center" style="margin: 30px;">
-    <span style="
-        background: red;
-        padding: 10px 20px;
-        margin-top:20px;
-        margin-bottom:20px;
-        color: white;
-        font-size: 15px;
-        border-radius: 5px;
-        " data-bs-toggle="modal" data-bs-target="#exampleModal">
-        অটো এড ব্যালেন্স
-    </span>
-</div>
-
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <form class="tf-form" method="post">
-                    @csrf
-                    <p style=" text-align: center;  font-size: 28px;">অটো এড ব্যালেন্স</p>
-                    <p style=" margin-top: 10px;">আমাদের অটো এড ব্যালেন্স সিস্টেম এ রিসেলার ব্যবসা এখন আরও সহজ ও নিরাপদ। অটো এড ব্যালেন্স ফিচার ব্যবহার করে আপনার নিজের ব্যালেন্স নিজেই ডিপোজিট করুন, যখন ইচ্ছা। এক্ষেত্রে কোন এজেন্ট কে মেসেজ করার ঝামেলা নেই।
-                        বিকাশ বা নগদে লিমিটজনিত সমস্যার কারনে অটো এড ব্যালে এর ক্ষেত্রে বাংলাদেশি টাকায় সর্বনিম্ন ২৫০০০/= টাকা ডিপোজিট করতে হবে।</p>
-
-                    <div class="account-grid" style="margin-top:10px;margin-bottom:25px;">
-                        @foreach ($accounts as $data)
-                        <label class="account-item">
-                            <strong><input type="radio" name="account_id" value="{{ $data->id }}" style="margin-bottom: 8px;"> {{ $data->name }}</strong>
-                            <span style="font-size: 14px; font-weight: bold;">
-                                {!! $data->details !!}
-                            </span>
-                        </label>
-                        @endforeach
-                    </div>
-                    <input type="hidden" name="type" value="Mobile pay">
-
-                    <div class="tf-form">
-                        <div class="form-group input-field input-money">
-                            <label for="">পিন</label>
-                            <input name="pin" type="text" placeholder="123456" required>
-                            <span class="icon-clear"></span>
-                            <small>যে নাম্বার থেকে টাকা পাঠিয়েছেন তার শেষের 4 টা ডিজিট লিখুন</small>
-                        </div>
-                    </div>
-
-                    <div class="tf-form">
-                        <div class="group-input input-field input-money">
-                            <label for="">টাকার পরিমাণ</label>
-                            <input name="amount" type="number" value="" required class="search-field value_input st1">
-                            <span class="icon-clear"></span>
-                            <small>বাংলাদেশি টাকায় যত টাকা কোম্পানীর নাম্বারে পাঠিয়েছেন সেটি লিখুন</small>
-                        </div>
-                    </div>
-                    <button type="submit" name="submit" class="tf-btn accent large">কনফার্ম পেমেন্ট</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="text-center" style="margin: 30px;">
-    <span style="
-        background: green;
-        padding: 10px 20px;
-        margin-top:20px;
-        margin-bottom:20px;
-        color: white;
-        font-size: 15px;
-        border-radius: 5px;
-        " data-bs-toggle="modal" data-bs-target="#topupsModal">
-        পূর্বের ব্যালেন্স রিকোয়েস্ট
-    </span>
 </div>
 
 
@@ -302,16 +253,47 @@ $country = country();
     </div>
 </div>
 
+<div style="padding:20px;">
+    <form class=" tf-form" method="post">
+        @csrf
+        <p style="text-align: center; font-size: 28px;">এড ব্যালেন্স</p>
+        <p style="margin-top: 10px;">আমাদের অটো এড ব্যালেন্স সিস্টেম এ রিসেলার ব্যবসা এখন আরও সহজ ও নিরাপদ। অটো এড ব্যালেন্স ফিচার ব্যবহার করে আপনার নিজের ব্যালেন্স নিজেই ডিপোজিট করুন, যখন ইচ্ছা। এক্ষেত্রে কোন এজেন্ট কে মেসেজ করার ঝামেলা নেই।
+            বিকাশ বা নগদে লিমিটজনিত সমস্যার কারনে অটো এড ব্যালে এর ক্ষেত্রে বাংলাদেশি টাকায় সর্বনিম্ন ২৫০০০/= টাকা ডিপোজিট করতে হবে।
+        </p>
 
+        <div class="account-grid" style="margin-top: 10px; margin-bottom: 25px;">
+            @foreach ($accounts as $data)
+            <label class="account-item">
+                <strong><input type="radio" name="account_id" value="{{ $data->id }}" style="margin-bottom: 8px;"> {{ $data->name }}</strong>
+                <span style="font-size: 14px; font-weight: bold;">
+                    {!! $data->details !!}
+                </span>
+            </label>
+            @endforeach
+        </div>
+        <input type="hidden" name="type" value="Mobile pay">
+
+        <div class="tf-form">
+            <div class="form-group input-field input-money">
+                <label for="">পিন</label>
+                <input name="pin" type="text" placeholder="123456" required>
+                <span class="icon-clear"></span>
+                <small>যে নাম্বার থেকে টাকা পাঠিয়েছেন তার শেষের 4 টা ডিজিট লিখুন</small>
+            </div>
+        </div>
+
+        <div class="tf-form">
+            <div class="group-input input-field input-money">
+                <label for="">টাকার পরিমাণ</label>
+                <input name="amount" type="number" value="" required class="search-field value_input st1">
+                <span class="icon-clear"></span>
+                <small>বাংলাদেশি টাকায় যত টাকা কোম্পানীর নাম্বারে পাঠিয়েছেন সেটি লিখুন</small>
+            </div>
+        </div>
+        <button type="submit" name="submit" class="tf-btn accent small">কনফার্ম পেমেন্ট</button>
+    </form>
+</div>
 
 @endsection
-
-
 @section('script')
-
-
-
-
-
-
 @endsection

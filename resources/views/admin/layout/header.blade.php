@@ -12,8 +12,8 @@
 <!-- Icons -->
 <link rel="stylesheet" href="{{ asset('fonts/icons-alipay.css') }}">
 <link rel="stylesheet" href="{{ asset('styles/bootstrap.css') }}">
-<link rel="stylesheet" href="{{ asset('styles/swiper-bundle.min.css') }} ">
 <link rel="stylesheet" type="text/css" href="{{ asset('styles/styles.css') }}" />
+<link rel="stylesheet" href="{{ asset('styles/swiper-bundle.min.css') }} ">
 <link rel="apple-touch-icon" sizes="192x192" href="{{ asset('app/icons/icon-192x192.png') }}">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali&display=swap" rel="stylesheet">

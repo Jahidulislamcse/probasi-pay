@@ -111,35 +111,53 @@ $country = country();
     @endif
     <div style="padding:20px">
         <p>{{ @$country->name  }} তে আমাদের কোম্পানীর ব্যাংক একাউন্টে রিঙ্গিত ট্রান্সফার করে আপনি অ্যাপে ব্যালেন্স নিতে পারবেন। এক্ষেত্রে আপনি আপনার ব্যাংক একাউন্ট থেকে {{ @$country->name  }} কোম্পানির ব্যাংক একাউন্টে {{ @$country->currency }} ট্রান্সফার করে অ্যাপে রিসিট সাবমিট করলে বা হেল্প সেন্টারের হোয়াটসএপ নাম্বারে রিসিট জমা দিলে আপনাকে প্রতি {{ @$country->currency }} কোম্পানির রেট অনুযায়ী অ্যাপে বাংলাদেশি টাকায় ব্যালেন্স এড করে দেওয়া হবে।
-            আজকে {{ @$country->name  }} কোম্পানীর রেট চলতেছে {{ @$country->rate }} টাকা।
-            সেক্ষেত্রে আজকে আপনি যদি {{ @$country->name  }} থেকে কোম্পানির ব্যাংকে ৫০০ {{ @$country->currency }} ডিপোজিট করেন সেক্ষেত্রে আপনি
-            অ্যাপে ব্যালেন্স পাবেন
-            <span style="color:red;font-size:26px">{{ @ $country->rate*500 }}/= টাকা।</span>
         </p>
     </div>
 
-    <p style="text-align: center;
-    margin: 20px 5px;
-    font-size: 14px;">ব্যাংক একাউন্টের তথ্য জানতে নিচের হেল্পলাইন বাটনে ক্লিক করে হেল্প সেন্টারে যোগাযোগ করুন
-        <br>
-        <a href="https://wa.me/8801942823152" style="
-        background: #1a3637;
-        padding: 10px 20px;
-        margin-top:20px;
-        margin-bottom:20px;
-        color: white;
-        font-size: 15px;
-        line-height: 5;
-        border-radius: 5px;">হেল্পলাইন</a>
-        <br>
-        রিসিট সাবমিট করতে নিচের বাটনে ক্লিক করুন
-    </p>
-    <span style="    background: red;    padding: 10px 20px;    margin-top:20px; margin-bottom:20px;color: white; font-size: 15px;border-radius: 5px;" data-bs-toggle="modal" data-bs-target="#exampleModal">সাবমিট রিসিট</span>
-</div>
+    <div class="text-center" style="margin: 30px;">
+        <div style="display: inline-block; margin-right: 10px;">
+            <span style="
+            background: #f39c12;
+            padding: 10px 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            " data-bs-toggle="modal" data-bs-target="#exampleModal">
+                সাবমিট রিসিট
+        </div>
 
+        <div style="display: inline-block;">
+            <span style="
+            background: #16a085;
+            padding: 10px 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            " data-bs-toggle="modal" data-bs-target="#topupsModal">
+                পূর্বের ব্যালেন্স রিকোয়েস্ট
+            </span>
+        </div>
+        <div style="display: inline-block; margin-left: 10px">
+            <a href="https://wa.me/8801942823152" style="
+                background: #1a3637;
+                padding: 10px 20px;
+                margin-top:20px;
+                margin-bottom:20px;
+                color: white;
+                font-size: 15px;
+                line-height: 5;
+                border-radius: 5px;">হেল্পলাইন</a>
+        </div>
+    </div>
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="mt-1 style1">
@@ -188,20 +206,6 @@ $country = country();
             </div>
         </div>
     </div>
-</div>
-
-<div class="text-center" style="margin: 30px;">
-    <span style="
-        background: green;
-        padding: 10px 20px;
-        margin-top:20px;
-        margin-bottom:20px;
-        color: white;
-        font-size: 15px;
-        border-radius: 5px;
-        " data-bs-toggle="modal" data-bs-target="#topupsModal">
-        পূর্বের ব্যালেন্স রিকোয়েস্ট
-    </span>
 </div>
 
 
