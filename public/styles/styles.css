@@ -1396,8 +1396,7 @@ textarea.form-textarea[rows] {
   text-align: center;
   max-width: 90%;
   word-wrap: break-word;
-  line-height: 1;
-  height: 40px;
+  line-height: 1.33;
   overflow: hidden;
   display: block;
   text-overflow: ellipsis;
