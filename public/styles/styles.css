@@ -1411,8 +1411,8 @@ textarea.form-textarea[rows] {
 
 @media (max-width: 768px) {
   .tf-balance-box .wallet-footer .wallet-card-item a .icon {
-    width: 90px;
-    height: 90px;
+    width: 65px;
+    height: 65px;
   }
 }
 
