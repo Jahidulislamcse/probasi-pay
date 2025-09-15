@@ -416,9 +416,9 @@
     </div>
 </div>
 
-<div class="notify" style=" margin: 10px;background: #cd1307;    border-radius: 15px; color: white; padding: 10px;font-size: 20px;line-height: 1.3;margin-bottom: 79px;">
+<!-- <div class="notify" style=" margin: 10px;background: #cd1307;    border-radius: 15px; color: white; padding: 10px;font-size: 20px;line-height: 1.3;margin-bottom: 79px;">
 
-</div>
+</div> -->
 
 
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
@@ -468,8 +468,8 @@
         width: 100%;
         height: 120px;
         margin-top: 10px;
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 5px;
+        padding-right: 5px;
         box-sizing: border-box;
         overflow: hidden;
         position: relative;

@@ -358,13 +358,18 @@
 <div class="app-header st1">
     <div class="tf-container">
         <div class="tf-topbar d-flex justify-content-center align-items-center">
-            <a href="{{  route('admin.index')  }}" class="back-btn"><i class="icon-left white_color"></i></a>
+            <a href="{{ route('admin.index') }}" class="back-btn"><i class="icon-left white_color"></i></a>
             <h3 class="white_color">গ্রুপ চ্যাট</h3>
         </div>
     </div>
 </div>
-<!-- <div class="notify "></div> -->
-@livewire('chat')
+
+<div class="development-section d-flex justify-content-center align-items-center" style="height: 100vh; text-align: center;">
+    <div class="development-content">
+        <h1 class="development-header" style="margin-top:50%; font-size: 20px; color: #333;">এই ফিচারটি উন্নয়নাধীন</h1>
+    </div>
+</div>
+
 @endsection
 
 

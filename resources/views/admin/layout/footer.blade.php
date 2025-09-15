@@ -14,10 +14,7 @@
         <ul class="tf-navigation-bar">
             <li class="active"><a class="fw_6 d-flex text-white justify-content-center align-items-center flex-column"
                     href="{{ route('admin.index') }}"><i class="icon-home2 text-white"></i> হোম</a> </li>
-            <li><a class="fw_4 d-flex text-white justify-content-center align-items-center flex-column"
-                    href="{{ route('history') }}"><i class="icon-history text-white"></i> হিস্ট্রি</a> </li>
-            <li><a class="fw_4 d-flex text-white justify-content-center align-items-center flex-column" href="#"><i
-                        class="icon-scan-qr-code text-white"></i> </a> </li>
+
             <li><a class="fw_4 d-flex text-white justify-content-center align-items-center flex-column"
                     href="{{ route('profile') }}">
 
