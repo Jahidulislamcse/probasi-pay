@@ -6,40 +6,59 @@
 
  <style>
      .image-radio-group {
-         display: inline-flex;
-         flex-wrap: nowrap;
-         gap: 4px;
+         display: flex;
+         flex-wrap: wrap;
+         justify-content: space-between;
          margin-bottom: 20px;
      }
 
      .image-radio {
-         position: relative;
-         width: 65px;
-         height: auto;
-         background: #ffffff;
-         border-radius: 5px;
+         display: flex;
+         align-items: center;
+         margin: 5px;
+         cursor: pointer;
+         width: 30%;
+         text-align: center;
      }
 
      .image-radio input[type="radio"] {
-         display: none;
+         margin-right: 10px;
+         width: 15px;
+         height: 15px;
+     }
+
+     .radio-btn {
+         display: inline-block;
+         width: 15px;
+         height: 15px;
+         border-radius: 50%;
+         background-color: #fff;
+         border: 2px solid #787878ff;
+         margin-right: 10px;
      }
 
      .image-radio img {
-         width: 60px;
-         height: 60px;
+         width: 20px;
+         height: 20px;
+         border-radius: 50%;
          object-fit: cover;
-         border: 2px solid transparent;
-         border-radius: 8px;
-         cursor: pointer;
-         transition: border 0.3s;
-         padding: 5px;
-         margin: 0 auto;
-         display: block;
      }
 
-     .image-radio input[type="radio"]:checked+img {
-         border: 2px solid #ccc;
-         background: #ccc;
+     .image-radio p {
+         font-size: 14px;
+         color: #000;
+         margin: 0;
+     }
+
+     @media (max-width: 768px) {
+         .image-radio {
+             width: 100%;
+             text-align: center;
+         }
+
+         .image-radio p {
+             font-size: 12px;
+         }
      }
  </style>
 
@@ -64,19 +83,19 @@
          @csrf
          <div class="tf-container">
              <div class="tf-balance-box">
-
                  <div style="overflow:scroll">
                      <div class="image-radio-group">
                          @foreach ($payable_accounts as $account)
                          <label class="image-radio">
                              <input type="radio" name="operator" value="{{ $account->name }}" {{ $loop->first ? 'checked' : '' }}>
+                             <span class="radio-btn"></span>
                              <img src="{{ asset($account->logo) }}" alt="{{ $account->name }}">
-                             <p class="text-center" style="color: #000;">{{ $account->name }}</p>
+                             <p class=" text-center" style="margin-left: 5px; color: #000;">{{ $account->name }}</p>
                          </label>
                          @endforeach
                      </div>
-
                  </div>
+
                  <div class="tf-form">
                      <div class="group-input input-field input-money">
                          <label for="">টাকার পরিমাণ</label>

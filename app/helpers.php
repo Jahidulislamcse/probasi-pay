@@ -16,19 +16,19 @@ if (! function_exists('imageUpload')) {
         $imagefile->move($destinationPath, $image);
         return 'fileManager/' . $image;
     }
-
 }
 
 if (! function_exists('menus')) {
 
 
-    function menus(){
-        return Category::where('cat_parent',null)->where('menu',1)->where('status',1)->get();
+    function menus()
+    {
+        return Category::where('cat_parent', null)->where('menu', 1)->where('status', 1)->get();
     }
-
 }
- function hiddnum($mobile){
-    return str_repeat('*', strlen($mobile) - 4) . substr($mobile, -4) ;
+function hiddnum($mobile)
+{
+    return str_repeat('*', strlen($mobile) - 4) . substr($mobile, -4);
 }
 
 if (!function_exists('is_serialized')) {
@@ -60,31 +60,30 @@ if (!function_exists('is_serialized')) {
 }
 if (!function_exists('section')) {
 
-    function section($key){
+    function section($key)
+    {
 
-            $section = Section::where('key',$key)->first();
+        $section = Section::where('key', $key)->first();
 
-            if($section ){
-                return $section->value ;
-            }else{
-                return '' ;
-            }
-
+        if ($section) {
+            return $section->value;
+        } else {
+            return '';
+        }
     }
-
-
 }
 
 
 if (!function_exists('site_phone')) {
-    function site_phone(){
-      $site_phones =  json_decode(siteInfo()->phone) ;
-      $phones = '' ;
+    function site_phone()
+    {
+        $site_phones =  json_decode(siteInfo()->phone);
+        $phones = '';
 
-      foreach( $site_phones as $phone){
-        $phones .= $phone->value.' , ' ;
-      }
-      return $phones ;
+        foreach ($site_phones as $phone) {
+            $phones .= $phone->value . ' , ';
+        }
+        return $phones;
     }
 }
 
@@ -94,13 +93,12 @@ if (! function_exists('siteInfo')) {
     {
 
         $data = GeneralSetting::first();
-        return $data ;
-
+        return $data;
     }
-
 }
 
-function custom_function($string, $times) {
+function custom_function($string, $times)
+{
     // Ensure $times is at least 0
     $times = max(0, $times);  // If $times is negative, set it to 0
 
@@ -109,28 +107,25 @@ function custom_function($string, $times) {
 
 if (! function_exists('currency')) {
 
-    function currency($value = '',$c='')
+    function currency($value = '', $c = '')
     {
-        $symbol = '' ;
-        if(!empty($c)){
-            if($c == 'bdt'){
-                $symbol = '৳' ;
+        $symbol = '';
+        if (!empty($c)) {
+            if ($c == 'bdt') {
+                $symbol = '৳';
             }
 
-            if($c == 'usd'){
-                $symbol = '$' ;
+            if ($c == 'usd') {
+                $symbol = '$';
             }
-        }else{
+        } else {
 
-                $symbol = '৳' ;
-
+            $symbol = '৳';
         }
 
 
-        return  $symbol.number_format($value,2) ;
-
+        return  $symbol . number_format($value, 2);
     }
-
 }
 
 if (! function_exists('currency_code')) {
@@ -138,17 +133,15 @@ if (! function_exists('currency_code')) {
     function currency_code($value = '')
     {
 
-        $code = '' ;
-        if(Session::get('currency_code')){
-            $code = Session::get('currency_code') ;
-        }else{
-            $code = 'usd' ;
+        $code = '';
+        if (Session::get('currency_code')) {
+            $code = Session::get('currency_code');
+        } else {
+            $code = 'usd';
         }
 
-        return   $code ;
-
+        return   $code;
     }
-
 }
 
 
@@ -158,18 +151,15 @@ if (! function_exists('country')) {
     {
 
 
-        return   Country::find(auth()->user()->location)  ;
-
+        return   Country::find(auth()->user()->location);
     }
-
 }
 
 if (!function_exists('enToBnNumber')) {
-    function enToBnNumber($number) {
-        $en = ['0','1','2','3','4','5','6','7','8','9','.'];
-        $bn = ['০','১','২','৩','৪','৫','৬','৭','৮','৯','.'];
+    function enToBnNumber($number)
+    {
+        $en = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.'];
+        $bn = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯', '.'];
         return str_replace($en, $bn, $number);
     }
 }
-
-

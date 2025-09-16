@@ -7,6 +7,7 @@ use App\Models\Announc;
 use App\Models\BankPay;
 use App\Models\Banner;
 use App\Models\BlockedUser;
+use App\Models\ColorSetting;
 use App\Models\Country;
 use App\Models\GeneralSetting;
 use App\Models\MasjidAccount;
@@ -32,6 +33,7 @@ class AdminController extends Controller
         $country = null;
         $banners = Banner::all();
         $generalSettings = GeneralSetting::first();
+        $colors = ColorSetting::first();
 
         if ($user->is_blocked == 1) {
             return redirect()->route('blocked');
@@ -58,9 +60,9 @@ class AdminController extends Controller
         }
 
         if ($user->role == 'super admin') {
-            return view('admin.adminDashboard', compact('title', 'country', 'rate', 'generalSettings'));
+            return view('admin.adminDashboard', compact('title', 'country', 'rate', 'generalSettings', 'colors'));
         } else {
-            return view('admin.dashboard', compact('title', 'country', 'rate', 'banners', 'generalSettings'));
+            return view('admin.dashboard', compact('title', 'country', 'rate', 'banners', 'generalSettings', 'colors'));
         }
     }
 

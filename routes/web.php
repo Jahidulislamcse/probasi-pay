@@ -5,6 +5,7 @@ use App\Http\Controllers\BankPayController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BillPayController;
 use App\Http\Controllers\CashInCashOutController;
+use App\Http\Controllers\ColorSettingController;
 use App\Http\Controllers\CommitionController;
 use App\Http\Controllers\CommonController;
 use App\Http\Controllers\HomeController;
@@ -100,6 +101,13 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])
         Route::put('commission/{id}', [CommitionController::class, 'update'])->name('commission.update');
         Route::delete('commission/{id}', [CommitionController::class, 'destroy'])->name('commission.destroy');
     });
+
+
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::get('/colors', [ColorSettingController::class, 'index'])->name('colors.index');
+    Route::put('/colors', [ColorSettingController::class, 'update'])->name('colors.update');
+});
+
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin.index');

@@ -1,7 +1,6 @@
 <div class="app-header">
     <div class="tf-container">
         <div class="tf-topbar d-flex justify-content-between align-items-center">
-            <!-- Left Side: User Image, Name, and Balance Button -->
             <div class="d-flex">
                 <div class="left-column">
                     @php
@@ -21,7 +20,6 @@
                 </div>
             </div>
 
-            <!-- Right Side: Logo -->
             <div class="logo-container">
                 @if($generalSettings && $generalSettings->logo)
                 <img src="{{ asset($generalSettings->logo) }}" alt="Company Logo" class="logo">
@@ -37,7 +35,7 @@
     <div class="tf-container">
         <div class="tf-balance-box" style="background:#ffffed;">
             @if($country)
-            <marquee behavior="scroll" direction="left" style="color:#ff3631;font-size: 19px;">
+            <marquee behavior="scroll" direction="left" style="color:#ff3631;font-size: 15px;">
                 @if($rate)
                 আজকের রেট: {{ $country->name }} {{ enToBnNumber(1) }} {{ $country->currency }} = {{ enToBnNumber(number_format($rate, 2)) }} টাকা
                 @else
@@ -61,7 +59,7 @@
                             <ul class="icon icon-group-transfers">
                                 <img src="/images/front-icons/add.png">
                             </ul>
-                            <div class="label">সেন্ডমানি</div>
+                            <div class="label">টাকা জমা</div>
                         </a>
                     </li>
                     <li class="wallet-card-item">
@@ -85,7 +83,7 @@
                             <ul class="icon icon-group-transfers">
                                 <img src="/images/front-icons/bank.png">
                             </ul>
-                            <div class="label">ব্যাংক প্যামেন্ট</div>
+                            <div class="label">ব্যাংক উত্তোলন</div>
                         </a>
                     </li>
                 </ul>
@@ -308,7 +306,7 @@
 </div>
 
 
-<div class="notify" style=" margin: 10px;background: #cd1307;    border-radius: 15px; color: white; padding: 10px;font-size: 20px;line-height: 1.3;margin-bottom: 79px;">
+<div class="notify" style=" margin: 10px;background: #cd1307;    border-radius: 15px; color: white; padding: 10px;font-size: 15px;line-height: 1.3;margin-bottom: 79px;">
 
 </div>
 
@@ -530,9 +528,16 @@
         background-color: #ffffffff;
         color: #ff3130;
         padding: 2px 10px;
-        border-radius: 5px;
+        border-radius: 25px;
         text-align: center;
         border: none;
+    }
+
+    @media (max-width: 600px) {
+        .balance-btn {
+            font-size: 12px;
+            padding: 2px 4px;
+        }
     }
 
     .balance-btn:hover {

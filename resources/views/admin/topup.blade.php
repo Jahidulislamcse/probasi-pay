@@ -128,14 +128,14 @@ $country = country();
             border-radius: 5px;
             cursor: pointer;
             " data-bs-toggle="modal" data-bs-target="#depositRulesModal">
-            এডমিনের মাধ্যমে এড ব্যালেন্স
+            ম্যানুয়াল এড ব্যালেন্স
 
         </span>
     </div>
 
     <div style="display: inline-block;">
         <span style="
-            background: #16a085;
+            background: #e67e22;
             padding: 10px 20px;
             margin-top: 20px;
             margin-bottom: 20px;
@@ -144,7 +144,7 @@ $country = country();
             border-radius: 5px;
             cursor: pointer;
             " data-bs-toggle="modal" data-bs-target="#topupsModal">
-            পূর্বের ব্যালেন্স রিকোয়েস্ট
+            পূর্বের রিকোয়েস্ট
         </span>
     </div>
 </div>
@@ -179,8 +179,8 @@ $country = country();
                         আপনার যদি কোন কারনে {{ @$country->name }} ব্যাংক একাউন্ট না থাকে সেক্ষেত্রে আপনি শর্ত সাপেক্ষে উপরে দেওয়া কোম্পানির বিকাশের মাধ্যমে অ্যাপে ব্যালেন্স নিতে পারবেন।
                         এক্ষেত্রে আপনি উপরে দেওয়া কোম্পানির বিকাশে {{ @$country->name }} থেকে বর্তমানে প্রতি {{ @$country->currency }} যে হুন্ডি রেট পান সেই রেটে টাকা পাঠাবেন।
                         টাকা পাঠানোর পর কোম্পানির হেল্পলাইনে পিন এবং এমাউন্ট জানায়ে দিলে আপনাকে কোম্পানীর রেট অনুযায়ী ব্যালেন্স দিয়ে দেওয়া হবে।
-                        বিষয়টা আরো সহজভাবে বুঝার জন্য ধরে নিন {{ @$country->name }} ট থেকে হুন্ডি মাধ্যমে আপনি যদি কোম্পানির বিকাশে ১০০ {{ @$country->currency }} ২৮ টাকা রেট হিসেবে ২৮০০ টাকা পাঠান
-                        তাহলে আপনি অ্যাপে ব্যালেন্স পাবেন প্রতি {{ @$country->currency }} কোম্পানীর রেট {{ @$country->rate }} টাকা হিসেবে মোট {{ @(int)$country->rate*100 }} ট টাকা৷
+                        বিষয়টা আরো সহজভাবে বুঝার জন্য ধরে নিন {{ @$country->name }} থেকে হুন্ডি মাধ্যমে আপনি যদি কোম্পানির বিকাশে ১০০ {{ @$country->currency }} ২৮ টাকা রেট হিসেবে ২৮০০ টাকা পাঠান
+                        তাহলে আপনি অ্যাপে ব্যালেন্স পাবেন প্রতি {{ @$country->currency }} কোম্পানীর রেট {{ @$country->rate }} টাকা হিসেবে মোট ২৮০০ টাকা৷
                     </p>
 
                     <p class="text-center" style="color:red;margin-top:20px">বিকাশের মাধ্যমে ডিপোজিটের শর্তসমূহ:</p>

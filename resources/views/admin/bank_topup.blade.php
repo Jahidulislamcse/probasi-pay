@@ -53,7 +53,7 @@
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        padding: 10px;
+        padding: 5px;
         color: #ff3130;
         font-size: 16px;
         line-height: 20px;
@@ -140,7 +140,7 @@ $country = country();
             border-radius: 5px;
             cursor: pointer;
             " data-bs-toggle="modal" data-bs-target="#topupsModal">
-                পূর্বের ব্যালেন্স রিকোয়েস্ট
+                পূর্বের রিকোয়েস্ট
             </span>
         </div>
         <div style="display: inline-block; margin-left: 10px">
@@ -155,9 +155,10 @@ $country = country();
                 border-radius: 5px;">হেল্পলাইন</a>
         </div>
     </div>
+
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="mt-1 style1">
@@ -170,10 +171,10 @@ $country = country();
                                 @foreach ($accounts as $data)
                                 <label class="account-item">
                                     <strong>
-                                        <input type="radio" name="account_id" value="{{ $data->id }}" style="margin-bottom: 8px;">
+                                        <input type="radio" name="account_id" value="{{ $data->id }}" style="margin-bottom: 8px; font-size:10px;">
                                         {{ $data->name }}
                                     </strong>
-                                    <span style="font-size: 14px; font-weight: bold;">
+                                    <span style="font-size: 10px; font-weight: bold;">
                                         {!! $data->details !!}
                                     </span>
                                 </label>

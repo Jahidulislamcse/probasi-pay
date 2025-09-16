@@ -21,19 +21,19 @@
     }
 
     .image-radio input[type="radio"] {
-        margin-right: 10px;
-        width: 20px;
-        height: 20px;
+        margin-right: 5px;
+        width: 15px;
+        height: 15px;
     }
 
     .radio-btn {
         display: inline-block;
-        width: 20px;
-        height: 20px;
+        width: 15px;
+        height: 15px;
         border-radius: 50%;
         background-color: #fff;
         border: 2px solid #787878ff;
-        margin-right: 10px;
+        margin-right: 5px;
     }
 
     .image-radio img {
@@ -41,6 +41,7 @@
         height: 25px;
         border-radius: 50%;
         object-fit: cover;
+        margin-right: 5px;
     }
 
     .image-radio p {
@@ -152,11 +153,7 @@
             </div>
         </div>
 
-        <div class="bottom-navigation-bar">
-            <div class="tf-container">
-                <button type="submit" name="submit" class="tf-btn accent large">অ্যাড করুন</button>
-            </div>
-        </div>
+        <button type="submit" name="submit" class="tf-btn accent small">অ্যাড করুন</button>
     </form>
 </div>
 

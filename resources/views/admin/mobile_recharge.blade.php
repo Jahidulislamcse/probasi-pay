@@ -26,8 +26,8 @@
 
      .radio-btn {
          display: inline-block;
-         width: 20px;
-         height: 20px;
+         width: 15px;
+         height: 15px;
          border-radius: 50%;
          background-color: #fff;
          border: 2px solid #787878ff;
@@ -35,8 +35,8 @@
      }
 
      .image-radio img {
-         width: 25px;
-         height: 25px;
+         width: 15px;
+         height: 15px;
          border-radius: 50%;
          object-fit: cover;
      }
@@ -83,13 +83,7 @@
                          <img src="/images/gp.png" alt="Image 1">
                          <p class="text-center" style="color: #000;">জিপি</p>
                      </label>
-                     <!-- Banglalink Radio Button -->
-                     <label class="image-radio">
-                         <input type="radio" name="operator" value="বাংলালিংক">
-                         <span class="radio-btn"></span>
-                         <img src="/images/bl.svg.png" alt="Image 2">
-                         <p class="text-center" style="color: #000;">বাংলালিংক</p>
-                     </label>
+
                      <!-- Robi Radio Button -->
                      <label class="image-radio">
                          <input type="radio" name="operator" value="রবি">
@@ -110,6 +104,14 @@
                          <span class="radio-btn"></span>
                          <img src="/images/teletalk.png" alt="Image 4">
                          <p class="text-center" style="color: #000;">টেলিটক</p>
+                     </label>
+
+                     <!-- Banglalink Radio Button -->
+                     <label class="image-radio">
+                         <input type="radio" name="operator" value="বাংলালিংক">
+                         <span class="radio-btn"></span>
+                         <img src="/images/bl.svg.png" alt="Image 2">
+                         <p class="text-center" style="color: #000;">বাংলালিংক</p>
                      </label>
                  </div>
 
@@ -140,7 +142,6 @@
                      </div>
                  </div>
 
-                 <!-- Pin Input -->
                  <div class="tf-form">
                      <div class="form-group input-field input-money">
                          <label for="">পিন</label>
@@ -158,11 +159,7 @@
              {!! @$content->value !!}
          </div>
 
-         <div class="bottom-navigation-bar">
-             <div class="tf-container">
-                 <button type="submit" name="submit" class="tf-btn accent large">অ্যাড করুন</button>
-             </div>
-         </div>
+         <button type="submit" name="submit" class="tf-btn accent large">অ্যাড করুন</button>
      </form>
  </div>
 
