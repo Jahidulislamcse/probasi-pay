@@ -10,7 +10,10 @@
 @livewireScripts
 
 <div class="bottom-navigation-bar" style="margin-top: 80px;">
-    <div style="background:#ff3432;" class="tf-container px-5">
+    @php
+        $colors = \App\Models\ColorSetting::first();
+    @endphp
+    <div class="footer-clr tf-container px-5">
         <ul class="tf-navigation-bar">
             <li class="active"><a class="fw_6 d-flex text-white justify-content-center align-items-center flex-column"
                     href="{{ route('admin.index') }}"><i class="icon-home2 text-white"></i> হোম</a> </li>
@@ -101,3 +104,9 @@
         }
     }
 </script>
+
+<style>
+    .footer-clr{
+        background-color: {{ $colors->footer_color ?? '#ff3130' }};
+    }
+</style>

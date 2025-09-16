@@ -33,7 +33,7 @@
 
 <div class="card-secton">
     <div class="tf-container">
-        <div class="tf-balance-box" style="background:#ffffed;">
+        <div class="tf-balance-box main-card" >
             @if($country)
             <marquee behavior="scroll" direction="left" style="color:#ff3631;font-size: 15px;">
                 @if($rate)
@@ -370,6 +370,14 @@
 </script>
 
 <style>
+    .app-header {
+        background-color: {{ $colors->header_color ?? '#ff3130' }};
+    }
+
+    .main-card {
+        background-color: {{ $colors->body_color ?? '#ffffff' }};
+    }
+
     .swiper-container.banner-slider {
         width: 100%;
         height: 100px;
