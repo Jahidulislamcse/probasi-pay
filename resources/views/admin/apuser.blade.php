@@ -536,7 +536,7 @@
     @media (max-width: 600px) {
         .balance-btn {
             font-size: 12px;
-            padding: 2px 4px;
+            padding: 3px 10px;
         }
     }
 
