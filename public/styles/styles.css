@@ -1460,14 +1460,6 @@ textarea.form-textarea[rows] {
   object-fit: contain;
 }
 
-.tf-balance-box .wallet-footer .wallet-card-item a .icon-bigger {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 65px;
-  height: 65px;
-  object-fit: contain;
-}
 
 .tf-balance-box .wallet-footer .wallet-card-item a .label {
   font-size: 12px;
