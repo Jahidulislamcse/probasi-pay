@@ -131,7 +131,7 @@
                 <ul class="d-flex justify-content-between align-items-center">
                     <li class="wallet-card-item target-footer">
                         <a class="fw_6" href="{{ route('bkash') }}">
-                            <ul class="icon-bigger icon-group-transfers">
+                            <ul class="icon icon-group-transfers">
                                 <img src="/images/front-icons/bkash.png">
                             </ul>
                             <div class="label">বিকাশ</div>
@@ -139,7 +139,7 @@
                     </li>
                     <li class="wallet-card-item target-footer">
                         <a class="fw_6" href="{{ route('nagad') }}">
-                            <ul class="icon-bigger icon-topup">
+                            <ul class="icon icon-topup">
                                 <img src="/images/front-icons/nagad.png">
                             </ul>
                             <div class="label">নগদ</div>
