@@ -425,7 +425,6 @@ label {
 body {
   font: 12px/20px "Plus Jakarta Sans", sans-serif;
   font-weight: 500;
-  background-color: #ffffec;
   color: #d9d9d9;
   overflow: hidden;
   padding-right: 0 !important;
@@ -2996,13 +2995,11 @@ textarea.form-textarea[rows] {
 .bottom-navigation-bar {
   position: fixed;
   z-index: 1000;
-  background: #ffffec;
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
   min-height: 60px;
   bottom: 0;
-  box-shadow: 0px -1px 2px 0px rgba(0, 0, 0, 0.07);
 }
 
 .bottom-navigation-bar.st1 {

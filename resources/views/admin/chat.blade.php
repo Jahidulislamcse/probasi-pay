@@ -219,7 +219,6 @@
         max-height: 90vh;
 
         border-radius: 5px;
-        background: #ffffec;
     }
 
     .msger-header {

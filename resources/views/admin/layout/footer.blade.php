@@ -10,9 +10,7 @@
 @livewireScripts
 
 <div class="bottom-navigation-bar" style="margin-top: 80px;">
-    @php
-        $colors = \App\Models\ColorSetting::first();
-    @endphp
+
     <div class="footer-clr tf-container px-5">
         <ul class="tf-navigation-bar">
             <li class="active"><a class="fw_6 d-flex text-white justify-content-center align-items-center flex-column"
@@ -115,6 +113,13 @@
 </script>
 
 <style>
+    @php
+        $colors = \App\Models\ColorSetting::first();
+    @endphp
+
+    body {
+        background-color: {{ $colors->body_color ?? '#ff3130' }};
+    }
     .footer-clr{
         background-color: {{ $colors->footer_color ?? '#ff3130' }};
     }

@@ -226,43 +226,11 @@
                 <button id="hideMoreBtn" class="toggle-btn" style="display:none;">বন্ধ করুন</button>
             </div>
 
-           
-
-            <div class="wallet-footer">
-                <ul class="d-flex justify-content-between align-items-center">
-
-                    <li class="wallet-card-item">
-                        <a class="fw_6" href="">
-                            <ul class="icon icon-my-qr">
-                            </ul>
-                        </a>
-                    </li>
-                    <li class="wallet-card-item">
-                        <a class="fw_6" href="">
-                            <ul class="icon icon-my-qr">
-                            </ul>
-                        </a>
-                    </li>
-                    <li class="wallet-card-item">
-                        <!-- <a href="{{ route('rate') }}" class="fw_6 text-center" id="btn-popup-down">
-                            <ul class="icon icon-group-transfers">
-                                <img src="/images/front-icons/exchange-rate.png">
-                            </ul>
-                            <div class="label">এক্সচেঞ্জ রেট</div>
-                        </a> -->
-                    </li>
-                    <li class="wallet-card-item">
-                        <!-- <a class="fw_6" href="{{ route('news') }}">
-                            <ul class="icon icon-my-qr">
-                                <img src="/images/front-icons/news.png">
-                            </ul>
-                            <div class="label">প্রবাসী খবর</div>
-                        </a> -->
-                    </li>
-                </ul>
-            </div>
         </div>
     </div>
+</div>
+<div class="notify" style=" margin: 0 10px;   border-radius: 15px; color: white; padding: 10px;font-size: 15px;line-height: 1.3;margin-bottom: 40px;">
+
 </div>
 
 <div class="tf-panel down">
@@ -311,9 +279,7 @@
 </div>
 
 
-<div class="notify" style=" margin: 10px;   border-radius: 15px; color: white; padding: 10px;font-size: 15px;line-height: 1.3;margin-bottom: 79px;">
 
-</div>
 
 
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
