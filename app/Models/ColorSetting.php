@@ -9,5 +9,5 @@ class ColorSetting extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['body_color', 'header_color', 'footer_color', 'headings_color', 'label_color', 'paragraph_color'];
+    protected $fillable = ['body_color', 'header_color', 'footer_color', 'headings_color', 'label_color', 'paragraph_color', 'heading_background_color'];
 }

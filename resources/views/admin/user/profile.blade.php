@@ -9,6 +9,32 @@
 @section('style')
 
 <style>
+     @php
+        $colors = \App\Models\ColorSetting::first();
+    @endphp
+    .app-header {
+        background-color: {{ $colors->header_color ?? '#ff3130' }};
+    }
+    body {
+        background-color: {{ $colors->body_color ?? '#ff3130' }};
+    }
+            h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'SolaimanLipi', 'Noto Sans Bengali', sans-serif !important;
+        font-weight: 400;
+        color: {{ $colors->headings_color ?? '#ffffff' }};
+    }
+    label {
+      color: {{ $colors->label_color ?? '#ffffff' }};   
+    }
+    p {
+      color: {{ $colors->paragraph_color ?? '#ffffff' }};   
+    }
+    
     .avatar-upload {
         position: relative;
         max-width: 205px;
@@ -161,6 +187,14 @@
 
 @endsection
 @section('main')
+ <div class="app-header st1">
+     <div class="tf-container">
+         <div class="tf-topbar d-flex justify-content-center align-items-center">
+             <a href="{{  route('admin.index')  }}" class="back-btn"><i class="icon-left white_color"></i></a>
+             <h3 class="white_color">প্রোফাইল</h3>
+         </div>
+     </div>
+ </div>
 <div class="row layout-top-spacing">
     <div class="row ">
         @if ($errors->any())

@@ -1434,10 +1434,10 @@ textarea.form-textarea[rows] {
   margin-bottom: 20px;
 }
 
-.target-footer {
+/* .target-footer {
   opacity: 0.3;
   transition: opacity 0.3s ease-in-out;
-}
+} */
 
 .tf-balance-box .wallet-footer .wallet-card-item {
   width: 25%;
@@ -1455,6 +1455,15 @@ textarea.form-textarea[rows] {
   justify-content: center;
   align-items: center;
   padding: 8px 8px;
+  width: 65px;
+  height: 65px;
+  object-fit: contain;
+}
+
+.tf-balance-box .wallet-footer .wallet-card-item a .icon-bigger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 65px;
   height: 65px;
   object-fit: contain;
@@ -1492,14 +1501,14 @@ textarea.form-textarea[rows] {
   }
 }
 
-.more-items {
+/* .more-items {
   display: none;
   transition: all 0.3s ease-in-out;
 }
 
 .more-items.show {
   display: block;
-}
+} */
 
 .toggle-buttons {
   position: absolute;

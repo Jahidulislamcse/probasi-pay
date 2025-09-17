@@ -5,6 +5,31 @@
 @section('meta') @endsection
 @section('style')
 <style>
+    @php
+        $colors = \App\Models\ColorSetting::first();
+    @endphp
+    .app-header {
+        background-color: {{ $colors->header_color ?? '#ff3130' }};
+    }
+    body {
+        background-color: {{ $colors->body_color ?? '#ff3130' }};
+    }
+        h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'SolaimanLipi', 'Noto Sans Bengali', sans-serif !important;
+        font-weight: 400;
+        color: {{ $colors->headings_color ?? '#ffffff' }};
+    }
+    label {
+      color: {{ $colors->label_color ?? '#ffffff' }};   
+    }
+    p {
+      color: {{ $colors->paragraph_color ?? '#ffffff' }};   
+    }
     .image-radio-group {
         display: inline-flex;
         flex-wrap: nowrap;

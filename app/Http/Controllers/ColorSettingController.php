@@ -19,6 +19,7 @@ class ColorSettingController extends Controller
                 'header_color' => '#ff3130', 
                 'footer_color' => '#333333', 
                 'headings_color' => '#000000', 
+                'heading_background_color' => '#000000', 
                 'label_color' => '#000000', 
                 'paragraph_color' => '#000000'
             ]);
@@ -48,6 +49,7 @@ class ColorSettingController extends Controller
             'header_color' => $request->input('header_color'),
             'footer_color' => $request->input('footer_color'),
             'headings_color' => $request->input('headings_color'),
+            'heading_background_color' => $request->input('heading_background_color'),
             'label_color' => $request->input('label_color'),
             'paragraph_color' => $request->input('paragraph_color'),
         ]);
@@ -59,6 +61,7 @@ class ColorSettingController extends Controller
             'header_color' => $request->input('header_color'),
             'footer_color' => $request->input('footer_color'),
             'headings_color' => $request->input('headings_color'),
+            'heading_background_color' => $request->input('heading_background_color'),
             'label_color' => $request->input('label_color'),
             'paragraph_color' => $request->input('paragraph_color'),
         ]);

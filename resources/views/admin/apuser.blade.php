@@ -52,7 +52,7 @@
             </script>
             @endif
 
-            <div class="wallet-footer">
+            <div class="wallet-footer mt-4">
                 <ul class="d-flex justify-content-between align-items-center">
                     <li class="wallet-card-item">
                         <a href="javascript:void(0);" class="fw_6 text-center" id="btn-popup-down">
@@ -113,7 +113,7 @@
                             <ul class="icon icon-group-credit-card">
                                 <img src="/images/front-icons/live-chat.png">
                             </ul>
-                            <div class="label">কাস্টমার সার্ভিস</div>
+                            <div class="label">কাস্টমার কেয়ার</div>
                         </a>
                     </li>
                     <li class="wallet-card-item">
@@ -131,7 +131,7 @@
                 <ul class="d-flex justify-content-between align-items-center">
                     <li class="wallet-card-item target-footer">
                         <a class="fw_6" href="{{ route('bkash') }}">
-                            <ul class="icon icon-group-transfers">
+                            <ul class="icon-bigger icon-group-transfers">
                                 <img src="/images/front-icons/bkash.png">
                             </ul>
                             <div class="label">বিকাশ</div>
@@ -139,7 +139,7 @@
                     </li>
                     <li class="wallet-card-item target-footer">
                         <a class="fw_6" href="{{ route('nagad') }}">
-                            <ul class="icon icon-topup">
+                            <ul class="icon-bigger icon-topup">
                                 <img src="/images/front-icons/nagad.png">
                             </ul>
                             <div class="label">নগদ</div>
@@ -163,53 +163,12 @@
                     </li>
                 </ul>
 
-                <div class="text-center toggle-buttons">
+                <!-- <div class="text-center toggle-buttons">
                     <button id="showMoreBtn" class="toggle-btn">আরো দেখুন</button>
-                </div>
+                </div> -->
             </div>
 
-            <div class="wallet-footer more-items">
-                <ul class="d-flex justify-content-between align-items-center">
-                    <li class="wallet-card-item">
-                        <a href="{{ route('rate') }}" class="fw_6 text-center" id="btn-popup-down">
-                            <ul class="icon icon-group-transfers">
-                                <img src="/images/front-icons/exchange-rate.png">
-                            </ul>
-                            <div class="label">এক্সচেঞ্জ রেট</div>
-                        </a>
-                    </li>
-                    <li class="wallet-card-item">
-                        <a href="{{ route('remittance') }}" class="fw_6 text-center" id="btn-popup-down">
-                            <ul class="icon icon-group-transfers">
-                                <img src="/images/front-icons/remittance.png">
-                            </ul>
-                            <div class="label">রেমিটেন্স</div>
-                        </a>
-                    </li>
-                    <li class="wallet-card-item">
-                        <a class="fw_6" href="{{ route('news') }}">
-                            <ul class="icon icon-my-qr">
-                                <img src="/images/front-icons/news.png">
-                            </ul>
-                            <div class="label">প্রবাসী খবর</div>
-                        </a>
-                    </li>
-                    <li class="wallet-card-item">
-                        <a class="fw_6 btn-card-popup" href="{{ route('tutorials') }}">
-                            <ul class="icon icon-group-credit-card">
-                                <img src="/images/front-icons/live_offer.png">
-                            </ul>
-                            <div class="label">টিউটোরিয়াল ও অফার</div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="text-center ">
-                <button id="hideMoreBtn" class="toggle-btn" style="display:none;">বন্ধ করুন</button>
-            </div>
-
-            @if($banners->count() > 0)
+             @if($banners->count() > 0)
             <div style="text-align: center;" class=" mb-4">
                 <div class="swiper-container banner-slider">
                     <div class="swiper-wrapper">
@@ -224,14 +183,31 @@
             </div>
             @endif
 
-            <div class="wallet-footer">
+            <div class="wallet-footer more-items">
                 <ul class="d-flex justify-content-between align-items-center">
+                    
+                    <li class="wallet-card-item">
+                        <a href="{{ route('remittance') }}" class="fw_6 text-center" id="btn-popup-down">
+                            <ul class="icon icon-group-transfers">
+                                <img src="/images/front-icons/remittance.png">
+                            </ul>
+                            <div class="label">রেমিটেন্স</div>
+                        </a>
+                    </li>
+                    <li class="wallet-card-item">
+                        <a class="fw_6 btn-card-popup" href="{{ route('tutorials') }}">
+                            <ul class="icon icon-group-credit-card">
+                                <img src="/images/front-icons/live_offer.png">
+                            </ul>
+                            <div class="label">টিউটোরিয়াল</div>
+                        </a>
+                    </li>
                     <li class="wallet-card-item">
                         <a href="{{ route('reviews.view') }}" class="fw_6 text-center" id="btn-popup-down">
                             <ul class="icon icon-group-transfers">
                                 <img src="/images/front-icons/review.png">
                             </ul>
-                            <div class="label">রিভিউ</div>
+                            <div class="label">কাস্টমার রিভিউ</div>
                         </a>
                     </li>
                     <li class="wallet-card-item">
@@ -242,6 +218,19 @@
                             <div class="label">আরো জানুন</div>
                         </a>
                     </li>
+                    
+                </ul>
+            </div>
+
+            <div class="text-center ">
+                <button id="hideMoreBtn" class="toggle-btn" style="display:none;">বন্ধ করুন</button>
+            </div>
+
+           
+
+            <div class="wallet-footer">
+                <ul class="d-flex justify-content-between align-items-center">
+
                     <li class="wallet-card-item">
                         <a class="fw_6" href="">
                             <ul class="icon icon-my-qr">
@@ -253,6 +242,22 @@
                             <ul class="icon icon-my-qr">
                             </ul>
                         </a>
+                    </li>
+                    <li class="wallet-card-item">
+                        <!-- <a href="{{ route('rate') }}" class="fw_6 text-center" id="btn-popup-down">
+                            <ul class="icon icon-group-transfers">
+                                <img src="/images/front-icons/exchange-rate.png">
+                            </ul>
+                            <div class="label">এক্সচেঞ্জ রেট</div>
+                        </a> -->
+                    </li>
+                    <li class="wallet-card-item">
+                        <!-- <a class="fw_6" href="{{ route('news') }}">
+                            <ul class="icon icon-my-qr">
+                                <img src="/images/front-icons/news.png">
+                            </ul>
+                            <div class="label">প্রবাসী খবর</div>
+                        </a> -->
                     </li>
                 </ul>
             </div>
@@ -306,7 +311,7 @@
 </div>
 
 
-<div class="notify" style=" margin: 10px;background: #cd1307;    border-radius: 15px; color: white; padding: 10px;font-size: 15px;line-height: 1.3;margin-bottom: 79px;">
+<div class="notify" style=" margin: 10px;   border-radius: 15px; color: white; padding: 10px;font-size: 15px;line-height: 1.3;margin-bottom: 79px;">
 
 </div>
 
@@ -330,7 +335,7 @@
         navigation: false,
     });
 </script>
-
+<!-- 
 <script>
     document.getElementById('showMoreBtn').addEventListener('click', function() {
         document.querySelector('.more-items').classList.add('show');
@@ -351,7 +356,7 @@
             item.style.opacity = '0.3';
         });
     });
-</script>
+</script> -->
 
 <script>
     function toggleBalance() {
@@ -377,6 +382,14 @@
     .main-card {
         background-color: {{ $colors->body_color ?? '#ffffff' }};
     }
+
+    body {
+        background-color: {{ $colors->body_color ?? '#ffffff' }};
+    }
+    .notify{
+        background-color: {{ $colors->heading_background_color ?? '#ffffff' }};
+    }
+
 
     .swiper-container.banner-slider {
         width: 100%;
@@ -404,7 +417,7 @@
 
     .swiper-pagination {
         position: absolute;
-        bottom: 10px;
+        bottom: 5px;
         margin-left: 50%;
         transform: translateX(-50%);
         z-index: 10;
@@ -423,9 +436,6 @@
         display: none;
     }
 
-    body {
-        background: #ffffec;
-    }
 
     @font-face {
         font-family: 'SolaimanLipi';
@@ -454,6 +464,7 @@
     h6 {
         font-family: 'SolaimanLipi', 'Noto Sans Bengali', sans-serif !important;
         font-weight: 400;
+        color: {{ $colors->headings_color ?? '#ffffff' }};
     }
 
     label,

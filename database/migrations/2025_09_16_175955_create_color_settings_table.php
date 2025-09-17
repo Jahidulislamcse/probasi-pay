@@ -14,6 +14,7 @@ class CreateColorSettingsTable extends Migration
             $table->string('header_color')->nullable();
             $table->string('footer_color')->nullable();
             $table->string('headings_color')->nullable();
+            $table->string('heading_background_color')->nullable();
             $table->string('label_color')->nullable();
             $table->string('paragraph_color')->nullable();
             $table->timestamps();

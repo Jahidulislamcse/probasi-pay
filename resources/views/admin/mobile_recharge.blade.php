@@ -43,7 +43,6 @@
 
      .image-radio p {
          font-size: 14px;
-         color: #000;
          margin: 0;
      }
 
@@ -55,6 +54,30 @@
      input[type="radio"]:checked+.radio-btn+img+p {
          color: #4CAF50;
      }
+    @php
+        $colors = \App\Models\ColorSetting::first();
+    @endphp
+    .app-header {
+        background-color: {{ $colors->header_color ?? '#ff3130' }};
+    }
+    body {
+        background-color: {{ $colors->body_color ?? '#ff3130' }};
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'SolaimanLipi', 'Noto Sans Bengali', sans-serif !important;
+        font-weight: 400;
+        color: {{ $colors->headings_color ?? '#ffffff' }};
+    }
+    label {
+      color: {{ $colors->label_color ?? '#ffffff' }};   
+    }
+
+
  </style>
 
  @endsection
@@ -81,7 +104,7 @@
                          <input type="radio" name="operator" checked value="জিপি">
                          <span class="radio-btn"></span>
                          <img src="/images/gp.png" alt="Image 1">
-                         <p class="text-center" style="color: #000;">জিপি</p>
+                         <p class="text-center">জিপি</p>
                      </label>
 
                      <!-- Robi Radio Button -->
@@ -89,21 +112,21 @@
                          <input type="radio" name="operator" value="রবি">
                          <span class="radio-btn"></span>
                          <img src="/images/robi.png" alt="Image 3">
-                         <p class="text-center" style="color: #000;">রবি</p>
+                         <p class="text-center">রবি</p>
                      </label>
                      <!-- Airtel Radio Button -->
                      <label class="image-radio">
                          <input type="radio" name="operator" value="এয়ারটেল">
                          <span class="radio-btn"></span>
                          <img src="/images/ar.png" alt="Image 4">
-                         <p class="text-center" style="color: #000;">এয়ারটেল</p>
+                         <p class="text-center">এয়ারটেল</p>
                      </label>
                      <!-- Teletalk Radio Button -->
                      <label class="image-radio">
                          <input type="radio" name="operator" value="টেলিটক">
                          <span class="radio-btn"></span>
                          <img src="/images/teletalk.png" alt="Image 4">
-                         <p class="text-center" style="color: #000;">টেলিটক</p>
+                         <p class="text-center">টেলিটক</p>
                      </label>
 
                      <!-- Banglalink Radio Button -->
@@ -111,7 +134,7 @@
                          <input type="radio" name="operator" value="বাংলালিংক">
                          <span class="radio-btn"></span>
                          <img src="/images/bl.svg.png" alt="Image 2">
-                         <p class="text-center" style="color: #000;">বাংলালিংক</p>
+                         <p class="text-center">বাংলালিংক</p>
                      </label>
                  </div>
 

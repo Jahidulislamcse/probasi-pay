@@ -1,7 +1,7 @@
 @extends('admin.adminLayout.master')
 
 @section('meta')
-<title>{{ isset($title) ? $title : 'Update Colors' }} - {{ @siteInfo()->company_name }}</title>
+<title>{{ isset($title) ? $title : 'Updates' }} - {{ @siteInfo()->company_name }}</title>
 @endsection
 
 @section('style')
@@ -60,7 +60,7 @@
         padding: 1px;
         font-size: 16px;
         background-color: #1a3637;
-        color: white;
+       : white;
         border: none;
         border-radius: 5px;
         cursor: pointer;
@@ -83,7 +83,7 @@
 
 @section('main')
 <div class="color-form">
-    <h2>Update Site Colors</h2>
+    <h2>Update Sites</h2>
 
     @if(session('success'))
     <div class="alert alert-success">
@@ -103,59 +103,67 @@
         @csrf
         @method('PUT')
 
-        <!-- Body Color Section -->
+        <!-- Body Section -->
         <div class="form-group">
-            <label for="body_color">Body Color:</label>
+            <label for="body_color">Body:</label>
             <div style="display: flex; align-items: center;">
                 <div class="color-preview" style="background-color: {{ $colors->body_color ?? '#ffffff' }};"></div>
-                <input type="text" name="body_color" value="{{ old('body_color', $colors->body_color ?? '#ffffff') }}" placeholder="Enter color code (e.g., #ffffff)">
+                <input type="text" name="body_color" value="{{ old('body_color', $colors->body_color ?? '#ffffff') }}" placeholder="Enter code (e.g., #ffffff)">
             </div>
         </div>
 
-        <!-- Header Color Section -->
+        <!-- Header Section -->
         <div class="form-group">
-            <label for="header_color">Header Color:</label>
+            <label for="header_color">Header:</label>
             <div style="display: flex; align-items: center;">
                 <div class="color-preview" style="background-color: {{ $colors->header_color ?? '#ff3130' }};"></div>
-                <input type="text" name="header_color" value="{{ old('header_color', $colors->header_color ?? '#ff3130') }}" placeholder="Enter color code (e.g., #ff3130)">
+                <input type="text" name="header_color" value="{{ old('header_color', $colors->header_color ?? '#ff3130') }}" placeholder="Enter code (e.g., #ff3130)">
             </div>
         </div>
 
-        <!-- Footer Color Section -->
+        <!-- Footer Section -->
         <div class="form-group">
-            <label for="footer_color">Footer Color:</label>
+            <label for="footer_color">Footer:</label>
             <div style="display: flex; align-items: center;">
                 <div class="color-preview" style="background-color: {{ $colors->footer_color ?? '#333333' }};"></div>
-                <input type="text" name="footer_color" value="{{ old('footer_color', $colors->footer_color ?? '#333333') }}" placeholder="Enter color code (e.g., #333333)">
+                <input type="text" name="footer_color" value="{{ old('footer_color', $colors->footer_color ?? '#333333') }}" placeholder="Enter code (e.g., #333333)">
             </div>
         </div>
 
-        <!-- Headings Color Section -->
+        <!-- Headings Section -->
         <div class="form-group">
-            <label for="headings_color">Headings Color:</label>
+            <label for="headings_color">Headings (h1,h2....h6):</label>
             <div style="display: flex; align-items: center;">
                 <div class="color-preview" style="background-color: {{ $colors->headings_color ?? '#000000' }};"></div>
-                <input type="text" name="headings_color" value="{{ old('headings_color', $colors->headings_color ?? '#000000') }}" placeholder="Enter color code (e.g., #000000)">
+                <input type="text" name="headings_color" value="{{ old('headings_color', $colors->headings_color ?? '#000000') }}" placeholder="Enter code (e.g., #000000)">
             </div>
         </div>
 
         <div class="form-group">
-            <label for="label_color">Labels Color:</label>
+            <label for="heading_background_color">Headings Background:</label>
+            <div style="display: flex; align-items: center;">
+                <div class="color-preview" style="background-color: {{ $colors->heading_background_color ?? '#000000' }};"></div>
+                <input type="text" name="heading_background_color" value="{{ old('heading_background_color', $colors->heading_background_color ?? '#000000') }}" placeholder="Enter code (e.g., #000000)">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="label_color">Labels:</label>
             <div style="display: flex; align-items: center;">
                 <div class="color-preview" style="background-color: {{ $colors->label_color ?? '#000000' }};"></div>
-                <input type="text" name="label_color" value="{{ old('label_color', $colors->label_color ?? '#000000') }}" placeholder="Enter color code (e.g., #000000)">
+                <input type="text" name="label_color" value="{{ old('label_color', $colors->label_color ?? '#000000') }}" placeholder="Enter code (e.g., #000000)">
             </div>
         </div>
 
         <div class="form-group">
-            <label for="paragraph_color">Paragraph Color:</label>
+            <label for="paragraph_color">Paragraph (p):</label>
             <div style="display: flex; align-items: center;">
                 <div class="color-preview" style="background-color: {{ $colors->paragraph_color ?? '#000000' }};"></div>
-                <input type="text" name="paragraph_color" value="{{ old('paragraph_color', $colors->paragraph_color ?? '#000000') }}" placeholder="Enter color code (e.g., #000000)">
+                <input type="text" name="paragraph_color" value="{{ old('paragraph_color', $colors->paragraph_color ?? '#000000') }}" placeholder="Enter code (e.g., #000000)">
             </div>
         </div>
 
-        <button type="submit">Save Colors</button>
+        <button type="submit">Save</button>
     </form>
 </div>
 
