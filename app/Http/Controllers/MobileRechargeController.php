@@ -50,6 +50,7 @@ class MobileRechargeController extends Controller
         public function recharge(Request $request){
 
             if ($request->post()) {
+                // dd($request->post());
 
                 $request->validate([
                     'operator' => 'required',

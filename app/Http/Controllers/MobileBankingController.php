@@ -202,7 +202,8 @@ class MobileBankingController extends Controller
 
     public function upay(Request $request){
 
-        if ($request->post()) {
+         if ($request->post()) {
+
             $request->validate([
                 'type' => 'required',
                 'amount' => 'required|numeric|min:1',
@@ -230,7 +231,7 @@ class MobileBankingController extends Controller
                 $user = auth()->user();
                 $user->balance = $user->balance - $request->amount ;
                 $user->save();
-                            return redirect(route('success',[$data->id,'mobilebanking']));
+                             return redirect(route('success',[$data->id,'mobilebanking']));
              }
 
         }

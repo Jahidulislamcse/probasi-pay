@@ -42,17 +42,17 @@
      <div class="tf-container">
          <div class="tf-topbar d-flex justify-content-center align-items-center">
              <a href="{{ route('admin.index') }}" class="back-btn"><i class="icon-left white_color"></i></a>
-             <h3 class="white_color">উপায় পে</h3>
+             <h3 class="white_color">উপায় পে</h3>
          </div>
      </div>
  </div>
  <div class="card-secton topup-content">
+
      <form class="tf-form" method="post">
          @csrf
          <div class="tf-container">
              <div class="tf-balance-box">
-                 <div class="d-flex justify-content-between align-items-center">
-                 </div>
+                 <div class="d-flex justify-content-between align-items-center"></div>
 
                  <img src="/images/upay.png" style="width: 100px;display: block;margin: 13px auto;">
                  <h2 class="text-center" style=" font-weight: normal;">ট্রানজেকশন টাইপ সিলেক্ট করুন</h2>
@@ -91,59 +91,53 @@
                          <span class="icon-clear"></span>
                      </div>
                  </div>
+                 <h3 class="text-center" style="    margin-top: 30px;">ব্যবহারযোগ্য ব্যালেন্স: {{ currency(auth()->user()->balance) }} টাকা</h3>
              </div>
-             <h3 class="text-center" style="    margin-top: 30px;">ব্যবহারযোগ্য ব্যালেন্স: {{ currency(auth()->user()->balance) }} টাকা</h3>
+         </div>
+
+         <div class="text-center" style="margin: 30px;">
+             <span id="openConfirm" class="small-button">
+                 এগিয়ে যান
+             </span>
+         </div>
+
+         <div class="modal fade" id="txnConfirmModal" tabindex="-1" aria-hidden="true">
+             <div class="modal-dialog modal-dialog-centered">
+                 <div class="modal-content bk-modal">
+                     <div class="text-center mt-3">
+                         <img src="/images/upay.png" style="width: 100px; display: block; margin: 0 auto;">
+                     </div>
+
+                     <div class="bk-body">
+                         <div class="bk-summary">
+                             <div class="bk-col">
+                                 <div class="up-col-title">একাউন্ট নম্বর</div>
+                                 <div class="bk-col-value" id="mAccount">—</div>
+                             </div>
+                             <div class="bk-sep"></div>
+                             <div class="bk-col">
+                                 <div class="up-col-title">এমাউন্ট</div>
+                                 <div class="bk-col-value" id="mAmount">—</div>
+                             </div>
+                         </div>
+
+                         <div class="bk-summary">
+                             <div class="bk-col">
+                                 <div class="up-col-title">ট্রানজেকশন টাইপ</div>
+                                 <div class="bk-col-value" id="mType">—</div>
+                             </div>
+                         </div>
+
+                         <label class="bk-label" for="pinInput">পিন</label>
+                         <input id="pinInput" name="pin" type="password" class="form-control bk-input" placeholder="••••••" required>
+
+                         <button type="submit" class="btn up-btn mt-3">কনফার্ম</button>
+                     </div>
+                 </div>
+             </div>
          </div>
      </form>
  </div>
-
- <div class="text-center" style="margin: 30px;">
-     <span id="openConfirm" class="small-button">
-         এগিয়ে যান
-     </span>
- </div>
-
- <div class="modal fade" id="txnConfirmModal" tabindex="-1" aria-hidden="true">
-     <div class="modal-dialog modal-dialog-centered">
-         <div class="modal-content bk-modal">
-
-
-             <div class="text-center mt-3">
-                 <img src="/images/upay.png" style="width: 100px; display: block; margin: 0 auto;">
-             </div>
-
-             <div class="bk-body">
-                 <div class="bk-summary">
-                     <div class="bk-col">
-                         <div class="up-col-title">একাউন্ট নম্বর</div>
-                         <div class="bk-col-value" id="mAccount">—</div>
-                     </div>
-                     <div class="bk-sep"></div>
-                     <div class="bk-col">
-                         <div class="up-col-title">এমাউন্ট</div>
-                         <div class="bk-col-value" id="mAmount">—</div>
-                     </div>
-                 </div>
-
-                 <div class="bk-summary">
-                     <div class="bk-col">
-                         <div class="up-col-title">ট্রানজেকশন টাইপ</div>
-                         <div class="bk-col-value" id="mType">—</div>
-                     </div>
-                 </div>
-
-                 <label class="bk-label" for="pinInput">পিন</label>
-                 <input id="pinInput" name="pin" type="password" class="form-control bk-input" placeholder="••••••" required>
-
-                 <button type="submit" class="btn up-btn mt-3">কনফার্ম</button>
-             </div>
-         </div>
-     </div>
- </div>
- </form>
- </div>
-
-
 
 
  <div class="tf-panel up">

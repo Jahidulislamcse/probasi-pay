@@ -352,7 +352,7 @@
     body {
         background-color: {{ $colors->body_color ?? '#ffffff' }};
     }
-    .notify{
+    .notify {
         background-color: {{ $colors->heading_background_color ?? '#ffffff' }};
     }
 
