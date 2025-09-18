@@ -131,6 +131,7 @@
 </div>
 <div class="container-custom mt-5">
 
+    {{-- Existing Reviews --}}
     @if($reviews->isNotEmpty())
     <div class="mt-5 mb-6">
         <div class="mb-4">
