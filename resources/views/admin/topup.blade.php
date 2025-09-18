@@ -45,7 +45,7 @@
         margin-top: 5px;
         margin-bottom: 5px;
         color: #2f2e2e;
-        font-size: 18px;
+        font-size: 15px;
     }
 
     .account-grid {
