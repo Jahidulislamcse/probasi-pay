@@ -12,10 +12,10 @@
         $colors = \App\Models\ColorSetting::first();
     @endphp
     .app-header {
-        background-color: {{ $colors->header_color ?? '#ff3130' }};
+        background-color: {{ $colors->header_color ?? '#067fab' }};
     }
     body {
-        background-color: {{ $colors->body_color ?? '#ff3130' }};
+        background-color: {{ $colors->body_color ?? '#067fab' }};
     }
             h1,
     h2,
@@ -67,7 +67,7 @@
         justify-content: center;
         flex-direction: column;
         padding: 10px;
-        color: #ff3130;
+        color: #067fab;
         font-size: 16px;
         line-height: 20px;
         border-radius: 8px;
@@ -110,7 +110,7 @@ $country = country();
     @if($country)
     <span style="
 
-            background: #ff3130;
+            background: #067fab;
             padding: 5px 0;
             border-radius: 10px;
             font-size: 15px;
@@ -194,7 +194,7 @@ $country = country();
                         তাহলে আপনি অ্যাপে ব্যালেন্স পাবেন প্রতি {{ @$country->currency }} কোম্পানীর রেট {{ @$country->rate }} টাকা হিসেবে মোট ২৮০০ টাকা৷
                     </p>
 
-                    <p class="text-center" style="color:red;margin-top:20px">বিকাশের মাধ্যমে ডিপোজিটের শর্তসমূহ:</p>
+                    <p class="text-center" style="color:#067fab;margin-top:20px">বিকাশের মাধ্যমে ডিপোজিটের শর্তসমূহ:</p>
 
                     <p style="color:black; font-size: 17px; text-align: justify;">
                         বিকাশের মাধ্যমে ডিপোজিটের শর্তসমূহ:

@@ -65,7 +65,7 @@
                     @endforeach
 
                 <a href="{{ route('admin.index') }}" style="
-    background: #ff0000;
+    background: #067fab;
     color: #fff;
     font-size: 20px;
     padding: 6px 30px;

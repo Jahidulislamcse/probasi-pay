@@ -378,7 +378,7 @@ input.spectrum.with-add-on {
 }
 
 .sp-input.sp-validation-error {
-    border: 1px solid red;
+    border: 1px solid #067fab;
     background: #fdd
 }
 

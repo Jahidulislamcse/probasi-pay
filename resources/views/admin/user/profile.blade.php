@@ -13,10 +13,10 @@
         $colors = \App\Models\ColorSetting::first();
     @endphp
     .app-header {
-        background-color: {{ $colors->header_color ?? '#ff3130' }};
+        background-color: {{ $colors->header_color ?? '#067fab' }};
     }
     body {
-        background-color: {{ $colors->body_color ?? '#ff3130' }};
+        background-color: {{ $colors->body_color ?? '#067fab' }};
     }
             h1,
     h2,
@@ -103,7 +103,7 @@
 
     .custom-btn {
         background: transparent !important;
-        border: 1px solid #FF3100;
+        border: 1px solid #067fab;
         border-radius: 50px;
         color: #000000ff;
         padding: 8px 20px;
@@ -120,14 +120,14 @@
         width: 100%;
         height: 150px;
         border-radius: 15px;
-        border: 1px solid #FF3100;
+        border: 1px solid #067fab;
         color: white;
         cursor: pointer;
         margin: 0 5px;
     }
 
     .info-card-sm:hover {
-        background-color: #FF3100;
+        background-color: #067fab;
     }
 
     .info-card-sm i {

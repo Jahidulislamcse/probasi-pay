@@ -53,8 +53,8 @@
                 </div>
 
                 <button type="submit" name="submit" class="tf-btn accent large" style="
-    background-color: #ff3100;
-    border: 1px solid #ff3100;
+    background-color: #067fab;
+    border: 1px solid #067fab;
 ">লগইন</button>
 
             </form>
@@ -62,7 +62,7 @@
 
             <p class="mb-9 fw-3 text-center ">অ্যাকাউন্ট নেই? <a href="{{  route('register')  }}" class="auth-link-rg" style="
     padding: 15px;
-    background: #ff3100;
+    background: #067fab;
     color: #fff;
     border-radius: 5px;
 ">অ্যাকাউন্ট খুলুন</a></p>

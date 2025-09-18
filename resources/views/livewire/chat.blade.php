@@ -48,7 +48,7 @@
         position: absolute;
         top: -10px;
         right: -10px;
-        background-color: red;
+        background-color: #067fab;
         color: white;
         border: none;
         border-radius: 50%;
@@ -92,7 +92,7 @@
                         <div class="msg-info-name">{{ $msg->user->name ?? $msg->user_name }}</div>
                         <div class="msg-info-time">{{ \Illuminate\Support\Carbon::parse($msg->created_at)->format('h:i A') }}</div>
                     </div>
-                    @if(auth()->user()->role == 'super admin') <span style="background:red;padding: 2px 5px;color:#fff" wire:click="deletemsg({{$msg->id}})">Delete</span> @endif
+                    @if(auth()->user()->role == 'super admin') <span style="background:#067fab;padding: 2px 5px;color:#fff" wire:click="deletemsg({{$msg->id}})">Delete</span> @endif
                 </div>
             </div>
             @else
@@ -106,7 +106,7 @@
                     <div class="msg-info">
                         <div class="msg-info-name">{{ $msg->user->name ?? $msg->user_name }}</div>
                         <div class="msg-info-time">{{ \Illuminate\Support\Carbon::parse($msg->created_at)->format('H:i A') }}</div>
-                        @if(auth()->user()->role == 'super admin') <span style="background:red;padding: 2px 5px;color:#fff" wire:click="deletemsg({{$msg->id}})">Delete</span> @endif
+                        @if(auth()->user()->role == 'super admin') <span style="background:#067fab;padding: 2px 5px;color:#fff" wire:click="deletemsg({{$msg->id}})">Delete</span> @endif
                     </div>
                 </div>
             </div>

@@ -118,9 +118,9 @@
     @endphp
 
     body {
-        background-color: {{ $colors->body_color ?? '#ff3130' }};
+        background-color: {{ $colors->body_color ?? '#067fab' }};
     }
     .footer-clr{
-        background-color: {{ $colors->footer_color ?? '#ff3130' }};
+        background-color: {{ $colors->footer_color ?? '#067fab' }};
     }
 </style>

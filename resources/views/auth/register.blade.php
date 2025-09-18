@@ -75,7 +75,7 @@
         }
 
         .radio-button-group label {
-            color: #ff3100;
+            color: #067fab;
             background-color: #ffffff;
             border: 2px solid #ffc3c3;
             border-radius: 8px;
@@ -87,9 +87,9 @@
         }
 
         .radio-button-group input[type="radio"]:checked+label {
-            background-color: #ff3100;
+            background-color: #067fab;
             color: white;
-            border-color: #ff3100;
+            border-color: #067fab;
             font-size: 20px;
             padding: 10px;
         }
@@ -109,7 +109,7 @@
     <!-- Header Section -->
     <div class="header">
         <div class="tf-container">
-            <div class="tf-statusbar br-none d-flex justify-content-center align-items-center" style="background: #ff3100;">
+            <div class="tf-statusbar br-none d-flex justify-content-center align-items-center" style="background: #067fab;">
                 <a href="{{ route('login') }}" class="back-btn"> <i class="icon-left text-white"></i> </a>
             </div>
         </div>
@@ -192,7 +192,7 @@
                 </div>
 
                 <!-- Submit Button -->
-                <button type="submit" name="submit" class="tf-btn accent large" style="margin-top: 10px; background: #ff3100; border: 1px solid #ff3100;">
+                <button type="submit" name="submit" class="tf-btn accent large" style="margin-top: 10px; background: #067fab; border: 1px solid #067fab;">
                     এগিয়ে যান
                 </button>
             </form>
@@ -204,7 +204,7 @@
                         <h2 style="margin: 10px;"> ইতিমধ্যেই নিবন্ধিত? </h2>
                     </div>
                     <div class="col-5">
-                        <a href="{{ route('login') }}" class="tf-btn accent small" style="padding: 5px; width: 100%; background: #ff3100;">লগইন করুন</a>
+                        <a href="{{ route('login') }}" class="tf-btn accent small" style="padding: 5px; width: 100%; background: #067fab;">লগইন করুন</a>
                     </div>
                 </div>
             </div>

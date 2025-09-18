@@ -16,7 +16,7 @@ class ColorSettingController extends Controller
         if (!$colors) {
             $colors = new ColorSetting([
                 'body_color' => '#ffffff', 
-                'header_color' => '#ff3130', 
+                'header_color' => '#067fab', 
                 'footer_color' => '#333333', 
                 'headings_color' => '#000000', 
                 'heading_background_color' => '#000000', 

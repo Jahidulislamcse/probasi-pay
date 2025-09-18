@@ -116,8 +116,8 @@
         <div class="form-group">
             <label for="header_color">Header:</label>
             <div style="display: flex; align-items: center;">
-                <div class="color-preview" style="background-color: {{ $colors->header_color ?? '#ff3130' }};"></div>
-                <input type="text" name="header_color" value="{{ old('header_color', $colors->header_color ?? '#ff3130') }}" placeholder="Enter code (e.g., #ff3130)">
+                <div class="color-preview" style="background-color: {{ $colors->header_color ?? '#067fab' }};"></div>
+                <input type="text" name="header_color" value="{{ old('header_color', $colors->header_color ?? '#067fab') }}" placeholder="Enter code (e.g., #067fab)">
             </div>
         </div>
 

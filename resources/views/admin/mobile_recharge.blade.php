@@ -47,7 +47,7 @@
      }
 
      input[type="radio"]:checked+.radio-btn {
-         background-color: #e74518ff;
+         background-color: #067fab;
          border-color: #6e6e6eff;
      }
 
@@ -58,10 +58,10 @@
         $colors = \App\Models\ColorSetting::first();
     @endphp
     .app-header {
-        background-color: {{ $colors->header_color ?? '#ff3130' }};
+        background-color: {{ $colors->header_color ?? '#067fab' }};
     }
     body {
-        background-color: {{ $colors->body_color ?? '#ff3130' }};
+        background-color: {{ $colors->body_color ?? '#067fab' }};
     }
     h1,
     h2,

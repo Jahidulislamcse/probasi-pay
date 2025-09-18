@@ -1226,7 +1226,7 @@ a.fc-event:hover {
     left: 0;
     right: 0;
     border-style: solid;
-    border-color: red;
+    border-color: #067fab;
     border-color: var(--fc-now-indicator-color, red);
     border-width: 1px 0 0
 }
@@ -1236,7 +1236,7 @@ a.fc-event:hover {
     z-index: 4;
     margin-top: -5px;
     border-style: solid;
-    border-color: red;
+    border-color: #067fab;
     border-color: var(--fc-now-indicator-color, red)
 }
 

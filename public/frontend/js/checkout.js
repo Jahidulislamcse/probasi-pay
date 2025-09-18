@@ -1317,7 +1317,7 @@
         return rememberFunding;
     }));
     __webpack_require__.d(__webpack_exports__, "E", (function() {
-        return isFundingRemembered;
+        return isFundingRemembe#067fab;
     }));
     __webpack_require__.d(__webpack_exports__, "O", (function() {
         return precacheRememberedFunding;
@@ -1790,7 +1790,7 @@
         return !!getRememberedFunding((function(rememberedFunding) {
             return -1 !== rememberedFunding.indexOf(source);
         })) || !!Object(session.d)((function(session) {
-            return session.recentlyCheckedRemembered;
+            return session.recentlyCheckedRemembe#067fab;
         }));
     }
     function getRememberedFundingPromises() {
@@ -1807,7 +1807,7 @@
                 return -1 !== rememberedFunding.indexOf(source);
             }))) return !0;
             if (Object(session.d)((function(session) {
-                return session.recentlyCheckedRemembered;
+                return session.recentlyCheckedRemembe#067fab;
             }))) return !1;
             throw new Error("Can not find remembered funding result");
         }(source));
@@ -1847,7 +1847,7 @@
     }
     function precacheRememberedFunding() {
         return Object(session.d)((function(session) {
-            return session.recentlyCheckedRemembered;
+            return session.recentlyCheckedRemembe#067fab;
         })) ? zalgo_promise_src.a.resolve() : loadMeta();
     }
     function getRenderedButtons(props) {
@@ -7880,14 +7880,14 @@
     }, _BLIK_LOGO_COLORS[constants.i.ANY] = {
         primary: "#4D4D4F",
         secondary: "#000000",
-        tertiary: "#FF0000",
+        tertiary: "#067fab",
         quaternary: "#E83E49",
         quinary: "#FF00FF",
         senary: "#FFFFFF"
     }, _BLIK_LOGO_COLORS[constants.i.BLACK] = {
         primary: "#4D4D4F",
         secondary: "#000000",
-        tertiary: "#FF0000",
+        tertiary: "#067fab",
         quaternary: "#E83E49",
         quinary: "#FF00FF",
         senary: "#FFFFFF"
@@ -25295,7 +25295,7 @@
     var currentScript = Object(lib.l)();
     var currentProtocol = window.location.protocol.split(":")[0];
     var init = Object(lib.L)((function(_ref2) {
-        var precacheRemembered = _ref2.precacheRemembered;
+        var precacheRemembered = _ref2.precacheRemembe#067fab;
         Object(lib.D)() || Object(beaver_logger_client.q)("ineligible");
         Object(lib.c)();
         Object(lib.B)();

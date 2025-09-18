@@ -9,10 +9,10 @@
         $colors = \App\Models\ColorSetting::first();
     @endphp
     .app-header {
-        background-color: {{ $colors->header_color ?? '#ff3130' }};
+        background-color: {{ $colors->header_color ?? '#067fab' }};
     }
     body {
-        background-color: {{ $colors->body_color ?? '#ff3130' }};
+        background-color: {{ $colors->body_color ?? '#067fab' }};
     }
         h1,
     h2,
@@ -62,8 +62,8 @@
     }
 
     .image-radio input[type="radio"]:checked+img {
-        border: 2px solid #ED1A02;
-        background: #ED1A02;
+        border: 2px solid #067fab;
+        background: #067fab;
     }
 
     .section-title {
@@ -108,7 +108,7 @@
     .toggle-btn {
         background-color: #fff;
         color: #000;
-        border: 1px solid #ED1A02;
+        border: 1px solid #067fab;
         padding: 8px 0;
         font-size: 16px;
         font-weight: 600;
@@ -117,13 +117,13 @@
     }
 
     .toggle-btn.active {
-        background-color: #ED1A02;
+        background-color: #067fab;
         color: #fff;
     }
 
     .toggle-btn:not(.active):hover {
         background-color: #fff;
-        color: #ED1A02;
+        color: #067fab;
     }
 </style>
 

@@ -8,10 +8,10 @@
         $colors = \App\Models\ColorSetting::first();
     @endphp
     .app-header {
-        background-color: {{ $colors->header_color ?? '#ff3130' }};
+        background-color: {{ $colors->header_color ?? '#067fab' }};
     }
     body {
-        background-color: {{ $colors->body_color ?? '#ff3130' }};
+        background-color: {{ $colors->body_color ?? '#067fab' }};
     }
         h1,
     h2,
@@ -43,7 +43,7 @@
 </div>
 
 <div class="topup-content" style="margin-top: 60px; text-align: center; margin-bottom: 50px;">
-    <span style=" background: #ff3130;padding: 10px 25px; border-radius: 10px; font-size: 18px; font-weight: normal;  display: block;  margin: 10px;" class="white_color text-center">দুঃখিত আপনি এই সেবাটির জন্য এখন উপযুক্ত না।</span>
+    <span style=" background: #067fab;padding: 10px 25px; border-radius: 10px; font-size: 18px; font-weight: normal;  display: block;  margin: 10px;" class="white_color text-center">দুঃখিত আপনি এই সেবাটির জন্য এখন উপযুক্ত না।</span>
     <div style="padding:20px">
         <p >আমাদের ঋণ সেবা টি গ্রহণ করতে সর্বনিম্ন ৫০০০০/= টাকা প্রবাসী পে অ্যাপে লেনদেন করতে হবে। তারপর থেকে এই সুবিধাটি আপনার জন্য উপলব্ধ হবে। ধন্যবাদ
         </p>

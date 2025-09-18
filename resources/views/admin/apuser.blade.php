@@ -251,25 +251,25 @@
             <div class="modal-body">
                 <div class="tf-container">
                     <a href="{{ route('topup') }}" class="action-sheet-transfer">
-                        <div class="icon"><i style="color:#ff3130;" class="icon-friends"></i></div>
+                        <div class="icon"><i style="color:#067fab;" class="icon-friends"></i></div>
                         <div class="content">
-                            <h4 style="color:#ff3130;">মোবাইল পে ফান্ড অ্যাড</h4>
+                            <h4 style="color:#067fab;">মোবাইল পে ফান্ড অ্যাড</h4>
                             <p class="white_color">বিকাশ , নগদ , রকেট, উপায় অ্যাড ফান্ড করুন</p>
                         </div>
                     </a>
 
                     <a href="/helpline" class="action-sheet-transfer">
-                        <div class="icon"><i style="color:#ff3130;" class="icon-bank2"></i></div>
+                        <div class="icon"><i style="color:#067fab;" class="icon-bank2"></i></div>
                         <div class="content">
-                            <h4 style="color:#ff3130;">ক্যাশ পিক আপ </h4>
+                            <h4 style="color:#067fab;">ক্যাশ পিক আপ </h4>
                             <p class="white_color">সরাসরি অ্যাড ফান্ড করুন</p>
                         </div>
                     </a>
 
                     <a href="{{ route('bank.topup') }}" class="action-sheet-transfer">
-                        <div class="icon"><i style="color:#ff3130;" class="icon-bank2"></i></div>
+                        <div class="icon"><i style="color:#067fab;" class="icon-bank2"></i></div>
                         <div class="content">
-                            <h4 style="color:#ff3130;">ব্যাংক ফান্ড অ্যাড</h4>
+                            <h4 style="color:#067fab;">ব্যাংক ফান্ড অ্যাড</h4>
                             <p class="white_color">সকল ব্যাংকের মাধ্যমে অ্যাড ফান্ড করুন</p>
                         </div>
                     </a>
@@ -344,7 +344,7 @@
 
 <style>
     .app-header {
-        background-color: {{ $colors->header_color ?? '#ff3130' }};
+        background-color: {{ $colors->header_color ?? '#067fab' }};
     }
 
     .main-card {
@@ -396,7 +396,7 @@
     }
 
     .swiper-pagination-bullet-active {
-        background-color: #ff3130;
+        background-color: #067fab;
     }
 
     .swiper-button-next,
@@ -514,7 +514,7 @@
     .balance-btn {
         cursor: pointer;
         background-color: #ffffffff;
-        color: #ff3130;
+        color: #067fab;
         padding: 2px 10px;
         border-radius: 25px;
         text-align: center;
@@ -529,7 +529,8 @@
     }
 
     .balance-btn:hover {
-        color: black;
+        background-color: #ffffffff;
+        color: #067fab;  
     }
 
     .logo-container {

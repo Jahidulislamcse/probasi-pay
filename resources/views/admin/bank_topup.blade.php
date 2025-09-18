@@ -10,10 +10,10 @@
         $colors = \App\Models\ColorSetting::first();
     @endphp
     .app-header {
-        background-color: {{ $colors->header_color ?? '#ff3130' }};
+        background-color: {{ $colors->header_color ?? '#067fab' }};
     }
     body {
-        background-color: {{ $colors->body_color ?? '#ff3130' }};
+        background-color: {{ $colors->body_color ?? '#067fab' }};
     }
 
     h1,
@@ -66,7 +66,7 @@
         justify-content: center;
         flex-direction: column;
         padding: 5px;
-        color: #ff3130;
+        color: #067fab;
         font-size: 16px;
         line-height: 20px;
         border-radius: 8px;
@@ -106,7 +106,7 @@ $country = country();
 
     @if($country)
     <span style="
-            background: #ff3130;
+            background: #067fab;
             padding: 5px 0;
             border-radius: 10px;
             font-size: 15px;

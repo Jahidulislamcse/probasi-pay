@@ -6,10 +6,10 @@
         $colors = \App\Models\ColorSetting::first();
     @endphp
     .app-header {
-        background-color: {{ $colors->header_color ?? '#ff3130' }};
+        background-color: {{ $colors->header_color ?? '#067fab' }};
     }
     body {
-        background-color: {{ $colors->body_color ?? '#ff3130' }};
+        background-color: {{ $colors->body_color ?? '#067fab' }};
     }
         h1,
     h2,
@@ -44,7 +44,7 @@
     }
 
     .card-header-review {
-        background: linear-gradient(135deg, #d32f2f, #b71c1c);
+        background: #067fab;
         color: #fff;
         padding: 18px 25px;
         font-weight: 600;

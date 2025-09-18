@@ -47,7 +47,7 @@ td {
 }
 
 .critical_color {
-  color: #ea3434;
+  color: #067fab;
 }
 
 .white_color {
@@ -401,7 +401,7 @@ input::-moz-focus-inner {
 label {
   margin-top: 5px;
   margin-bottom: 5px;
-  color: #ff3100;
+  color: #067fab;
 }
 
 *,
@@ -497,7 +497,7 @@ h4,
 h5,
 h6 {
   font-weight: 700;
-  color: #ff3100;
+  color: #067fab;
 }
 
 button {
@@ -827,7 +827,7 @@ textarea.form-textarea[rows] {
 }
 
 .tf-switch-check.danger:checked:checked[type=checkbox] {
-  background: #ea3434;
+  background: #067fab;
   transition: 0.5s;
 }
 
@@ -987,7 +987,7 @@ textarea.form-textarea[rows] {
 }
 
 .text-danger {
-  color: #ea3434;
+  color: #067fab;
 }
 
 .tf-btn {
@@ -1004,8 +1004,8 @@ textarea.form-textarea[rows] {
 }
 
 .tf-btn.accent {
-  background-color: #ea3434;
-  border: 1px solid #ea3434;
+  background-color: #067fab;
+  border: 1px solid #067fab;
   color: #ffffff;
 }
 
@@ -1037,13 +1037,13 @@ textarea.form-textarea[rows] {
 }
 
 .tf-btn.danger {
-  background-color: #ea3434;
-  border: 1px solid #ea3434;
+  background-color: #067fab;
+  border: 1px solid #067fab;
   color: #ffffff;
 }
 
 .tf-btn.danger:hover {
-  color: #ea3434;
+  color: #067fab;
   background-color: #ffffff;
 }
 
@@ -1116,14 +1116,14 @@ textarea.form-textarea[rows] {
 }
 
 .tf-btn.outline-danger {
-  color: #ea3434;
-  border: 1px solid #ea3434;
+  color: #067fab;
+  border: 1px solid #067fab;
   background-color: #ffffff;
 }
 
 .tf-btn.outline-danger:hover {
-  background-color: #ea3434;
-  border: 1px solid #ea3434;
+  background-color: #067fab;
+  border: 1px solid #067fab;
   color: #ffffff;
 }
 
@@ -1726,7 +1726,7 @@ textarea.form-textarea[rows] {
   align-items: center;
   justify-content: center;
   height: 14px;
-  background: #ea3434;
+  background: #067fab;
   border-radius: 50%;
   right: -1px;
   top: 1px;
@@ -2143,7 +2143,7 @@ textarea.form-textarea[rows] {
 }
 
 .circle-box.bg-critical {
-  background-color: #ea3434;
+  background-color: #067fab;
 }
 
 .circle-box.bg-blue {
@@ -2375,7 +2375,7 @@ textarea.form-textarea[rows] {
   padding: 4px;
   display: inline-block;
   border-radius: 1000px;
-  background: #ea3434;
+  background: #067fab;
 }
 
 .preload {
@@ -2386,7 +2386,7 @@ textarea.form-textarea[rows] {
   position: relative;
   width: 100%;
   height: 100%;
-  background: #ff3100;
+  background: #067fab;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -3838,7 +3838,7 @@ textarea.form-textarea[rows] {
 }
 
 .box-scan-notification i {
-  color: red;
+  color: #067fab;
   font-size: 30px;
 }
 
@@ -4558,7 +4558,7 @@ textarea.form-textarea[rows] {
   border-bottom-right-radius: 8px;
   top: 10px;
   left: -4px;
-  background: #ea3434;
+  background: #067fab;
   color: #ffffff;
 }
 
@@ -4718,7 +4718,7 @@ textarea.form-textarea[rows] {
   bottom: 0;
   padding: 4px 16px;
   border-top-left-radius: 8px;
-  background: #ea3434;
+  background: #067fab;
   font-size: 22px;
   line-height: 30px;
   font-weight: 700;
@@ -4745,7 +4745,7 @@ textarea.form-textarea[rows] {
 
 .note-voucher {
   padding: 2px 8px;
-  background-color: #ea3434;
+  background-color: #067fab;
   color: #ffffff;
   font-size: 10px;
   line-height: 16px;
@@ -5232,7 +5232,7 @@ textarea.form-textarea[rows] {
 }
 
 .tf-panel .panel-change-profile .bottom a {
-  color: #ea3434;
+  color: #067fab;
   font-size: 16px;
   line-height: 24px;
   font-weight: 600;
@@ -5369,7 +5369,7 @@ textarea.form-textarea[rows] {
 }
 
 .small-button {
-  background: red;
+  background: #067fab;
   padding: 10px 20px;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -5409,7 +5409,7 @@ textarea.form-textarea[rows] {
 }
 
 .bank-text {
-  color: #ff3100;
+  color: #067fab;
   font-weight: 700;
 }
 
@@ -5462,7 +5462,7 @@ textarea.form-textarea[rows] {
 }
 
 .bank-col-title {
-  color: #ff3100;
+  color: #067fab;
   font-weight: 700;
   font-size: 12px;
   margin-bottom: 4px;
@@ -5513,7 +5513,7 @@ textarea.form-textarea[rows] {
 
 .bank-btn {
   width: 100%;
-  background: #ff3100;
+  background: #067fab;
   color: #fff;
   font-weight: 700;
   border-radius: 6px;
@@ -5604,7 +5604,7 @@ textarea.form-textarea[rows] {
 
 .image-radio input:checked+p {
   color: #fff;
-  background: linear-gradient(135deg, #f79797, #f45b5b);
+  background: #067fab;
   padding: 5px;
   border-radius: 6px;
   font-weight: 600;
