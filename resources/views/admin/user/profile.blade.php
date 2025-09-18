@@ -615,10 +615,6 @@
                             value="{{ request('q_rc') }}">
                         <input type="hidden" name="show" value="recharge">
                     </div>
-                    <div class="col-auto">
-                        <button class="btn btn-primary" type="submit">Search</button>
-                        <a class="btn btn-outline-secondary" href="{{ route('profile', ['show' => 'recharge']) }}">Reset</a>
-                    </div>
                 </form>
 
                 <div class="table-responsive">
