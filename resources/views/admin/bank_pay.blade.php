@@ -30,6 +30,9 @@
     p {
       color: {{ $colors->paragraph_color ?? '#ffffff' }};   
     }
+    .modal-clr{
+        background-color: #f1f1f1;
+    }
 
     .image-radio-group {
         display: flex;
@@ -40,22 +43,31 @@
 
     .image-card {
         display: flex;
+        flex-direction: column; /* Align items vertically */
         align-items: center;
         justify-content: center;
         margin: 5px;
         cursor: pointer;
+        padding: 10px 20px;
         width: 30%; 
         height: 150px; 
         text-align: center;
         border-radius: 10px;
         overflow: hidden;
-        background-color: #f1f1f1;
+        background-color: #ffffff;
     }
 
     .image-card img {
-        width: 100%; 
-        height: 100%;
+        width: 60%; 
+        height: 60%;
         object-fit: cover;
+    }
+
+    .bank-name {
+        margin-top: 10px; 
+        font-size: 14px; /* Adjust font size */
+        color: #333; /* Adjust text color */
+        font-weight: bold; 
     }
 
     @media (max-width: 768px) {
@@ -63,7 +75,12 @@
             width: 28%; 
             height: 100px; 
         }
+
+        .bank-name {
+            font-size: 12px; /* Adjust font size on smaller screens */
+        }
     }
+
 
     .selected-bank-img {
         width: 150px;  
@@ -87,6 +104,18 @@
         display: block;    
     }
 
+    .modal-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .modal-title {
+        margin: 0;
+    }
+
 </style>
 @endsection
 
@@ -108,16 +137,16 @@
             <div class="modal-header">
                 <h5 class="modal-title">ব্যাংক নির্বাচন করুন</h5>
             </div>
-            <div class="modal-body">
+            <div class="modal-body modal-clr">
                 <div class="image-radio-group">
                     @foreach ($payable_accounts as $account)
                     <div class="image-card" data-bank="{{ $account->name }}" data-logo="{{ asset($account->logo) }}">
                         <img src="{{ asset($account->logo) }}" alt="{{ $account->name }}">
+                        <p class="bank-name">{{ $account->name }}</p> 
                     </div>
                     @endforeach
                 </div>
             </div>
-            
         </div>
     </div>
 </div>

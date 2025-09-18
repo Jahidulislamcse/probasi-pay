@@ -35,13 +35,22 @@
     <div class="tf-container">
         <div class="tf-balance-box main-card" >
             @if($country)
-            <marquee behavior="scroll" direction="left" style="color:#ff3631;font-size: 15px;">
-                @if($rate)
-                আজকের রেট: {{ $country->name }} {{ enToBnNumber(1) }} {{ $country->currency }} = {{ enToBnNumber(number_format($rate, 2)) }} টাকা
-                @else
-                Rate not found
-                @endif
-            </marquee>
+            <div class="rate-container">
+                <div class="rate-button">
+                    <button type="button" class="rate-btn">
+                        রেট:
+                    </button>
+                </div>
+                <div class="rate-text">
+                    @if($rate)
+                        <span>{{ $country->name }} {{ enToBnNumber(1) }} {{ $country->currency }} = {{ enToBnNumber(number_format($rate, 2)) }} টাকা</span>
+                    @else
+                        <span>Rate not found</span>
+                    @endif
+                </div>
+            </div>
+
+
 
             <script>
                 console.log('Currency rate:', {
@@ -55,13 +64,13 @@
             <div class="wallet-footer mt-4">
                 <ul class="d-flex justify-content-between align-items-center">
                     <li class="wallet-card-item">
-                        <a href="javascript:void(0);" class="fw_6 text-center" id="btn-popup-down">
-                            <ul class="icon icon-group-transfers">
-                                <img src="/images/front-icons/add.png">
-                            </ul>
-                            <div class="label">টাকা জমা</div>
-                        </a>
-                    </li>
+                    <a href="javascript:void(0);" class="fw_6 text-center" data-bs-toggle="modal" data-bs-target="#fundModal">
+                        <ul class="icon icon-group-transfers">
+                            <img src="/images/front-icons/add.png">
+                        </ul>
+                        <div class="label">টাকা জমা</div>
+                    </a>
+                </li>
                     <li class="wallet-card-item">
                         <a class="fw_6" href="{{ route('recharge') }}">
                             <ul class="icon icon-topup">
@@ -233,50 +242,43 @@
 
 </div>
 
-<div class="tf-panel down">
-    <div class="panel_overlay"></div>
-    <div class="panel-box panel-down">
-        <div class="header bg_white_color">
-            <div class="tf-container">
-                <div class="tf-statusbar d-flex justify-content-center align-items-center">
-                    <a href="#" class="clear-panel"> <i class="icon-close1"></i> </a>
-                    <h3>অ্যাড ফান্ড</h3>
-                    <a href="#" class="action-right"></a>
+<div class="deposit-modal modal fade" id="fundModal" tabindex="-1" aria-labelledby="fundModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+            <div class="modal-body">
+                <div class="tf-container">
+                    <a href="{{ route('topup') }}" class="action-sheet-transfer">
+                        <div class="icon"><i style="color:#ff3130;" class="icon-friends"></i></div>
+                        <div class="content">
+                            <h4 style="color:#ff3130;">মোবাইল পে ফান্ড অ্যাড</h4>
+                            <p class="white_color">বিকাশ , নগদ , রকেট, উপায় অ্যাড ফান্ড করুন</p>
+                        </div>
+                    </a>
+
+                    <a href="/helpline" class="action-sheet-transfer">
+                        <div class="icon"><i style="color:#ff3130;" class="icon-bank2"></i></div>
+                        <div class="content">
+                            <h4 style="color:#ff3130;">ক্যাশ পিক আপ </h4>
+                            <p class="white_color">সরাসরি অ্যাড ফান্ড করুন</p>
+                        </div>
+                    </a>
+
+                    <a href="{{ route('bank.topup') }}" class="action-sheet-transfer">
+                        <div class="icon"><i style="color:#ff3130;" class="icon-bank2"></i></div>
+                        <div class="content">
+                            <h4 style="color:#ff3130;">ব্যাংক ফান্ড অ্যাড</h4>
+                            <p class="white_color">সকল ব্যাংকের মাধ্যমে অ্যাড ফান্ড করুন</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
-        <div class="wrap-transfer mb-5">
-            <div class="tf-container">
-
-                <a href="{{ route('topup') }}" class="action-sheet-transfer">
-                    <div class="icon"><i style="color:#ff3130;" class="icon-friends"></i></div>
-                    <div class="content">
-                        <h4 class=" " style="color:#ff3130;">মোবাইল পে ফান্ড অ্যাড</h4>
-                        <p>বিকাশ , নগদ , রকেট, উপায় অ্যাড ফান্ড করুন</p>
-                    </div>
-
-                </a>
-
-                <a href="/helpline" class="action-sheet-transfer">
-                    <div class="icon"><i style="color:#ff3130;" class="icon-bank2"></i></div>
-                    <div class="content">
-                        <h4 class="" style="color:#ff3130;">ক্যাশ পিক আপ </h4>
-                        <p>সরাসরি অ্যাড ফান্ড করুন</p>
-                    </div>
-                </a>
-
-                <a href="{{ route('bank.topup') }}" class="action-sheet-transfer">
-                    <div class="icon"><i style="color:#ff3130;" class="icon-bank2"></i></div>
-                    <div class="content">
-                        <h4 class="" style="color:#ff3130;">ব্যাংক ফান্ড অ্যাড</h4>
-                        <p>সকল ব্যাংকের মাধ্যমে অ্যাড ফান্ড করুন</p>
-                    </div>
-                </a>
-            </div>
-
-        </div>
     </div>
 </div>
+
 
 
 
@@ -491,9 +493,10 @@
     }
 
     .user-image {
+        margin-top: 5px;
         width: 50px;
         height: 50px;
-        border-radius: 50%;
+        border-radius: 25%;
     }
 
     .right-column {
@@ -536,7 +539,89 @@
     }
 
     .logo {
-        width: 80px;
+        width: 130px;
         height: auto;
     }
+    .rate-container {
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between; 
+        background: linear-gradient(135deg, #00b5e2, #006b8f); 
+        border-radius: 25px; 
+        width: 100%; 
+        padding-right: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+        margin: 0 auto; 
+    }
+
+    @media (min-width: 1024px) {
+        .rate-container {
+            width: 50%; 
+            margin: 0 auto; 
+        }
+    }
+
+    .rate-button {
+        margin-right: 10px; 
+    }
+
+    .rate-btn {
+        background-color: #006b8f; 
+        color: white; 
+        border: none; 
+        padding: 8px 15px; 
+        border-radius: 50px; 
+        font-weight: bold;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .rate-btn:hover {
+        background-color: #006b8f; 
+        color: white; 
+    }
+
+    .rate-text {
+        color: white; 
+        font-size: 16px; 
+        font-weight: bold; 
+        text-align: right; 
+    }
+    .deposit-modal{
+        margin-top: 10%;
+    }
+    @media (max-width: 600px) {
+        .deposit-modal{
+            margin-top: 30%;
+        }
+    }
+    .deposit-modal .modal-content {
+        background: rgba(255, 255, 255, 0.1); 
+        backdrop-filter: blur(10px); 
+        border-radius: 15px; 
+        border: none; 
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+    }
+
+    .deposit-modal .modal-body {
+        color: white; 
+        padding: 20px; 
+        background: rgba(0, 0, 0, 0.4); 
+        border-radius: 15px; 
+    }
+
+    .deposit-modal .modal-header {
+        border-bottom: none; 
+        color: white; 
+    }
+
+    .deposit-modal .btn-close {
+        background: rgba(255, 255, 255, 0.5); 
+        border-radius: 50%; 
+        padding: 8px;
+    }
+
+
+
+
 </style>

@@ -39,7 +39,7 @@
             </div>
         </div>
     </div>
-    <div class="mt-3 register-section">
+    <div class="mt-3 register-section" style="padding-left: 20px; padding-right: 20px;">
         <div class="tf-container">
             <form class="tf-form" action="{{ route('register') }}" method="post">
                 @csrf

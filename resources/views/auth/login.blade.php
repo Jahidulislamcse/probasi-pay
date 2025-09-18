@@ -35,11 +35,11 @@
         </div>
     </div>
     <!-- /preload -->
-    <div class="mt-9 login-section">
-        <div class="tf-container">
-            <form class="tf-form" action="{{  route('login') }}" method="post">
+    <div class="mt-9 login-section" style="padding-left: 20px; padding-right: 20px;">
+        <div class="tf-container" >
+            <form class="tf-form" action="{{  route('login') }}" method="post" >
                 @csrf
-                <img src="https://cdni.iconscout.com/illustration/premium/thumb/login-page-illustration-download-in-svg-png-gif-file-formats--app-developing-development-secure-mobile-webapp-and-pack-design-illustrations-3783954.png" style=" margin-left:25%; width:50%; height:50%">
+                <img src="https://cdni.iconscout.com/illustration/premium/thumb/login-page-illustration-download-in-svg-png-gif-file-formats--app-developing-development-secure-mobile-webapp-and-pack-design-illustrations-3783954.png" style=" margin-left:35%; width:30%; height:30%">
 
 
                 <div class="group-input">

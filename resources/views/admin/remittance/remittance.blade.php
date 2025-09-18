@@ -62,8 +62,8 @@
     }
 
     .image-radio input[type="radio"]:checked+img {
-        border: 2px solid #ccc;
-        background: #ccc;
+        border: 2px solid #ED1A02;
+        background: #ED1A02;
     }
 
     .section-title {
@@ -81,6 +81,27 @@
         font-size: 12px;
         margin-top: 4px;
     }
+    .s-button {
+        padding: 8px 15px; 
+        font-size: 14px; 
+        border: none; 
+        width: 50%;
+        border-radius: 20px; 
+        background-color: #4CAF50; 
+        color: white; 
+        cursor: pointer; 
+        transition: background-color 0.3s ease, transform 0.2s ease; 
+    }
+
+    .s-button:hover {
+        background-color: #45a049; 
+        color: #000;
+    }
+
+    .s-button:focus {
+        outline: none; 
+    }
+
 </style>
 
 <style>
@@ -101,7 +122,8 @@
     }
 
     .toggle-btn:not(.active):hover {
-        background-color: #f5f5f5;
+        background-color: #fff;
+        color: #ED1A02;
     }
 </style>
 
@@ -283,7 +305,7 @@
     </form>
 
     <div class="text-center" style="margin:30px; display:flex; gap:10px; justify-content:center;">
-        <button type="button" class="small-button" data-bs-toggle="modal" data-bs-target="#remitHistoryModal">
+        <button type="button" class="s-button" data-bs-toggle="modal" data-bs-target="#remitHistoryModal">
             পূর্বের রেমিটেন্স
         </button>
     </div>

@@ -102,7 +102,7 @@ class BankPayController extends Controller
         if ($country && $country->currency_code) {
             try {
                 // Use your API key
-                $apiKey = '59ba09ebee6097d71246aa9f';
+                $apiKey = '55dfd34b7d585b2674304254';
                 $response = Http::get("https://v6.exchangerate-api.com/v6/{$apiKey}/latest/{$country->currency_code}");
 
                 if ($response->successful() && isset($response['conversion_rates']['BDT'])) {
