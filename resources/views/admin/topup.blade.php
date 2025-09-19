@@ -268,8 +268,11 @@ $country = country();
     <form class=" tf-form" method="post">
         @csrf
         <p style="text-align: center; font-size: 28px;">এড ব্যালেন্স</p>
-        <p style="margin-top: 10px;">আমাদের অটো এড ব্যালেন্স সিস্টেম এ রিসেলার ব্যবসা এখন আরও সহজ ও নিরাপদ। অটো এড ব্যালেন্স ফিচার ব্যবহার করে আপনার নিজের ব্যালেন্স নিজেই ডিপোজিট করুন, যখন ইচ্ছা। এক্ষেত্রে কোন এজেন্ট কে মেসেজ করার ঝামেলা নেই।
-            বিকাশ বা নগদে লিমিটজনিত সমস্যার কারনে অটো এড ব্যালে এর ক্ষেত্রে বাংলাদেশি টাকায় সর্বনিম্ন ২৫০০০/= টাকা ডিপোজিট করতে হবে।
+        <p style="margin-top: 10px;">
+            @php
+                $guide = \App\Models\Guide::first();
+            @endphp
+            {!! $guide->mobile_deposit !!}
         </p>
 
         <div class="account-grid" style="margin-top: 10px; margin-bottom: 25px;">
@@ -307,4 +310,5 @@ $country = country();
 
 @endsection
 @section('script')
+    <script src="https://cdn.tiny.cloud/1/g4ey3kcg0n64dzmmh0maa5ubocx61oj7sgbkeiy16qsu5cqp/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 @endsection

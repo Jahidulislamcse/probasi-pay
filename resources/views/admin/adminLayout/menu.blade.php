@@ -89,6 +89,9 @@
                             <li class="{{ Request::routeIs('admin.colors.index') ? 'active' : '' }}">
                                 <a href="{{ route('admin.colors.index') }}">Color Setting</a>
                             </li>
+                             <li class="{{ Request::routeIs('guides.index') ? 'active' : '' }}">
+                                <a href="{{ route('guides.index') }}">App Guide</a>
+                            </li>
                         </ul>
                     </li>
 

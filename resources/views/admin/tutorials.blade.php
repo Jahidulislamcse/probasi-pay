@@ -83,7 +83,12 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, ipsa id quasi ab facere laudantium magnam excepturi possimus ducimus fuga quibusdam quis blanditiis dolores sequi eligendi. Libero possimus non impedit?</p>
+        <p>
+          @php
+              $guide = \App\Models\Guide::first();
+          @endphp
+          {!! $guide->how_to_balance_add !!}
+        </p>
       </div>
 
     </div>
@@ -100,7 +105,12 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, ipsa id quasi ab facere laudantium magnam excepturi possimus ducimus fuga quibusdam quis blanditiis dolores sequi eligendi. Libero possimus non impedit?</p>
+        <p>
+          @php
+              $guide = \App\Models\Guide::first();
+          @endphp
+          {!! $guide->how_to_bank_transfer !!}
+        </p>
       </div>
 
     </div>
@@ -117,7 +127,10 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, ipsa id quasi ab facere laudantium magnam excepturi possimus ducimus fuga quibusdam quis blanditiis dolores sequi eligendi. Libero possimus non impedit?</p>
+        <p> @php
+              $guide = \App\Models\Guide::first();
+          @endphp
+          {!! $guide->how_to_mobile_banking !!}</p>
       </div>
 
     </div>

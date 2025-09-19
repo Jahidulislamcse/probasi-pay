@@ -239,7 +239,10 @@
 
             </div>
             <span class="white_color text-center" style="padding:5px 0;border-radius:10px;font-size:18px;font-weight:normal;display:block; margin-bottom:15px;">
-                রেমিটেন্স পাঠান সর্বোচ্চ ২৫,০০০ টাকা পর্যন্ত
+                @php
+                    $guide = \App\Models\Guide::first();
+                @endphp
+                {!! $guide->remittance !!}
             </span>
 
             <h3 class="text-center" style="margin-top:30px;">

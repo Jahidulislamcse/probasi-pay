@@ -8,6 +8,7 @@ use App\Http\Controllers\CashInCashOutController;
 use App\Http\Controllers\ColorSettingController;
 use App\Http\Controllers\CommitionController;
 use App\Http\Controllers\CommonController;
+use App\Http\Controllers\GuideController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MobileBankingController;
 use App\Http\Controllers\MobileRechargeController;
@@ -233,4 +234,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::match(['get', 'post'], 'slider/{id}/edit', 'slider')->name('slider.edit')->middleware('admin');
         Route::match(['get', 'post'], 'slider/{id}/delete', 'sliderdelete')->name('slider.delete')->middleware('admin');
     });
+
+    Route::resource('guides', GuideController::class);
 });

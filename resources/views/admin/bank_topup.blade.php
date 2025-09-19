@@ -122,7 +122,11 @@ $country = country();
     </span>
     @endif
     <div style="padding:20px">
-        <p>{{ @$country->name  }} তে আমাদের কোম্পানীর ব্যাংক একাউন্টে রিঙ্গিত ট্রান্সফার করে আপনি অ্যাপে ব্যালেন্স নিতে পারবেন। এক্ষেত্রে আপনি আপনার ব্যাংক একাউন্ট থেকে {{ @$country->name  }} কোম্পানির ব্যাংক একাউন্টে {{ @$country->currency }} ট্রান্সফার করে অ্যাপে রিসিট সাবমিট করলে বা হেল্প সেন্টারের হোয়াটসএপ নাম্বারে রিসিট জমা দিলে আপনাকে প্রতি {{ @$country->currency }} কোম্পানির রেট অনুযায়ী অ্যাপে বাংলাদেশি টাকায় ব্যালেন্স এড করে দেওয়া হবে।
+        <p> 
+            @php
+                $guide = \App\Models\Guide::first();
+            @endphp
+            {!! $guide->bank_deposit !!}
         </p>
     </div>
 
@@ -274,4 +278,5 @@ $country = country();
 @endsection
 
 @section('script')
+    <script src="https://cdn.tiny.cloud/1/g4ey3kcg0n64dzmmh0maa5ubocx61oj7sgbkeiy16qsu5cqp/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 @endsection

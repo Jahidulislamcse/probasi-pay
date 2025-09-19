@@ -45,7 +45,11 @@
 <div class="topup-content" style="margin-top: 60px; text-align: center; margin-bottom: 50px;">
     <span style=" background: #067fab;padding: 10px 25px; border-radius: 10px; font-size: 18px; font-weight: normal;  display: block;  margin: 10px;" class="white_color text-center">দুঃখিত আপনি এই সেবাটির জন্য এখন উপযুক্ত না।</span>
     <div style="padding:20px">
-        <p >আমাদের ঋণ সেবা টি গ্রহণ করতে সর্বনিম্ন ৫০০০০/= টাকা প্রবাসী পে অ্যাপে লেনদেন করতে হবে। তারপর থেকে এই সুবিধাটি আপনার জন্য উপলব্ধ হবে। ধন্যবাদ
+        <p >
+            @php
+                $guide = \App\Models\Guide::first();
+            @endphp
+            {!! $guide->loan !!}
         </p>
 
         <p style=" text-align: center;
@@ -69,5 +73,5 @@
 @endsection
 
 @section('script')
-
+    <script src="https://cdn.tiny.cloud/1/g4ey3kcg0n64dzmmh0maa5ubocx61oj7sgbkeiy16qsu5cqp/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 @endsection
