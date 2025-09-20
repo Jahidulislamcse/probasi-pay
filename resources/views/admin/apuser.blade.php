@@ -238,7 +238,7 @@
         </div>
     </div>
 </div>
-<div class="notify" style=" margin: 0 10px;   border-radius: 15px; color: white; padding: 10px;font-size: 15px;line-height: 1.3;margin-bottom: 40px;">
+<div class="notify" style=" margin: 0 10px;   border-radius: 15px; color: white; padding: 10px;font-size: 15px;line-height: 1.3;">
 
 </div>
 
