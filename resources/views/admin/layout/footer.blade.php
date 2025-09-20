@@ -9,7 +9,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @livewireScripts
 
-<div class="bottom-navigation-bar" style="margin-top: 80px;">
+<div class="bottom-navigation-bar" style="">
 
     <div class="footer-clr tf-container px-5">
         <ul class="tf-navigation-bar">
