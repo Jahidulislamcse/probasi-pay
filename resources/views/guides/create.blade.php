@@ -1,4 +1,5 @@
 @extends('admin.adminLayout.master')
+
 @section('meta')
     <title>Create Payable Account - {{ @siteInfo()->company_name }}</title>
 @endsection
@@ -58,15 +59,18 @@
         </form>
     </div>
 @endsection
+
 @section('script')
-    <script src="https://cdn.tiny.cloud/1/g4ey3kcg0n64dzmmh0maa5ubocx61oj7sgbkeiy16qsu5cqp/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <!-- CKEditor CDN -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
     <script>
-        tinymce.init({
-            selector: 'textarea',  
-            plugins: 'lists link image table code emoticons',  
-            toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist | outdent indent | link image emoticons code',  // Customize the toolbar
-            menubar: false,  
+        // Loop through all textareas and initialize CKEditor
+        document.querySelectorAll('textarea').forEach(function(textarea) {
+            ClassicEditor
+                .create(textarea)
+                .catch(error => {
+                    console.error(error);
+                });
         });
     </script>
 @endsection
-

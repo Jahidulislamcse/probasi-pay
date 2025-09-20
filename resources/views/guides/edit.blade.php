@@ -5,8 +5,7 @@
 @endsection
 
 @section('style')
-    <!-- Add TinyMCE CDN script for rich text editor -->
-    <script src="https://cdn.tiny.cloud/1/g4ey3kcg0n64dzmmh0maa5ubocx61oj7sgbkeiy16qsu5cqp/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <!-- Add CKEditor CDN script for rich text editor -->
 @endsection
 
 @section('main')
@@ -57,21 +56,24 @@
                 <textarea name="about_us" class="form-control" rows="5">{{ old('about_us', $guide->about_us) }}</textarea>
             </div>
 
-           <button type="submit" style="width: 150px;" class="btn btn-primary mt-4 mb-4">Save</button>
+            <button type="submit" style="width: 150px;" class="btn btn-primary mt-4 mb-4">Save</button>
 
         </form>
     </div>
 @endsection
 
 @section('script')
-    <!-- TinyMCE Initialization for Text Areas -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+
+    <!-- CKEditor Initialization for Text Areas -->
     <script>
-        // Initialize TinyMCE for all textareas
-        tinymce.init({
-            selector: 'textarea',  // Apply to all textareas
-            plugins: 'lists link image table code emoticons',  // Enable required plugins (including emojis)
-            toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist | outdent indent | link image emoticons code',  // Customize the toolbar
-            menubar: false,  // Disable the menubar
+        // Loop through all textareas and initialize CKEditor
+        document.querySelectorAll('textarea').forEach(function(textarea) {
+            ClassicEditor
+                .create(textarea)
+                .catch(error => {
+                    console.error(error);
+                });
         });
     </script>
 @endsection

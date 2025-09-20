@@ -312,5 +312,4 @@ $country = country();
 
 @endsection
 @section('script')
-    <script src="https://cdn.tiny.cloud/1/g4ey3kcg0n64dzmmh0maa5ubocx61oj7sgbkeiy16qsu5cqp/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 @endsection
