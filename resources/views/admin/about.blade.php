@@ -191,8 +191,9 @@
     @php
         $guide = \App\Models\Guide::first();
     @endphp
-    {!! $guide->about_us !!}
-
+    @if(!empty($guide->about_us))
+        {!! $guide->about_us !!}
+    @endif
     </iframe>
   </div>
 </div>

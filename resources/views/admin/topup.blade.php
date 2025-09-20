@@ -272,7 +272,9 @@ $country = country();
             @php
                 $guide = \App\Models\Guide::first();
             @endphp
-            {!! $guide->mobile_deposit !!}
+            @if(!empty($guide->mobile_deposit))
+                {!! $guide->mobile_deposit !!}
+            @endif
         </p>
 
         <div class="account-grid" style="margin-top: 10px; margin-bottom: 25px;">

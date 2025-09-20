@@ -87,7 +87,9 @@
           @php
               $guide = \App\Models\Guide::first();
           @endphp
-          {!! $guide->how_to_balance_add !!}
+          @if(!empty($guide->how_to_balance_add))
+              {!! $guide->how_to_balance_add !!}
+          @endif
         </p>
       </div>
 
@@ -109,7 +111,9 @@
           @php
               $guide = \App\Models\Guide::first();
           @endphp
-          {!! $guide->how_to_bank_transfer !!}
+          @if(!empty($guide->how_to_bank_transfer))
+              {!! $guide->how_to_bank_transfer !!}
+          @endif
         </p>
       </div>
 
@@ -130,7 +134,10 @@
         <p> @php
               $guide = \App\Models\Guide::first();
           @endphp
-          {!! $guide->how_to_mobile_banking !!}</p>
+          @if(!empty($guide->how_to_mobile_banking))
+              {!! $guide->how_to_mobile_banking !!}
+          @endif
+        </p>
       </div>
 
     </div>

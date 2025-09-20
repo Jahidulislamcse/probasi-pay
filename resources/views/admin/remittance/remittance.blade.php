@@ -242,7 +242,9 @@
                 @php
                     $guide = \App\Models\Guide::first();
                 @endphp
-                {!! $guide->remittance !!}
+                @if(!empty($guide->remittance))
+                    {!! $guide->remittance !!}
+                @endif
             </span>
 
             <h3 class="text-center" style="margin-top:30px;">

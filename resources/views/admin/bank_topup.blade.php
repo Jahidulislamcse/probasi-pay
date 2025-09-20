@@ -126,7 +126,9 @@ $country = country();
             @php
                 $guide = \App\Models\Guide::first();
             @endphp
-            {!! $guide->bank_deposit !!}
+             @if(!empty($guide->bank_deposit))
+                {!! $guide->bank_deposit !!}
+            @endif
         </p>
     </div>
 

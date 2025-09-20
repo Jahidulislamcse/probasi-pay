@@ -49,7 +49,9 @@
             @php
                 $guide = \App\Models\Guide::first();
             @endphp
-            {!! $guide->loan !!}
+             @if(!empty($guide->loan))
+                {!! $guide->loan !!}
+            @endif
         </p>
 
         <p style=" text-align: center;
