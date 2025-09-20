@@ -35,6 +35,7 @@ class GuideController extends Controller
             'how_to_bank_transfer' => 'nullable|string',
             'how_to_mobile_banking' => 'nullable|string',
             'about_us' => 'nullable|string',
+            'mobile_menual_deposit' => 'nullable|string',
         ]);
 
         Guide::create($request->all());
@@ -58,6 +59,7 @@ class GuideController extends Controller
             'how_to_bank_transfer' => 'nullable|string',
             'how_to_mobile_banking' => 'nullable|string',
             'about_us' => 'nullable|string',
+            'mobile_menual_deposit' => 'nullable|string',
         ]);
 
         $guide->update($request->all());

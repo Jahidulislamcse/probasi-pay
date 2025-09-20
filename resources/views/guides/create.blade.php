@@ -21,6 +21,11 @@
             </div>
 
             <div class="form-group">
+                <label for="mobile_menual_deposit">Mobile Menual Deposit</label>
+                <textarea name="mobile_menual_deposit" class="form-control" rows="5">{{ old('mobile_menual_deposit') }}</textarea>
+            </div>
+
+            <div class="form-group">
                 <label for="bank_deposit">Bank Deposit</label>
                 <textarea name="bank_deposit" class="form-control" rows="5">{{ old('bank_deposit') }}</textarea>
             </div>

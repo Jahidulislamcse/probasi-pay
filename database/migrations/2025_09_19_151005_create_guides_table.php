@@ -12,6 +12,7 @@ class CreateGuidesTable extends Migration
         Schema::create('guides', function (Blueprint $table) {
             $table->id();
             $table->longText('mobile_deposit')->nullable();
+            $table->longText('mobile_menual_deposit')->nullable();
             $table->longText('bank_deposit')->nullable();
             $table->longText('loan')->nullable();
             $table->longText('remittance')->nullable();
