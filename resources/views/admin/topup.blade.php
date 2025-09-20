@@ -81,6 +81,22 @@
         overflow-x: auto;
         padding-right: 10px;
     }
+
+    .quick-btn{
+        padding: 10px 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        color: white;
+        font-size: 15px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    @media (max-width: 600px) {
+        .quick-btn{
+            font-size: 12px;
+             padding: 5px 10px;
+        }
+    }
 </style>
 
 @endsection
@@ -113,7 +129,7 @@ $country = country();
             background: #067fab;
             padding: 5px 0;
             border-radius: 10px;
-            font-size: 15px;
+            font-size: 11px;
             font-weight: normal;
             display: block;
             margin-bottom: 20px;"
@@ -129,32 +145,16 @@ $country = country();
 
 <div class="text-center" style="margin: 30px;">
     <div style="display: inline-block; margin-right: 10px;">
-        <span style="
-            background: #16a085;
-            padding: 10px 20px;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            color: white;
-            font-size: 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            " data-bs-toggle="modal" data-bs-target="#depositRulesModal">
+        <span class="quick-btn" style="
+            background: #16a085;" data-bs-toggle="modal" data-bs-target="#depositRulesModal">
             ম্যানুয়াল এড ব্যালেন্স
 
         </span>
     </div>
 
     <div style="display: inline-block;">
-        <span style="
-            background: #e67e22;
-            padding: 10px 20px;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            color: white;
-            font-size: 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            " data-bs-toggle="modal" data-bs-target="#topupsModal">
+        <span class="quick-btn" style="
+            background: #e67e22;" data-bs-toggle="modal" data-bs-target="#topupsModal">
             পূর্বের রিকোয়েস্ট
         </span>
     </div>
