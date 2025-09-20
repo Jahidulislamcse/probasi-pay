@@ -19,7 +19,7 @@ class RemittanceController extends Controller
                     'required',
                     'numeric',
                     'min:1',
-                    'max:25000',
+                    'min:25000',
                     function ($attribute, $value, $fail) {
                         if ($value > auth()->user()->balance) {
                             $fail('Amount cannot exceed your available balance.');
