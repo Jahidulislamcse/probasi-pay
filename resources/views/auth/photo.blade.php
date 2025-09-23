@@ -21,11 +21,11 @@
     <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
     <link rel="apple-touch-icon" sizes="192x192" href="app/icons/icon-192x192.png">
     <link rel="stylesheet" type="text/css"  href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" >
-        <style>
-            video {
-    transform: scaleX(1);
-}
-        </style>
+    <style>
+        video {
+            transform: scaleX(1);
+        }
+    </style>
 </head>
 
 <body>
@@ -56,9 +56,9 @@
                 <br><br>
 
                 @php
-                $data = Illuminate\Support\Facades\Session::get('register-info');
-                $country = App\Models\Country::find($data['location']);
-            @endphp
+                    $data = Illuminate\Support\Facades\Session::get('register-info');
+                    $country = App\Models\Country::find($data['location']);
+                @endphp
 
                 <input type="hidden" name="photo" id="photoInput"  value="{{ @$data['photo'] }}">
                 <input name="name" type="hidden" placeholder="Your Full Name" value="{{ @$data['name'] }}">
@@ -68,12 +68,7 @@
                 <input name="password_confirmation" type="hidden" placeholder="Your Full Name" value="{{ @$data['password_confirmation'] }}">
                 <input name="role" type="hidden" placeholder="Your Full Name" value="{{ @$data['role'] }}">
                 <input name="type" type="hidden" placeholder="Your Full Name" value="{{ @$data['type'] }}">
-
-              
                 <button type="submit"  class="btn  btn-primary">পরবর্তী ধাপ</button>
-
-                              
-                                
             </form>
 
         </div>

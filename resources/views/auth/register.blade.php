@@ -93,7 +93,33 @@
             font-size: 20px;
             padding: 10px;
         }
+
+        .country-list {
+            display: none;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border: 1px solid #ddd;
+            background: #fff;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .country-list.show {
+            display: block;
+            position: absolute;
+            z-index: 1000;
+        }
+        .country-list li {
+            padding: 5px;
+            cursor: pointer;
+        }
+        .country-list li:hover {
+            background: #f1f1f1;
+        }
+
     </style>
+
+    
 
 </head>
 
@@ -137,17 +163,34 @@
                     <div class="col-5" style="padding-right: 0px;">
                         <div class="custom-country-dropdown">
                             <label>দেশ</label>
-                            <div class="form-control selected-country" style="font-size:12px" onclick="toggleCountryDropdown()">দেশ </div>
+
+                            {{-- Default selected country (first one from DB) --}}
+                            @php
+                                $firstCountry = App\Models\Country::first();
+                            @endphp
+
+                            <div class="form-control selected-country" style="font-size:12px" onclick="toggleCountryDropdown()">
+                                @if($firstCountry)
+                                    <img src="{{ asset($firstCountry->image) }}" alt="{{ $firstCountry->name }}" style="height: 25px; width: 40px; margin-right:5px;">
+                                    {{ $firstCountry->code }}
+                                @else
+                                    দেশ
+                                @endif
+                            </div>
+
                             <ul class="country-list" id="countryDropdown">
                                 @foreach (App\Models\Country::all() as $data)
-                                    <li onclick="selectCountry('{{ $data->id }}', '{{ asset($data->image) }}', '{{ @$data->name }}')">
-                                        <img src="{{ asset(@$data->image) }}" alt="{{ @$data->name }}" style=" height: 25px; width: 40px;">
-                                        {{ @$data->name }}
+                                    <li onclick="selectCountry('{{ $data->id }}', '{{ asset($data->image) }}', '{{ $data->name }}', '{{ $data->code }}')">
+                                        <img src="{{ asset($data->image) }}" alt="{{ $data->name }}" style="height: 25px; width: 40px; margin-right:5px;">
+                                         <p style="color: black;">{{ $data->name }} ({{ $data->code }})</p>
                                     </li>
                                 @endforeach
                             </ul>
-                            <input type="hidden" name="location" id="countryInput" required>
+
+                            <input type="hidden" name="location" id="countryInput" value="{{ $firstCountry?->id }}" required>
+                            <input type="hidden" name="code" id="phoneCodeInput" value="{{ $firstCountry?->code }}">
                         </div>
+
                     </div>
 
                     <div class="col-7">
@@ -273,6 +316,20 @@
             }
         });
     </script>
+    <script>
+        function toggleCountryDropdown() {
+            document.getElementById("countryDropdown").classList.toggle("show");
+        }
+
+        function selectCountry(id, image, name, code) {
+            const selected = document.querySelector(".selected-country");
+            selected.innerHTML = `<img src="${image}" style="height: 25px; width: 40px; margin-right:5px;"> ${code}`;
+            document.getElementById("countryInput").value = id;
+            document.getElementById("phoneCodeInput").value = code;
+            document.getElementById("countryDropdown").classList.remove("show");
+        }
+    </script>
+
 </body>
 
 </html>
