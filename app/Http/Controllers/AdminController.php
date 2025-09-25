@@ -99,6 +99,13 @@ class AdminController extends Controller
         return view('admin.helpline', compact(['title']));
     }
 
+    
+    public function cash_pickup()
+    {
+        $title = "Cash Pickup";
+        return view('admin.cash_pickup', compact(['title']));
+    }
+
     public function rate()
     {
         $title = "Rate Calculation";

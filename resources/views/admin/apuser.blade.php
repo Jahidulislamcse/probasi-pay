@@ -251,26 +251,26 @@
             <div class="modal-body">
                 <div class="tf-container">
                     <a href="{{ route('topup') }}" class="action-sheet-transfer">
-                        <div class="icon"><i style="color: white;" class="icon-friends"></i></div>
+                        <div class="icon"><i style="color: #ff006e;" class="icon-friends"></i></div>
                         <div class="content">
-                            <h2 style="color: white">মোবাইল পে ফান্ড অ্যাড</h2>
+                            <h2 style="color: #ff006e;">মোবাইল পে ফান্ড অ্যাড</h2>
                             <p class="white_color">বিকাশ , নগদ , রকেট, উপায় অ্যাড ফান্ড করুন</p>
                         </div>
                     </a>
 
-                    <a href="/helpline" class="action-sheet-transfer">
-                        <div class="icon"><i style="color: white;" class="icon-bank2"></i></div>
+                    <a href="/cash_pickup" class="action-sheet-transfer">
+                        <div class="icon"><i style="color: #ff006e;" class="icon-bank2"></i></div>
                         <div class="content">
-                            <h2 style="color: white">ক্যাশ পিক আপ </h2>
+                            <h2 style="color: #ff006e;">ক্যাশ পিক আপ </h2>
                             <p class="white_color">সরাসরি অ্যাড ফান্ড করুন</p>
                         </div>
                     </a>
 
                     <a href="{{ route('bank.topup') }}" class="action-sheet-transfer">
-                        <div class="icon"><i style="color: white;" class="icon-bank2"></i></div>
+                        <div class="icon"><i style="color: #ff006e;" class="icon-bank2"></i></div>
                         <div class="content">
-                            <h2 style="color: white">ব্যাংক ফান্ড অ্যাড</h2>
-                            <p class="white_color">সকল ব্যাংকের মাধ্যমে অ্যাড ফান্ড করুন</p>
+                            <h2 style="color: #ff006e;">ব্যাংক ফান্ড অ্যাড</h2>
+                            <p class="white_color">লোকাল ব্যাংকের মাধ্যমে এডফান্ড করুন</p>
                         </div>
                     </a>
                 </div>

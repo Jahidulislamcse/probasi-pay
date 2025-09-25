@@ -28,6 +28,8 @@
                     <tr><td><strong>Mobile Deposit</strong></td><td>{!! $guide->mobile_deposit !!}</td></tr>
                     <tr><td><strong>Mobile Menual Deposit</strong></td><td>{!! $guide->mobile_menual_deposit !!}</td></tr>
                     <tr><td><strong>Bank Deposit</strong></td><td>{!! $guide->bank_deposit !!}</td></tr>
+                    <tr><td><strong>Customer Care</strong></td><td>{!! $guide->customer_care !!}</td></tr>
+                    <tr><td><strong>Cash Pickup</strong></td><td>{!! $guide->cash_pickup !!}</td></tr>
                     <tr><td><strong>Loan</strong></td><td>{!! $guide->loan !!}</td></tr>
                     <tr><td><strong>Remittance</strong></td><td>{!! $guide->remittance !!}</td></tr>
                     <tr><td><strong>How to Add Balance</strong></td><td>{!! $guide->how_to_balance_add !!}</td></tr>

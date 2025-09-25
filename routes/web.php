@@ -132,6 +132,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::match(['get', 'post'], 'pending-chat', 'pendingChat')->name('pending-chat');
         Route::match(['get', 'post'], 'support', 'support')->name('support');
         Route::match(['get', 'post'], 'helpline', 'helpline')->name('helpline');
+        Route::match(['get', 'post'], 'cash_pickup', 'cash_pickup')->name('cash_pickup');
         Route::match(['get', 'post'], 'rate', 'rate')->name('rate');
         Route::match(['get', 'post'], 'news', 'news')->name('news');
         Route::match(['get', 'post'], 'tutorials', 'tutorials')->name('tutorials');

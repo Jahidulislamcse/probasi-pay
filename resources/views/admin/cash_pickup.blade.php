@@ -37,7 +37,7 @@
     <div class="tf-container">
         <div class="tf-topbar d-flex justify-content-center align-items-center">
             <a href="{{  route('admin.index')  }}" class="back-btn"><i class="icon-left white_color"></i></a>
-            <h3 class="white_color">হেল্প লাইন</h3>
+            <h3 class="white_color">ক্যাশ পিক আপ </h3>
         </div>
     </div>
 </div>
@@ -46,8 +46,8 @@
             @php
                 $guide = \App\Models\Guide::first();
             @endphp
-             @if(!empty($guide->customer_care))
-                {!! $guide->customer_care !!}
+             @if(!empty($guide->cash_pickup))
+                {!! $guide->cash_pickup !!}
             @endif
         </p>
     </div>

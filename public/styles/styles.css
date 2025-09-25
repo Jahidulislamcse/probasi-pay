@@ -363,6 +363,8 @@ input {
   line-height: normal;
 }
 
+
+
 input,
 textarea {
   background-image: -webkit-linear-gradient(hsla(0, 0%, 100%, 0), hsla(0, 0%, 100%, 0));
@@ -1004,8 +1006,8 @@ textarea.form-textarea[rows] {
 }
 
 .tf-btn.accent {
-  background-color: #067fab;
-  border: 1px solid #067fab;
+  background-color: green;
+  border: 1px solid green;
   color: #ffffff;
 }
 
@@ -5369,7 +5371,7 @@ textarea.form-textarea[rows] {
 }
 
 .small-button {
-  background: #067fab;
+  background: green;
   padding: 10px 20px;
   margin-top: 20px;
   margin-bottom: 20px;

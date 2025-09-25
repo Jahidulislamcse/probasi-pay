@@ -43,13 +43,11 @@
 
     .image-card {
         display: flex;
-        flex-direction: column; /* Align items vertically */
+        flex-direction: column; 
         align-items: center;
         justify-content: center;
-        margin: 5px;
         cursor: pointer;
-        padding: 10px 20px;
-        width: 30%; 
+        width: 29%; 
         height: 150px; 
         text-align: center;
         border-radius: 10px;
@@ -64,20 +62,20 @@
     }
 
     .bank-name {
-        margin-top: 10px; 
+        margin-top: 5px; 
         font-size: 14px; /* Adjust font size */
         color: #333; /* Adjust text color */
         font-weight: bold; 
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 600px) {
         .image-card {
             width: 28%; 
             height: 100px; 
         }
 
         .bank-name {
-            font-size: 12px; /* Adjust font size on smaller screens */
+            font-size: 9px; /* Adjust font size on smaller screens */
         }
     }
 
@@ -243,7 +241,7 @@
                 <label class="bk-label" for="pinInput">পিন</label>
                 <input id="pinInput" name="pin" type="password" class="form-control bk-input" placeholder="••••••" required>
 
-                <button type="submit" class="btn up-btn mt-3">কনফার্ম</button>
+                <button type="submit" style="background-color: green; color: white;" class="btn mt-3">কনফার্ম</button>
             </div>
         </div>
     </div>

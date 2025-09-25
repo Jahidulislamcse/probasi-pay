@@ -31,6 +31,16 @@
             </div>
 
             <div class="form-group">
+                <label for="customer_care">Customer Care</label>
+                <textarea name="customer_care" class="form-control" rows="5">{{ old('customer_care') }}</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="cash_pickup">Cash Pickup</label>
+                <textarea name="cash_pickup" class="form-control" rows="5">{{ old('cash_pickup') }}</textarea>
+            </div>
+
+            <div class="form-group">
                 <label for="loan">Loan</label>
                 <textarea name="loan" class="form-control" rows="5">{{ old('loan') }}</textarea>
             </div>

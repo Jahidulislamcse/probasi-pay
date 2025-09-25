@@ -17,7 +17,7 @@
     @if (auth()->user()->agree == 0)
         @php $content = App\Models\Section::where('key','agreement')->first(); @endphp
         <div style="padding:30px;" >
-            <div style="text-align: center; border-bottom:1px solid #000">
+            <div style="text-align: center; border-bottom:1px solid #000; color:#000;">
                 <span style="font-size:18px ; font-weight:600; text-align:center; color:#000;">
                     অঙ্গীকার নামা/ চুক্তিপত্র <br> {{ siteInfo()->company_name }}    <br>
                 </span>
@@ -26,7 +26,7 @@
             </div>
 
             <br>
-           <p style="font-size: 14px; line-height: 1.6; font-family: 'Arial', sans-serif;">
+           <p style="font-size: 14px; line-height: 1.6; font-family: 'Arial', sans-serif; color:#000;">
             আমি {{ auth()->user()->name }} পেশা: প্রবাসী। জাতীয়তা: বাংলাদেশি। বর্তমানে
             আমি {{ auth()->user()->name }}, {{ @$country->name }} এ অবস্থানরত। {{ siteInfo()->company_name }}. এর অ্যাপস ব্যবহারের জন্য এই মর্মে অঙ্গীকার করিতেছি যে গ্রাহকের অর্থের সম্পূর্ণ নিরাপত্তা দেওয়ার দায়িত্ব গ্লোবাল রেমিটেন্স সার্ভিস লি. এর। গ্রাহকের যেকোন সমস্যার জন্য গ্লোবাল রেমিটেন্স সার্ভিস লি. দায়বদ্ধ থাকিবে। এবং যেকোন সময় যেকোন সমস্যার সহায়তা গ্লোবাল রেমিটেন্স সার্ভিস লি. করিবে বলে থাকে। এই অঙ্গীকারপত্র যার কাছে থাকিবে না, সে কখনই গ্লোবাল রেমিটেন্স সার্ভিস লি. এর কাছে প্রশ্ন বা দায়বদ্ধতা দাবী করিতে পারিবে না। কোম্পানি আইন ১৯৯৪ ধারা অনুসারে সকল দায়বদ্ধতা গ্লোবাল রেমিটেন্স সার্ভিস লি. গ্রহণ করিবে। গ্লোবাল রেমিটেন্স সার্ভিস লি. এর কিছু শর্ত মেনে গ্রাহককে লেনদেন করিতে হইবে। শর্তসমূহ হল।
             <br>

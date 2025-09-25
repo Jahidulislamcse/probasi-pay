@@ -29,6 +29,8 @@ class GuideController extends Controller
         $request->validate([
             'mobile_deposit' => 'nullable|string',
             'bank_deposit' => 'nullable|string',
+            'customer_care' => 'nullable|string',
+            'cash_pickup' => 'nullable|string',
             'loan' => 'nullable|string',
             'remittance' => 'nullable|string',
             'how_to_balance_add' => 'nullable|string',
@@ -53,6 +55,8 @@ class GuideController extends Controller
         $request->validate([
             'mobile_deposit' => 'nullable|string',
             'bank_deposit' => 'nullable|string',
+            'customer_care' => 'nullable|string',
+            'cash_pickup' => 'nullable|string',
             'loan' => 'nullable|string',
             'remittance' => 'nullable|string',
             'how_to_balance_add' => 'nullable|string',

@@ -49,8 +49,16 @@
         <div class="tf-container">
             <form method="POST" action="{{ route('register.image') }}" enctype="multipart/form-data">
                 @csrf
-                <canvas id="canvas"  style="height:auto;width:320px;display:none;"></canvas>
-                <video id="video" autoplay  style="height:auto;width:320px;background: #243634;border-radius: 20px;object-fit:cover"></video>
+                <div style="display: flex; justify-content: center; gap: 10px;">
+  <canvas id="canvas" 
+          style="height:auto; width:320px; display:none;">
+  </canvas>
+  
+  <video id="video" autoplay 
+         style="height:auto; width:320px; background:#243634; border-radius:20px; object-fit:cover;">
+  </video>
+</div>
+
                 <br>
                 <button type="button" id="snap" class="btn btn-small btn-success">ছবি তুলুন</button>
                 <br><br>
