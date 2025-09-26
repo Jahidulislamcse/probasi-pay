@@ -15,52 +15,61 @@
         <div class="statbox widget box box-shadow">
             <div class="widget-content widget-content-area">
 
-                <table id="user" class="table dt-table-hover" style="width:100%">
+                <div class="d-flex justify-content-between mb-3">
+                    <form method="GET" action="{{ route('user.list') }}" class="d-flex gap-2">
+                        <input type="text" name="search" value="{{ request('search') }}"
+                            class="form-control" placeholder="Search users...">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
+                </div>
+
+                <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Image</th>
                             <th>Name</th>
-                            <th>phone</th>
-                            <th>country</th>
-                            <th>balance</th>
+                            <th>Phone</th>
+                            <th>Country</th>
+                            <th>Balance</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($lists as $list)
-                        @php
-                        if (preg_match('/^data:image\/(\w+);base64,/', @$list->image)) {
-                        $user_image = @$list->image;
-                        } else {
-                        $user_image = asset(@$list->image);
-                        }
-                        @endphp
+                        @forelse($lists as $list)
                         <tr>
-
-                            <td><img src="{{ $user_image }}" style="    width: 50px;height: 50px;"></td>
-                            <td>{!! @$list->name !!}</td>
-                            <td>{{ @$list->phone }} </td>
-                            <td>{{ @$list->country->name }} </td>
-                            <td>{{ currency(@$list->balance) }} </td>
-                            <td>{!! @$list->status() !!}</td>
-                            <td class="text-center">
-                                <a class="btn btn-small btn-primary mb-2" href="{{ route('admin.users.show', $list->id) }}">
-                                    <i class="fa fa-eye"></i> View More
+                            <td><img src="{{ preg_match('/^data:image/', @$list->image) ? $list->image : asset(@$list->image) }}"
+                                    width="50" height="50"></td>
+                            <td>{{ $list->name }}</td>
+                            <td>{{ $list->phone }}</td>
+                            <td>{{ optional($list->country)->name }}</td>
+                            <td>{{ currency($list->balance) }}</td>
+                            <td>{!! $list->status() !!}</td>
+                            <td>
+                                <a href="{{ route('admin.users.show', $list->id) }}" class="btn btn-sm btn-primary">
+                                    <i class="fa fa-eye"></i> View
                                 </a>
                             </td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <tr>
+                            <td colspan="7" class="text-center">No users found</td>
+                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
+
+                <!-- Pagination -->
+                <div class="mt-3">
+                    {{ $lists->links('pagination::bootstrap-5') }}
+                </div>
+
 
             </div>
         </div>
     </div>
 </div>
-<div class="mt-2 mb-5">
-    {{ $lists->links('pagination::bootstrap-5') }}
-</div>
+
 
 
 @endsection

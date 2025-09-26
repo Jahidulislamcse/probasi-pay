@@ -132,12 +132,26 @@ class AdminController extends Controller
     }
 
 
-    public function users()
+    public function users(Request $request)
     {
         $title = 'User List';
-        $lists = User::paginate(5); 
+
+        $query = User::latest();
+
+        if ($request->has('search') && !empty($request->search)) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                ->orWhere('phone', 'like', "%{$search}%")
+                ->orWhere('email', 'like', "%{$search}%");
+            });
+        }
+
+        $lists = $query->paginate(5)->appends($request->all());
+
         return view('admin.user.index', compact('title', 'lists'));
     }
+
 
 
     public function userInfo(Request $request, User $user)
