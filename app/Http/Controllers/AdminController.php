@@ -13,6 +13,7 @@ use App\Models\GeneralSetting;
 use App\Models\MasjidAccount;
 use App\Models\MobileBanking;
 use App\Models\MobileRecharge;
+use DataTables;
 use App\Models\Order;
 use App\Models\Topup;
 use Illuminate\Support\Facades\Hash;
@@ -134,9 +135,10 @@ class AdminController extends Controller
     public function users()
     {
         $title = 'User List';
-        $lists = User::all();
-        return view('admin.user.index', compact(['title', 'lists']));
+        $lists = User::paginate(40); 
+        return view('admin.user.index', compact('title', 'lists'));
     }
+
 
     public function userInfo(Request $request, User $user)
     {

@@ -39,10 +39,10 @@
         <div class="tf-container" >
             <form class="tf-form" action="{{  route('login') }}" method="post" >
                 @csrf
-                <img src="https://cdni.iconscout.com/illustration/premium/thumb/login-page-illustration-download-in-svg-png-gif-file-formats--app-developing-development-secure-mobile-webapp-and-pack-design-illustrations-3783954.png" style=" margin-left:35%; width:30%; height:30%">
+                <img src="{{ asset('logos/wise2.jpeg') }}" style=" margin-left:35%; width:30%; height:30%">
 
 
-                <div class="group-input">
+                <div class="group-input mt-5">
                     <label>আপনার ফোন নম্বর দিন</label>
                     <input type="text" name="email" placeholder="01700000000" required>
                 </div>

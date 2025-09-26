@@ -3,31 +3,21 @@
 
 <title>{{ isset($title)?$title:'welcome' }} - {{ env('APP_NAME') }}</title>
 
-
-
-
 @endsection
 @section('style')
-
-
-
 
 @endsection
 @section('main')
 
 <div class=" card row layout-top-spacing">
-
     <div class="row">
-
         <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
-
             <div class="statbox widget box box-shadow">
                 <div class="widget-content widget-content-area">
 
                     <table id="user" class="table dt-table-hover" style="width:100%">
                         <thead>
                             <tr>
-
                                 <th>Image</th>
                                 <th>Name</th>
                                 <th>phone</th>
@@ -68,6 +58,9 @@
         </div>
 
     </div>
+</div>
+<div class="mt-2 mb-5" >
+    {{ $lists->links('pagination::bootstrap-5') }}
 </div>
 
 

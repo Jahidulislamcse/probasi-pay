@@ -145,7 +145,7 @@
     <!-- Register Section -->
     <div class="mt-3 register-section" style="padding: 20px 20px;">
         <div class="tf-container">
-                <img src="{{ asset('logos/wise.jpeg') }}" style="margin-left:35%; width:30%; height:50%; margin-top:20px; margin-bottom:20px;">
+                <img src="{{ asset('logos/wise2.jpeg') }}" style="margin-left:35%; width:30%; height:50%; margin-top:20px; margin-bottom:20px;">
 
             <form class="tf-form" action="{{ route('register.data') }}" method="post">
                 @csrf
