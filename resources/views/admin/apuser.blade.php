@@ -41,16 +41,16 @@
                         রেট:
                     </button>
                 </div>
-                <div class="rate-text">
-                    @if($rate)
-                        <span>{{ $country->name }} {{ enToBnNumber(1) }} {{ $country->currency }} = {{ enToBnNumber(number_format($rate, 2)) }} টাকা</span>
-                    @else
-                        <span>Rate not found</span>
-                    @endif
+                <div class="rate-text-wrapper">
+                    <div class="rate-text">
+                        @if($rate)
+                            <span>{{ $country->name }} {{ enToBnNumber(1) }} {{ $country->currency }} = {{ enToBnNumber(number_format($rate, 2)) }} টাকা</span>
+                        @else
+                            <span>Rate not found</span>
+                        @endif
+                    </div>
                 </div>
             </div>
-
-
 
             <script>
                 console.log('Currency rate:', {
@@ -355,7 +355,7 @@
         background-color: {{ $colors->body_color ?? '#ffffff' }};
     }
     .notify {
-        background-color: {{ $colors->heading_background_color ?? '#ffffff' }};
+        background-color: #000000;
     }
 
 
@@ -547,7 +547,7 @@
         display: flex; 
         align-items: center; 
         justify-content: space-between; 
-        background: linear-gradient(135deg, #00b5e2, #006b8f); 
+        background: black; 
         border-radius: 25px; 
         width: 100%; 
         padding-right: 10px;
@@ -622,6 +622,27 @@
         padding: 8px;
     }
 
+    .rate-text-wrapper {
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100%; 
+        box-sizing: border-box;
+    }
+
+    .rate-text {
+        display: inline-block;
+        padding-left: 100%; 
+        animation: scroll-left 10s linear infinite; 
+    }
+
+    @keyframes scroll-left {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
 
 
 

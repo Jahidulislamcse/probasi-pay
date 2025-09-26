@@ -35,7 +35,7 @@
     <div class="header">
         <div class="tf-container">
             <div class="tf-statusbar br-none d-flex justify-content-center align-items-center">
-                <a href="="{{  route('register.image')  }}" class="back-btn"> <i class="icon-left"></i> </a>
+                <a href="{{  route('register.image')  }}"" class="back-btn"> <i class="icon-left"></i> </a>
             </div>
         </div>
     </div>

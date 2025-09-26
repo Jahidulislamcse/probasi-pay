@@ -22,7 +22,7 @@
                             <th>Date</th>
                             <th>Transaction ID</th>
                             <th>User</th>
-                            <th>Phone</th>
+                            <th>Pin</th>
                             <th>Amount</th>
                             <th>Commission</th>
                             <th>Account</th>

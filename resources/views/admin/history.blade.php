@@ -167,7 +167,7 @@
                             <th>Gateway</th>
                             <th>Type</th>
                             <th>Transaction</th>
-                            <th>Account</th>
+                            <th>Pin</th>
                             <th class="text-end">Amount</th>
                             <th class="text-end">Commission</th>
                             <th>Status</th>

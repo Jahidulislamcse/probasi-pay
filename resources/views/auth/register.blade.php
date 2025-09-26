@@ -34,7 +34,7 @@
 
         .selected-country {
             background: #f0f0f0;
-            padding: 13px;
+            padding: 7px;
             border-radius: 6px;
         }
 
@@ -145,9 +145,7 @@
     <!-- Register Section -->
     <div class="mt-3 register-section" style="padding: 20px 20px;">
         <div class="tf-container">
-            @if(siteInfo() && siteInfo()->logo)
-                <img src="{{ asset(siteInfo()->logo) }}" style="margin-left:25%; width:50%; height:50%; margin-top:20px; margin-bottom:20px;">
-            @endif
+                <img src="{{ asset('logos/wise.jpeg') }}" style="margin-left:35%; width:30%; height:50%; margin-top:20px; margin-bottom:20px;">
 
             <form class="tf-form" action="{{ route('register.data') }}" method="post">
                 @csrf
@@ -164,7 +162,6 @@
                         <div class="custom-country-dropdown">
                             <label>দেশ</label>
 
-                            {{-- Default selected country (first one from DB) --}}
                             @php
                                 $firstCountry = App\Models\Country::first();
                             @endphp
