@@ -135,7 +135,7 @@ class AdminController extends Controller
     public function users()
     {
         $title = 'User List';
-        $lists = User::paginate(10); 
+        $lists = User::paginate(5); 
         return view('admin.user.index', compact('title', 'lists'));
     }
 
