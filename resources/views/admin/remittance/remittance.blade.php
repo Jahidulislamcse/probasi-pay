@@ -330,41 +330,50 @@
                             <div class="statbox widget box box-shadow">
                                 <div class="widget-content widget-content-area">
 
-                                    <table id="table" class="table table-striped table-hover w-100">
-                                        <thead>
-                                            <tr>
-                                                <th style="white-space:nowrap">তারিখ</th>
-                                                <th>ট্রানজেকশন আইডি</th>
-                                                <th>চ্যানেল</th>
-                                                <th class="text-end">এমাউন্ট</th>
-                                                <th>অ্যাকাউন্ট/ওয়ালেট</th>
-                                                <th>স্ট্যাটাস</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($remittances as $r)
-                                            @php
-                                            $statusText = match((int)$r->status) { 1=>'Approved', 2=>'Rejected', default=>'Pending' };
-                                            $badgeClass = match((int)$r->status) { 1=>'bg-success', 2=>'bg-danger', default=>'bg-warning text-dark' };
-                                            @endphp
-                                            <tr>
-                                                <td style="white-space:nowrap">{{ $r->created_at?->format('d M Y, h:i A') }}</td>
-                                                <td><code class="selectable">{{ $r->transaction_id }}</code></td>
-                                                <td>{{ $r->operator }}</td>
-                                                <td class="text-end">{{ number_format($r->amount, 2) }}</td>
-                                                <td>{{ $r->account }}</td>
-                                                <td><span class="badge {{ $badgeClass }}">{{ $statusText }}</span></td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                    <div class="table-responsive">
+                                        <table id="table" class="table table-striped table-hover w-100">
+                                            <thead>
+                                                <tr>
+                                                    <th style="white-space:nowrap">তারিখ</th>
+                                                    <th>ট্রানজেকশন আইডি</th>
+                                                    <th>চ্যানেল</th>
+                                                    <th class="text-end">এমাউন্ট</th>
+                                                    <th>অ্যাকাউন্ট/ওয়ালেট</th>
+                                                    <th>স্ট্যাটাস</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($remittances as $r)
+                                                    @php
+                                                        $statusText = match((int)$r->status) {
+                                                            1 => 'Approved',
+                                                            2 => 'Rejected',
+                                                            default => 'Pending',
+                                                        };
+                                                        $badgeClass = match((int)$r->status) {
+                                                            1 => 'bg-success',
+                                                            2 => 'bg-danger',
+                                                            default => 'bg-warning text-dark',
+                                                        };
+                                                    @endphp
+                                                    <tr>
+                                                        <td style="white-space:nowrap">{{ $r->created_at?->format('d M Y, h:i A') }}</td>
+                                                        <td><code class="selectable">{{ $r->transaction_id }}</code></td>
+                                                        <td>{{ $r->operator }}</td>
+                                                        <td class="text-end">{{ number_format($r->amount, 2) }}</td>
+                                                        <td>{{ $r->account }}</td>
+                                                        <td><span class="badge {{ $badgeClass }}">{{ $statusText }}</span></td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
 
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
