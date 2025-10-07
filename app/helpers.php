@@ -26,9 +26,12 @@ if (! function_exists('menus')) {
         return Category::where('cat_parent', null)->where('menu', 1)->where('status', 1)->get();
     }
 }
-function hiddnum($mobile)
-{
-    return str_repeat('*', strlen($mobile) - 4) . substr($mobile, -4);
+
+if (!function_exists('hiddnum')) {
+    function hiddnum($mobile)
+    {
+        return str_repeat('*', strlen($mobile) - 4) . substr($mobile, -4);
+    }
 }
 
 if (!function_exists('is_serialized')) {
@@ -97,13 +100,14 @@ if (! function_exists('siteInfo')) {
     }
 }
 
-function custom_function($string, $times)
-{
-    // Ensure $times is at least 0
-    $times = max(0, $times);  // If $times is negative, set it to 0
-
-    return str_repeat($string, $times); // Use str_repeat safely
+if (!function_exists('custom_function')) {
+    function custom_function($string, $times)
+    {
+        $times = max(0, $times);
+        return str_repeat($string, $times);
+    }
 }
+
 
 if (! function_exists('currency')) {
 

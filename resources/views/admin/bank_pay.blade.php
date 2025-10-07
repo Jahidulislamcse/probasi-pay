@@ -63,8 +63,8 @@
 
     .bank-name {
         margin-top: 5px; 
-        font-size: 14px; /* Adjust font size */
-        color: #333; /* Adjust text color */
+        font-size: 14px; 
+        color: #333; 
         font-weight: bold; 
     }
 
@@ -75,7 +75,7 @@
         }
 
         .bank-name {
-            font-size: 9px; /* Adjust font size on smaller screens */
+            font-size: 9px; 
         }
     }
 
@@ -128,7 +128,6 @@
     </div>
 </div>
 
-<!-- Select Bank Modal -->
 <div class="modal fade" id="selectBankModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
@@ -153,7 +152,6 @@
     <form id="bankForm" class="tf-form" method="post">
         @csrf
         <div class="tf-container">
-            <!-- Show selected bank image above the form -->
             <div id="selectedBankContainer" style="text-align: center;">
                 <img id="selectedBankImage" class="selected-bank-img" src="" alt="Selected Bank">
             </div>
@@ -161,7 +159,6 @@
              <input type="hidden" id="operator" name="operator" value="">
             <input type="hidden" id="pinInputHidden" name="pin" value="">
 
-            <!-- Form fields are hidden until a bank is selected -->
             <div id="bankFormContent" style="display: none;">
                 <div class="tf-balance-box">
                     <div class="tf-form">
@@ -202,12 +199,10 @@
     </form>
 </div>
 
-<!-- Confirmation Modal -->
 <div class="modal fade" id="txnConfirmModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content bk-modal">
             <div class="bk-header text-center">
-                <!-- Display selected bank image here -->
                 <img id="selectedBankImageModal" src="" alt="Selected Bank" style="width: 100px; margin: 0 auto; display: block;">
             </div>
 
@@ -253,76 +248,50 @@
 @section('script')
 <script>
     $(document).ready(function() {
-    var bankModal = new bootstrap.Modal(document.getElementById('selectBankModal'));
-    bankModal.show();
+        var bankModal = new bootstrap.Modal(document.getElementById('selectBankModal'));
+        bankModal.show();
 
-    // After bank selection, show the form
-    $('.image-card').on('click', function() {
-        const selectedBankName = $(this).data('bank'); // Get the selected bank name
-        const selectedBankLogo = $(this).data('logo'); // Get the bank logo
-        
-        $('#operator').val(selectedBankName);
-        $('#selectedBankImage').attr('src', selectedBankLogo).show();
-        
-        // Now show the form content
-        $('#bankFormContent').show();
-        $('#selectBankModal').modal('hide');
+        $('.image-card').on('click', function() {
+            const selectedBankName = $(this).data('bank'); 
+            const selectedBankLogo = $(this).data('logo'); 
+            
+            $('#operator').val(selectedBankName);
+            $('#selectedBankImage').attr('src', selectedBankLogo).show();
+            $('#selectedBankImageModal').attr('src', selectedBankLogo).show();
+
+            $('#bankFormContent').show();
+            $('#selectBankModal').modal('hide');
+
+        });
+
+        $('#openConfirm').on('click', function() {
+            const form = document.getElementById('bankForm');
+            const amount = form.elements['amount'].value.trim();
+            const mobile = form.elements['mobile'].value.trim();
+            const branch = form.elements['branch'].value.trim();
+            const achold = form.elements['achold'].value.trim();
+            
+            if (!amount || !mobile || !branch || !achold) {
+                form.reportValidity();
+                return;
+            }
+
+            document.getElementById('mAccount').textContent = mobile;
+            document.getElementById('mAmount').textContent = amount + ' টাকা';
+            document.getElementById('mType').textContent = $('#operator').val(); 
+            document.getElementById('branch').textContent = branch;
+
+            const modal = new bootstrap.Modal(document.getElementById('txnConfirmModal'));
+            modal.show();
+        });
+
+        $('#txnConfirmModal .btn.mt-3').on('click', function(e) {
+            e.preventDefault();
+            const pin = $('#pinInput').val().trim();
+            $('#pinInputHidden').val(pin);
+            $('#bankForm').submit();
+        });
     });
-
-    // After a bank is selected, set the selected bank image in the modal
-    $('.image-card').on('click', function() {
-        const selectedBankLogo = $(this).data('logo');
-        
-        // Update the confirmation modal with the selected bank image
-        $('#selectedBankImageModal').attr('src', selectedBankLogo).show();
-        
-        // Continue with showing the form and other steps
-        $('#bankFormContent').show();
-        $('#selectBankModal').modal('hide');
-    });
-
-    $('#openConfirm').on('click', function() {
-        const form = document.getElementById('bankForm');
-        const amount = form.elements['amount'].value.trim();
-        const mobile = form.elements['mobile'].value.trim();
-        const branch = form.elements['branch'].value.trim();
-        const achold = form.elements['achold'].value.trim();
-        
-        if (!amount || !mobile || !branch || !achold) {
-            form.reportValidity();
-            return;
-        }
-
-        // Get the PIN entered in the confirmation modal
-        const pin = document.getElementById('pinInput').value;
-
-        // Ensure the PIN value is passed correctly by updating the hidden field
-        $('#pinInputHidden').val(pin);  // Update the hidden PIN field in the form
-
-        // Set the form values for the confirmation modal
-        document.getElementById('mAccount').textContent = mobile;
-        document.getElementById('mAmount').textContent = amount + ' টাকা';
-        document.getElementById('mType').textContent = $('#operator').val(); // Display selected bank name
-        document.getElementById('branch').textContent = branch;
-        document.getElementById('pinInput').value = ''; // Clear the PIN input in the modal
-
-        // Show the confirmation modal
-        const modal = new bootstrap.Modal(document.getElementById('txnConfirmModal'));
-        modal.show();
-    });
-
-    // Submit the form after confirmation
-    $('#txnConfirmModal .btn.up-btn').on('click', function() {
-        // Make sure the PIN hidden field is populated
-        const pin = document.getElementById('pinInput').value;
-        if (pin && $('#pinInputHidden').val() !== pin) {
-            $('#pinInputHidden').val(pin);  // Ensure PIN is added to the hidden input
-        }
-
-        // Submit the form
-        $('#bankForm').submit();
-    });
-});
-
 </script>
 @endsection
+

@@ -48,9 +48,9 @@ class BankPayController extends Controller
 
 
     public function bankpay(Request $request){
-
+        // dd($request->all());
         if ($request->post()) {
-            // dd($request->all());
+            
 
             $request->validate([
                 'operator' => 'required',

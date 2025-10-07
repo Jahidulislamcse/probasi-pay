@@ -166,7 +166,7 @@
                             <th>Date</th>
                             <th>Gateway</th>
                             <th>Type</th>
-                            <th>Transaction</th>
+                            <th>Transaction Id</th>
                             <th>Pin</th>
                             <th class="text-end">Amount</th>
                             <th class="text-end">Commission</th>
@@ -220,7 +220,7 @@
                             <th>Date</th>
                             <th>Operator</th>
                             <th>Type</th>
-                            <th>Transaction</th>
+                            <th>Transaction Id</th>
                             <th>Mobile</th>
                             <th class="text-end">Amount</th>
                             <th>Status</th>
@@ -271,7 +271,7 @@
                             <th>#</th>
                             <th>Date</th>
                             <th>Bank/Operator</th>
-                            <th>Transaction</th>
+                            <th>Transaction Id</th>
                             <th>Account/Number</th>
                             <th>Branch</th>
                             <th>Account Holder</th>
@@ -325,7 +325,7 @@
                             <th>#</th>
                             <th>Date</th>
                             <th>Operator</th>
-                            <th>Transaction</th>
+                            <th>Transaction Id</th>
                             <th>Account</th>
                             <th>Branch</th>
                             <th>Account Holder</th>
