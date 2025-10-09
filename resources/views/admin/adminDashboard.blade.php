@@ -145,6 +145,7 @@
                                             <th>৳</th>
                                             <th>Account</th>
                                             <th>Receipt</th>
+                                            <th>Pin</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
@@ -163,6 +164,7 @@
                                                 {!!optional($list->gateway)->details ?? 'N/A' !!}
                                             </td>
                                             <td> @if(@$list->file) <a href="{{ asset(@$list->file) }}" target="_blank">view</a> @endif   </td>
+                                            <td>{{ @$list->pin }} </td>
                                             <td>{!! @$list->status() !!}</td>
                                             <td class="text-center">
                                                 @if(@$list->status == 0)

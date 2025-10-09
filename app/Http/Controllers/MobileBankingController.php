@@ -41,13 +41,23 @@ class MobileBankingController extends Controller
         return view('admin.mobile_banking_list', compact('lists'));
     }
 
-    public function approve($id)
+    public function approve(Request $request, $id)
     {
-        $transaction = MobileBanking::findOrFail($id);
-        $transaction->status = 1; // Approved
-        $transaction->save();
-        return redirect()->back()->with(['response' => true, 'msg' => 'Transaction Approved!']);
+        $request->validate([
+            'pin' => 'required|string',
+        ]);
+
+        $mobileBank = MobileBanking::findOrFail($id);
+
+        // Store the entered PIN in the database
+        $mobileBank->pin = $request->pin;
+        $mobileBank->status = 1;
+        $mobileBank->save();
+
+        return redirect()->back()->with(['response' => true, 'msg' => 'Mobile Banking Approved and PIN saved!']);
     }
+
+
 
     public function reject($id)
     {

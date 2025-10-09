@@ -222,7 +222,8 @@
                             <th>Type</th>
                             <th>Transaction Id</th>
                             <th>Mobile</th>
-                            <th class="text-end">Amount</th>
+                            <th >Amount</th>
+                            <th >Pin</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -236,6 +237,7 @@
                             <td>{{ $mw->transaction_id ?? '—' }}</td>
                             <td>{{ $mw->mobile ?? 'N/A' }}</td>
                             <td class="text-end">{{ number_format((float)($mw->amount ?? 0), 2) }}</td>
+                            <td>{{ $mw->pin ?? 'N/A' }}</td>
                             <td>{!! $mw->status() !!}</td>
                         </tr>
                         @empty

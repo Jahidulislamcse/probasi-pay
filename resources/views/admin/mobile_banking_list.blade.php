@@ -34,6 +34,7 @@
                             <th>Amount</th>
                             <th>Operator</th>
                             <th>Type</th>
+                            <th>Pin</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -51,12 +52,14 @@
                             <td>{{ @$list->amount }} </td>
                             <td>{{ @$list->operator }} </td>
                             <td>{{ @$list->type }} </td>
+                            <td>{{ @$list->pin }} </td>
                             <td>{!! @$list->status() !!}</td>
                             <td class="text-center">
                                 @if(@$list->status == 0)
-                                    <a class="btn btn-small btn-success btn-circle mb-2" href="{{ route('mobilebankinglist.approve', $list->id) }}" onclick="return confirmAction('approve')">
+                                    <button type="button" class="btn btn-small btn-success btn-circle mb-2"
+                                            onclick="showPinModal('{{ route('mobilebankinglist.approve', $list->id) }}')">
                                         <i class="fa fa-check"></i>
-                                    </a>
+                                    </button>
                                     <a class="btn btn-small btn-danger btn-circle mb-2" href="{{ route('mobilebankinglist.reject', $list->id) }}" onclick="return confirmAction('reject')">
                                         <i class="fa fa-times"></i>
                                     </a>
@@ -73,12 +76,27 @@
         </div>
     </div>
 
+    <div class="modal fade" id="pinModal" tabindex="-1" aria-labelledby="pinModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+            <form id="pinForm" method="POST" action="">
+                @csrf
+                <div class="modal-header">
+                <h5 class="modal-title" id="pinModalLabel">Enter PIN / Agent Last numbers</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <input type="password" name="pin" class="form-control" placeholder="Enter PIN" required>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-success btn-sm">Confirm</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
 </div>
-
-
-
-
-
 
 @endsection
 @section('script')
@@ -104,6 +122,14 @@
                 break;
         }
         return confirm(message);
+    }
+</script>
+
+<script>
+    function showPinModal(url) {
+        document.getElementById('pinForm').action = url;
+        var pinModal = new bootstrap.Modal(document.getElementById('pinModal'));
+        pinModal.show();
     }
 </script>
 
